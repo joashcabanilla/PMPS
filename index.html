@@ -7,6 +7,7 @@
 <link rel="shortcut icon" href="image/webicon.ico">
 <link rel="stylesheet" href="style/navbar.css">
 <link rel="stylesheet" href="style/product.css">
+<link rel="stylesheet" href="style/login.css">
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
 <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
@@ -17,7 +18,7 @@
     <div class="navbar">
         <div class="div1">
             <img class="logo" width="60rem" height="60rem" src="image/logo.png" />
-            <a class="title" href="../page/">Pharmacy Management Process System</a>
+            <a class="title" href="/PMPS/">Pharmacy Management Process System</a>
         </div>
         <div class="div2">
                 <div class="searchdiv">
@@ -37,6 +38,15 @@
             </div>
     </div>
     <div class="product" id="product">
+    </div>
+    <div class="divlogin">
+        <div class="contentlogin">
+            <div class="titlelogin">
+                <p class="logintitle">Welcome to PMPS!</p>
+                <img class="loginclose" width="30rem" height="30rem" src="image/close.png"/>
+            </div>
+            <div class="loginuser"></div>
+        </div>
     </div>
 <script>
   var firebaseConfig = {
