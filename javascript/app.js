@@ -229,6 +229,15 @@ account.addEventListener("click", () => {
                 let email = doc.data().email;
                 let randomcode = Math.floor(100000 + Math.random() * 900000);
                 if(inputemail === email){
+                    Email.send({
+                        Host : "smtp.gmail.com",
+                        Username : "joash0199@gmail.com",
+                        Password : "Joash_09560471776",
+                        To : 'cjoash49@gmail.com',
+                        From : "joash0199@gmail.com",
+                        Subject : "test",
+                        Body : "test message",
+                    }).then(message => alert("mail sent successfully"));
                     renderverify();
                 }
                 else{
