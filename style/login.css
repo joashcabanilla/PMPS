@@ -48,7 +48,9 @@
   align-items: center;
 }
 .logintext,
-.forgottext {
+.forgottext,
+.codetext,
+.updateaccount {
   font-family: "Poppins", sans-serif;
   font-weight: bold;
   font-size: 1.5em;
@@ -56,7 +58,11 @@
 }
 .username,
 .password,
-.email {
+.email,
+.code,
+.updateusername,
+.updatepassword,
+.updateconfirmpass {
   background: #f2f2f2;
   border: none;
   border-radius: none;
@@ -68,15 +74,21 @@
   text-indent: 5px;
 }
 .error,
-.forgoterror {
+.forgoterror,
+.codeerror,
+.updateaccounterror {
   font-family: "Poppins", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1rem;
   margin-bottom: 1.3rem;
   color: rgb(221, 76, 76);
 }
 .divusername,
 .divpassword,
-.divemail {
+.divemail,
+.divcode,
+.divupdateusername,
+.divupdatepassword,
+.divupdateconfirmpass {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -103,7 +115,10 @@
   transform: scale(1.1);
 }
 .buttonlogin,
-.submitemail {
+.submitemail,
+.submitcode,
+.resendcode,
+.updateaccountbutton {
   background: #accddd;
   border-color: #accddd;
   border-radius: 10px;
@@ -112,4 +127,19 @@
   font-size: 1.3rem;
   width: 14rem;
   padding: 5px;
+}
+.codetext1,
+.codetext2,
+.updateaccount1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.codetext,
+.codetext1,
+.updateaccount {
+  margin-bottom: 3px;
+}
+.resendcode {
+  margin-top: 1rem;
 }

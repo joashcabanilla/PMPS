@@ -100,7 +100,6 @@ searchbox.addEventListener("keyup",(event) => {
         const capSearch = (str) => str[0].toUpperCase() + str.slice(1).toLowerCase();
         let words = searchdata.split(' ').map(capSearch);
         let fsearchdata = words.join(' ');
-        console.log(fsearchdata);
         firestore.collection("Product").where('productname',">=",`${fsearchdata}`).limit(1).get().then((snapshot) => {
             snapshot.docs.forEach(doc => {
                 renderProduct(doc);
@@ -112,17 +111,15 @@ searchbox.addEventListener("keyup",(event) => {
 
 //EVENTLISTENER FOR SEARCHBOX FOCUS------------------------------------------------------------------------------------------------
 searchbox.addEventListener("focus",() => {
-    let categoryText = category.options[category.selectedIndex].value;
-    const allproduct = document.querySelectorAll('.product-item');
-    let productnumber = allproduct.length;
     category.selectedIndex = 0;
-
-    for(let i = 0; i < productnumber; i++ ){
-        
-        let prodCategory = allproduct.item(i).dataset.category;
-        let product_category = document.querySelector(`[data-category="${prodCategory}"`);
-        product_category.style.display = "flex";
+    while(product.firstChild){
+        product.removeChild(product.firstChild);
     }
+    firestore.collection("Product").orderBy('category').get().then((snapshot) => {
+        snapshot.docs.forEach(doc => {
+            renderProduct(doc);
+        })
+    })
 })
 
 //EVENTLISTENER FOR ACCOUNT ONCLICK----------------------------------------------------------------------------------------------
@@ -200,7 +197,7 @@ account.addEventListener("click", () => {
         loginuser.appendChild(forgottext);
 
         let forgoterror = document.createElement('p');
-        forgoterror.textContent = "Incorrect Password";
+        forgoterror.textContent = "";
         forgoterror.setAttribute('class','forgoterror');
         loginuser.appendChild(forgoterror);
 
@@ -217,19 +214,169 @@ account.addEventListener("click", () => {
         divemail.appendChild(email);
         loginuser.appendChild(divemail);
 
-    let submitemail = document.createElement('button');
-    submitemail.setAttribute('class','submitemail');
-    submitemail.textContent = "Submit";
-    loginuser.appendChild(submitemail);
+        let submitemail = document.createElement('button');
+        submitemail.setAttribute('class','submitemail');
+        submitemail.textContent = "Submit";
+        loginuser.appendChild(submitemail);
 
         //EVENTLISTENER FOR ACCOUNT SUBMIT EMAIL ONCLICK----------------------------------------------------------------------------------
         const submitemailbtn = document.querySelector('.submitemail');
+        const inputtagemail = document.querySelector('.email');
         submitemailbtn.addEventListener("click",() => {
-            
+            const inputemail = document.querySelector('.email').value;
+            const forgoterror = document.querySelector('.forgoterror');
+            function checkemail(doc){
+                let email = doc.data().email;
+                let randomcode = Math.floor(100000 + Math.random() * 900000);
+                if(inputemail === email){
+                    renderverify();
+                }
+                else{
+                    if(inputemail === ""){
+                        forgoterror.textContent = 'Input your email';
+                        inputtagemail.value = "";
+                    }
+                    else{
+                        forgoterror.textContent = 'Email is not registered';
+                        inputtagemail.value = "";
+                    }
+                }
+            }
+            firestore.collection("Account").get().then((snapshot) => {
+                snapshot.docs.forEach(doc => {
+                    checkemail(doc);
+                })
+            })
+            function renderverify(){
+                while(loginuser.firstChild){
+                    loginuser.removeChild(loginuser.firstChild);
+                }
+                let codetext = document.createElement('p');
+                codetext.textContent = "Verify Your Account";
+                codetext.setAttribute('class','codetext');
+                loginuser.appendChild(codetext);
+    
+                let codetext1 = document.createElement('p');
+                codetext1.textContent = "code was sent to your email";
+                codetext1.setAttribute('class','codetext1');
+                loginuser.appendChild(codetext1);
+    
+                let codetext2 = document.createElement('p');
+                codetext2.textContent = "";
+                codetext2.setAttribute('class','codetext2');
+                loginuser.appendChild(codetext2);
+    
+                let codeerror = document.createElement('p');
+                codeerror.textContent = "";
+                codeerror.setAttribute('class','codeerror');
+                loginuser.appendChild(codeerror);
+    
+                let divcode = document.createElement('div');
+                divcode.setAttribute('class',"divcode");
+                let code = document.createElement('input');
+                code.setAttribute('class', 'code');
+                code.placeholder = "code";
+                divcode.appendChild(code);
+                loginuser.appendChild(divcode);
+    
+                let submitcode = document.createElement('button');
+                submitcode.setAttribute('class','submitcode');
+                submitcode.textContent = "Submit";
+                loginuser.appendChild(submitcode);
+    
+                let resendcode = document.createElement('button');
+                resendcode.setAttribute('class','resendcode');
+                resendcode.textContent = "Resend";
+                loginuser.appendChild(resendcode);
+
+            //EVENTLISTENER FOR ACCOUNT RESEND VERIFICATION CODE ONCLICK----------------------------------------------------------------------------------
+            const resendcodebtn = document.querySelector('.resendcode');
+            resendcodebtn.addEventListener("click",() => {
+                const codeerror = document.querySelector('.codeerror');
+                codeerror.textContent = "Code was resend to your email";
+                codeerror.style.color = "rgb(3, 162, 48)";
+            })
+
+            //EVENTLISTENER FOR ACCOUNT SUBMIT VERIFICATION CODE ONCLICK----------------------------------------------------------------------------------
+            const submitcodebtn = document.querySelector('.submitcode');
+            submitcodebtn.addEventListener("click",() => {
+                while(loginuser.firstChild){
+                    loginuser.removeChild(loginuser.firstChild);
+                }
+                let updateaccount = document.createElement('p');
+                updateaccount.textContent = "Update Account";
+                updateaccount.setAttribute('class','updateaccount');
+                loginuser.appendChild(updateaccount);
+
+                let updateaccount1 = document.createElement('p');
+                updateaccount1.textContent = "you can now update your account";
+                updateaccount1.setAttribute('class','updateaccount1');
+                loginuser.appendChild(updateaccount1);
+
+                let updateaccounterror = document.createElement('p');
+                updateaccounterror.textContent = "your password did not match";
+                updateaccounterror.setAttribute('class','updateaccounterror');
+                loginuser.appendChild(updateaccounterror);
+
+                let divupdateusername = document.createElement('div');
+                divupdateusername.setAttribute('class',"divupdateusername");
+                let updateusericon = document.createElement('img');
+                updateusericon.src = "image/username.png";
+                updateusericon.width = "40";
+                updateusericon.height = "40";
+                divupdateusername.appendChild(updateusericon);
+                let updateusername = document.createElement('input');
+                updateusername.setAttribute('class', 'updateusername');
+                updateusername.placeholder = "Username";
+                divupdateusername.appendChild(updateusername);
+                loginuser.appendChild(divupdateusername);
+
+                let divupdatepassword = document.createElement('div');
+                divupdatepassword.setAttribute('class',"divupdatepassword");
+                let passwordicon = document.createElement('img');
+                passwordicon.src = "image/password.png";
+                passwordicon.width = "40";
+                passwordicon.height = "40";
+                divupdatepassword.appendChild(passwordicon);
+                let updatepassword = document.createElement('input');
+                updatepassword.setAttribute('class', 'updatepassword');
+                updatepassword.placeholder = "Password";
+                divupdatepassword.appendChild(updatepassword);
+                loginuser.appendChild(divupdatepassword);
+
+                let divupdateconfirmpass = document.createElement('div');
+                divupdateconfirmpass.setAttribute('class',"divupdateconfirmpass");
+                let confirmpassicon = document.createElement('img');
+                confirmpassicon.src = "image/password.png";
+                confirmpassicon.width = "40";
+                confirmpassicon.height = "40";
+                divupdateconfirmpass.appendChild(confirmpassicon);
+                let updateconfirmpass = document.createElement('input');
+                updateconfirmpass.setAttribute('class', 'updateconfirmpass');
+                updateconfirmpass.placeholder = "Confirm Password";
+                divupdateconfirmpass.appendChild(updateconfirmpass);
+                loginuser.appendChild(divupdateconfirmpass);
+                
+                let updateaccountbutton = document.createElement('button');
+                updateaccountbutton.setAttribute('class','updateaccountbutton');
+                updateaccountbutton.textContent = "Save";
+                loginuser.appendChild(updateaccountbutton);
+
+                //EVENTLISTENER FOR SAVE UPDATED ACCOUNT ONCLICK----------------------------------------------------------------------------------
+                const updateaccountbtn = document.querySelector('.updateaccountbutton');
+                updateaccountbtn.addEventListener("click",() => {
+                })
+            })
+            }
+        })
+        inputtagemail.addEventListener("keyup",(event) => {
+            if(event.keyCode == 13){
+                event.preventDefault();
+                document.querySelector('.submitemail').click();
+            }
         })
     })
 })
-
 
 //EVENTLISTENER FOR ACCOUNT CLOSE ONCLICK----------------------------------------------------------------------------------
 loginclose.addEventListener("click", () => {
