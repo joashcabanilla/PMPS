@@ -1,0 +1,154 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+.divlogin {
+  background: rgba(196, 196, 196, 0.6);
+  width: 100%;
+  height: 100%;
+  top: 0;
+  z-index: 1;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  display: none;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+.contentlogin {
+  background: #f1f1f1;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 2rem;
+  width: 23rem;
+  height: auto;
+  margin-left: 2%;
+  margin-right: 2%;
+}
+.loginclose:hover {
+  cursor: pointer;
+  transform: scale(1.2);
+}
+.logintitle {
+  color: #00a0dd;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  font-size: 1.3em;
+  display: flex;
+  justify-content: center;
+}
+.titlelogin {
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem;
+}
+.loginuser {
+  padding-bottom: 1rem;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  align-items: center;
+}
+.logintext,
+.forgottext,
+.codetext,
+.updateaccount {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.5em;
+  margin-bottom: 1rem;
+}
+.username,
+.password,
+.email,
+.code,
+.updateusername,
+.updatepassword,
+.updateconfirmpass {
+  background: #f2f2f2;
+  border: none;
+  border-radius: none;
+  outline: none;
+  width: 16rem;
+  height: 2.5rem;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  text-indent: 5px;
+}
+.error,
+.forgoterror,
+.codeerror,
+.updateaccounterror,
+.updateaccounterror1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1.3rem;
+  color: rgb(221, 76, 76);
+}
+.divusername,
+.divpassword,
+.divemail,
+.divcode,
+.divupdateusername,
+.divupdatepassword,
+.divupdateconfirmpass {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 15px;
+  border: 1px solid #000000;
+  height: 50px;
+  margin-bottom: 1rem;
+  background: #f2f2f2;
+  padding: 5px;
+  margin-left: 5px;
+  margin-right: 5px;
+}
+.forgotpassword {
+  color: rgb(9, 106, 209);
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  align-self: flex-end;
+  margin-right: 40px;
+  margin-bottom: 2rem;
+}
+.forgotpassword:hover {
+  text-decoration: underline;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.buttonlogin,
+.submitemail,
+.submitcode,
+.resendcode,
+.updateaccountbutton {
+  background: #accddd;
+  border-color: #accddd;
+  border-radius: 10px;
+  outline: none;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.3rem;
+  width: 14rem;
+  padding: 5px;
+}
+.codetext1,
+.codetext2,
+.updateaccount1 {
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  margin-bottom: 1rem;
+}
+.codetext,
+.codetext1,
+.updateaccount {
+  margin-bottom: 3px;
+}
+.resendcode {
+  margin-top: 1rem;
+}
+.swal-title {
+  font-size: 1.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+}
+.updateaccounterror {
+  margin-bottom: 3px;
+}

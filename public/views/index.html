@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Pharmacy Management Process System" />
+    <meta
+      name="viewport"
+      content="width=device-width,user-scalable=no,initial-scale=1.0"
+    />
+    <link rel="shortcut icon" href="/image/favicon.ico" />
+    <link rel="stylesheet" href="/style/navbar.css" />
+    <link rel="stylesheet" href="/style/product.css" />
+    <link rel="stylesheet" href="/style/login.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <title>PMPS</title>
+  </head>
+  <body>
+    <div class="navbar">
+      <div class="div1">
+        <img class="logo" width="60rem" height="60rem" src="/image/logo.png" />
+        <a class="title" href="/">Pharmacy Management Process System</a>
+      </div>
+      <div class="div2">
+        <div class="searchdiv">
+          <input type="text" placeholder="Search" class="searchbox" />
+          <button class="searchbutton">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+              />
+            </svg>
+          </button>
+        </div>
+        <select class="category" id="category">
+          <option value="All">All</option>
+        </select>
+        <div class="account">
+          <img
+            class="accountbtn"
+            width="40rem"
+            height="40rem"
+            src="/image/account.png"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="product" id="product"></div>
+    <div class="divlogin">
+      <div class="contentlogin">
+        <div class="titlelogin">
+          <p class="logintitle">Welcome to PMPS!</p>
+          <img
+            class="loginclose"
+            width="30rem"
+            height="30rem"
+            src="/image/close.png"
+          />
+        </div>
+        <div class="loginuser"></div>
+      </div>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyBC2Gsc1PoLx_gz2xJYrLfl_JIDJZQH_yg",
+        authDomain: "pmps-257ba.firebaseapp.com",
+        projectId: "pmps-257ba",
+        storageBucket: "pmps-257ba.appspot.com",
+        messagingSenderId: "508613797048",
+        appId: "1:508613797048:web:94b732f1deadac1fd2c04d",
+        measurementId: "G-9818L4J8FV",
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      const firestore = firebase.firestore();
+      firestore.settings({ timestampsInSnapshots: true });
+    </script>
+    <script src="/javascript/app.js"></script>
+  </body>
+</html>
