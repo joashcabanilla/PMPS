@@ -7,7 +7,7 @@ require('dotenv').config();
 
 const app = express();
 const port = process.env.PORT || 3000;
-const publicdir = path.join(__dirname,'/public');
+const publicdir = path.join(__dirname,'public');
 
 //middleware
 app.use(express.static(publicdir)); 
@@ -17,10 +17,17 @@ app.use(express.urlencoded({
 }));
 app.use(express.json());
 
+//route--------------------------------------------------------------------------------------
 app.get('/',(req,res) => {
     res.sendFile(path.join(__dirname,'public/views','index.html'));
 });
 
+app.get('/admin',(req,res) => {
+    
+});
+
+
+//API----------------------------------------------------------------------------------------
 app.post('/api/sendemail',(req, res) => {
     const {adminmail,adminpassword,email, subject, message} = req.body;
     sendEmail(adminmail,adminpassword,email, subject, message);

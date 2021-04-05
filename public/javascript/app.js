@@ -52,7 +52,7 @@ product_div.appendChild(price);
 product.appendChild(product_div);
 }
 
-firestore.collection("Product").orderBy('category').get().then((snapshot) => {
+firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
     snapshot.docs.forEach(doc => {
         renderProduct(doc);
     })
@@ -185,6 +185,42 @@ account.addEventListener("click", () => {
     buttonlogin.textContent = "Login";
     loginuser.appendChild(buttonlogin);
 
+//EVENTLISTENER FOR ACCOUNT LOGIN ClICK---------------------------------------------------------------------------------------------
+    $(".buttonlogin").click(() => {
+        let logusername = $(".username").val();
+        let logpassword = $(".password").val();
+        if(logusername == "" || logpassword == ""){
+            $(".error").text("fill up all the fields");
+        }
+        else{
+            let accountref = firestore.collection("Account").doc(`${logusername}`);
+            accountref.get().then(doc => {
+                if(doc.data().password == logpassword)
+                {
+                    $(".error").text("");
+                }
+                else{
+                    $(".error").text("Incorrect Password");
+                }
+            }).catch(err => {
+                let adminref = firestore.collection("Account").doc("sva1ootNyElZeI6XTHcS");
+                adminref.get().then(doc => {
+                    if(doc.data().username == logusername){
+                        if(doc.data().password == logpassword){
+                            $(".error").text("");
+                        }
+                        else{
+                            $(".error").text("Incorrect Password");
+                        }
+                    }
+                    else{
+                        $(".error").text("Incorrect Username");
+                    }
+                })
+            });   
+        }
+    });
+
 //EVENTLISTENER FOR ACCOUNT FORGOT PASSWORD ONCLICK----------------------------------------------------------------------------------
     const forgotbtn = document.querySelector('.forgotpassword');
     forgotbtn.addEventListener("click", () =>{
@@ -232,19 +268,21 @@ account.addEventListener("click", () => {
                 admin.email = doc.data().email;
                 admin.password = doc.data().emailpass;
             }
-            let adminref = firestore.collection('Account').doc('zz56Nl754EoJgC3pzsPT');
+            let adminref = firestore.collection('Account').doc('sva1ootNyElZeI6XTHcS');
             adminref.get().then((doc) => {
                 adminemail(doc);
             });
             function checkemail(doc){
                 let docid = doc.id;
                 let email = doc.data().email;
+                let type = doc.data().type;
                 let randomcode = Math.floor(100000 + Math.random() * 900000);
                 let subject = "PMPS Forgot Account Code";
                 let message = `Forgot Account Code: ${randomcode}`;
                 let adminmail = admin.email;
                 let adminpassword = admin.password;
-                if(inputemail === email){ 
+                if(inputemail === email){
+                    objemail.type = type;
                     objemail.docid = docid;
                     objemail.email = email;
                     const data = {
@@ -446,6 +484,8 @@ account.addEventListener("click", () => {
                         let inputpassword = document.querySelector('.updatepassword').value;
                         let inputconfirm = document.querySelector('.updateconfirmpass').value;
                         let docid = objemail.docid;
+                        let type = objemail.type;
+                        let email = objemail.email;
                         if(inputusername == "" || inputpassword == "" || inputconfirm == ""){
                             updateaccounterror.textContent = "fill up all the fields";
                             updateaccounterror1.textContent = "";
@@ -472,11 +512,25 @@ account.addEventListener("click", () => {
                                     }
                                     else{
                                         if(inputpassword === inputconfirm){
-                                            firestore.collection("Account").doc(docid).update({
-                                                username: inputusername,
-                                                password: inputpassword,
-                                                forgotcode: 0
-                                            });
+                                            if(type == "admin"){
+                                                firestore.collection("Account").doc(docid).update({
+                                                    forgotcode: 0,
+                                                    password: inputpassword,
+                                                    username: inputusername
+                                                });
+                                            }
+                                            else{
+                                                firestore.collection("Account").doc(docid).delete();
+                                                firestore.collection("Account").doc(inputusername).set({
+                                                    email: email,
+                                                    forgotcode: 0,
+                                                    password: inputpassword,
+                                                    type: type,
+                                                    username: inputusername,
+                                                    verifycode: 0
+                                                });
+                                            }
+                                            
                                             const body = document.body;
                                             const divlogin = document.querySelector(".divlogin");
                                             divlogin.style.display = "none";
