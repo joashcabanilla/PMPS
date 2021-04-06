@@ -17,10 +17,8 @@ const sendEmail = (adminmail,adminpassword,email, subject, message) => {
     
     transporter.sendMail(mailOptions, (err,data) => {
     if(err){
-        console.log(err);
     }
     else{
-        console.log("email sent");
     }
     });
 }
