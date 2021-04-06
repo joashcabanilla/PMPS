@@ -1,0 +1,9 @@
+<h1>STAFF</h1>
+<button onclick="logout()">LOGOUT</button>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    function logout(){
+        $.post('/api/logout');
+        $(location).attr('href', '/');
+    }
+</script>

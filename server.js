@@ -2,6 +2,7 @@ const express = require('express');
 const sendEmail = require('./function/sendemail');
 const cors = require('cors');
 const path = require('path');
+const session = require('express-session');
 
 require('dotenv').config();
 
@@ -16,16 +17,57 @@ app.use(express.urlencoded({
     extended: false
 }));
 app.use(express.json());
+app.use(session({
+    name: 'sid',
+    secret: 'secret-key',
+    resave: false,
+    saveUninitialized: true,
+}));
+
+const redirectLogin = (req, res, next) => {
+    if(!req.session.login){
+        res.redirect('/');
+    }
+    else{
+        next();
+    }
+}
+
+const alreadylogin = (req, res, next) => {
+    if(req.session.login == "staff"){
+        res.redirect('/staff');
+    }
+    else if(req.session.login == "admin"){
+        res.redirect('/admin');
+    }
+    else{
+        next();
+    }
+}
 
 //route--------------------------------------------------------------------------------------
-app.get('/',(req,res) => {
+app.get('/', alreadylogin, (req,res) => {   
     res.sendFile(path.join(__dirname,'public/views','index.html'));
 });
 
-app.get('/admin',(req,res) => {
-    
+app.get('/admin', redirectLogin, (req,res) => {
+    if(req.session.login == "staff"){
+        res.redirect('/staff');
+    }
+    else{
+        res.sendFile(path.join(__dirname,'public/views','admin.html'));
+    }
 });
 
+app.get('/staff', redirectLogin, (req,res) => {
+    if(req.session.login == "admin"){
+        res.redirect('/admin');
+    }
+    else{
+        res.sendFile(path.join(__dirname,'public/views','staff.html'));
+    }
+
+});
 
 //API----------------------------------------------------------------------------------------
 app.post('/api/sendemail',(req, res) => {
@@ -34,6 +76,21 @@ app.post('/api/sendemail',(req, res) => {
     res.status(200);
 });
 
+app.post('/api/stafflogin', (req, res) => {
+    const {login} = req.body;
+    req.session.login = login;
+    res.json(req.session);
+});
+
+app.post('/api/adminlogin', (req, res) => {
+    const {login} = req.body;
+    req.session.login = login;
+    res.json(req.session);
+});
+
+app.post('/api/logout', (req, res) => {
+    res.json(req.session.destroy());
+});
 app.listen(port, () => {
 console.log(`server running at port ${port}`);
 });

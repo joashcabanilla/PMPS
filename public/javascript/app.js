@@ -198,6 +198,11 @@ account.addEventListener("click", () => {
                 if(doc.data().password == logpassword)
                 {
                     $(".error").text("");
+                    $(location).attr('href', '/staff');
+                    const data = {
+                        login: "staff"
+                    };
+                    $.post('/api/stafflogin',data);
                 }
                 else{
                     $(".error").text("Incorrect Password");
@@ -207,7 +212,12 @@ account.addEventListener("click", () => {
                 adminref.get().then(doc => {
                     if(doc.data().username == logusername){
                         if(doc.data().password == logpassword){
-                            $(".error").text("");
+                            $(".error").text("");                        
+                            $(location).attr('href', '/admin');
+                            const data = {
+                                login: "admin"
+                            };
+                            $.post('/api/adminlogin',data);
                         }
                         else{
                             $(".error").text("Incorrect Password");
