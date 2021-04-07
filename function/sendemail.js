@@ -1,15 +1,25 @@
 const nodemailer = require('nodemailer');
+const { google } = require('googleapis');
 
-const sendEmail = (adminmail,adminpassword,email, subject, message) => {
+const sendEmail = (adminmail,email, subject, message,clientID,clientSecret,refreshToken) => {
+    const redirectURI = 'https://developers.google.com/oauthplayground';
+    const oauthclient = new google.auth.OAuth2(clientID, clientSecret, redirectURI);
+    oauthclient.setCredentials({refresh_token: refreshToken});
+
+    const accesToken = oauthclient.getAccessToken();
     let transporter = nodemailer.createTransport({
         service: 'gmail',
         auth:{
+            type: 'OAuth2',
             user: adminmail,
-            pass: adminpassword
+            clientId: clientID,
+            clientSecret: clientSecret,
+            refreshToken: refreshToken,
+            accessToken: accesToken
         }
     });
     let mailOptions = {
-        from: adminmail,
+        from: `PMPS ADMIN ${adminmail}`,
         to: email,
         subject: subject,
         text: message

@@ -276,7 +276,9 @@ account.addEventListener("click", () => {
             function adminemail(doc)
             {
                 admin.email = doc.data().email;
-                admin.password = doc.data().emailpass;
+                admin.clientID = doc.data().clientID;
+                admin.clientSecret = doc.data().clientSecret;
+                admin.refreshToken = doc.data().refreshToken;
             }
             let adminref = firestore.collection('Account').doc('sva1ootNyElZeI6XTHcS');
             adminref.get().then((doc) => {
@@ -290,17 +292,21 @@ account.addEventListener("click", () => {
                 let subject = "PMPS Forgot Account Code";
                 let message = `Forgot Account Code: ${randomcode}`;
                 let adminmail = admin.email;
-                let adminpassword = admin.password;
+                let clientID = admin.clientID;
+                let clientSecret = admin.clientSecret;
+                let refreshToken = admin.refreshToken;
                 if(inputemail === email){
                     objemail.type = type;
                     objemail.docid = docid;
                     objemail.email = email;
                     const data = {
                         adminmail,
-                        adminpassword,
                         email,
                         subject,
-                        message
+                        message,
+                        clientID,
+                        clientSecret,
+                        refreshToken
                     };
                     firestore.collection('Account').doc(docid).update({
                         forgotcode: randomcode
@@ -375,13 +381,17 @@ account.addEventListener("click", () => {
                 let subject = "PMPS Forgot Account Code";
                 let message = `Forgot Account Code: ${newrandomcode}`;
                 let adminmail = admin.email;
-                let adminpassword = admin.password;
+                let clientID = admin.clientID;
+                let clientSecret = admin.clientSecret;
+                let refreshToken = admin.refreshToken;
                 const data = {
                     adminmail,
-                    adminpassword,
                     email,
                     subject,
-                    message
+                    message,
+                    clientID,
+                    clientSecret,
+                    refreshToken
                 };
                 firestore.collection('Account').doc(docid).update({
                     forgotcode: newrandomcode

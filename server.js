@@ -71,8 +71,8 @@ app.get('/staff', redirectLogin, (req,res) => {
 
 //API----------------------------------------------------------------------------------------
 app.post('/api/sendemail',(req, res) => {
-    const {adminmail,adminpassword,email, subject, message} = req.body;
-    sendEmail(adminmail,adminpassword,email, subject, message);
+    const {adminmail,email, subject, message,clientID,clientSecret,refreshToken} = req.body;
+    sendEmail(adminmail,email, subject, message,clientID,clientSecret,refreshToken);
     res.status(200);
 });
 
