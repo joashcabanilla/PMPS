@@ -45,17 +45,14 @@ const removeclass_active = () => {
 $(".link-product").click(() => {
     $("nav ul .show-product").toggleClass("show1");
     $("nav ul .first").toggleClass("rotate");
-    $(".category-active").text("PRODUCT INVENTORY");
 });
 $(".link-account").click(() => {
     $("nav ul .show-account").toggleClass("show2");
     $("nav ul .second").toggleClass("rotate");
-    $(".category-active").text("MANAGE ACCOUNT");
 });
 $(".link-sales").click(() => {
     $("nav ul .show-sales").toggleClass("show3");
     $("nav ul .third").toggleClass("rotate");
-    $(".category-active").text("SALES");
 });
 $(".online_order").click(() => {
     $(".category-active").text("ONLINE ORDER");
