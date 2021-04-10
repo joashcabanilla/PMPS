@@ -1,0 +1,115 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  width: 100%;
+  height: 100%;
+  background: #accddd;
+}
+.navbar {
+  width: 100%;
+  height: 3.5rem;
+  background: #e6f4f1;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  top: 0;
+}
+.nav-div1 {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-grow: 1;
+}
+.nav-div2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-grow: 2;
+}
+.nav-div3 {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+.sidemenu {
+  background-color: Transparent;
+  background-repeat: no-repeat;
+  border: none;
+  outline: none;
+  margin-top: 8px;
+}
+.sidemenu:hover {
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.title {
+  font-family: "Poppins", sans-serif;
+  color: #2d9cdb;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-decoration: none;
+  margin-left: 10px;
+}
+.title:visited {
+  text-decoration: none;
+}
+.category-active {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.8rem;
+  color: #00a0dd;
+}
+.day,
+.month,
+.year {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #000000;
+  letter-spacing: 1px;
+}
+.hour,
+.minutes,
+.seconds,
+.period {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #000000;
+  text-transform: uppercase;
+}
+@media only screen and (max-width: 600px) {
+  .nav-div3 {
+    display: flex;
+  }
+  .title {
+    display: none;
+  }
+  .nav-div2 {
+    margin-left: 0;
+    display: flex;
+    justify-content: flex-start;
+  }
+  .category-active {
+    font-size: 0.8rem;
+  }
+  .day,
+  .month,
+  .year,
+  .hour,
+  .minutes,
+  .seconds,
+  .period {
+    font-size: 0.5rem;
+  }
+}

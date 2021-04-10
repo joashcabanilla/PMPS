@@ -23,6 +23,10 @@ app.use(session({
     resave: false,
     saveUninitialized: true,
 }));
+app.use((req, res, next) =>  { 
+    res.header('Cache-Control', 'no-cache, private, no-store, must-revalidate, max-stale=0, post-check=0, pre-check=0'); 
+    next(); 
+});
 
 const redirectLogin = (req, res, next) => {
     if(!req.session.login){
@@ -66,7 +70,6 @@ app.get('/staff', redirectLogin, (req,res) => {
     else{
         res.sendFile(path.join(__dirname,'public/views','staff.html'));
     }
-
 });
 
 //API----------------------------------------------------------------------------------------

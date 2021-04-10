@@ -195,7 +195,7 @@ account.addEventListener("click", () => {
         else{
             let accountref = firestore.collection("Account").doc(`${logusername}`);
             accountref.get().then(doc => {
-                if(doc.data().password == logpassword)
+                if(doc.data().password == CryptoJS.SHA3(logpassword).toString())
                 {
                     $(".error").text("");
                     $(location).attr('href', '/staff');
@@ -211,7 +211,7 @@ account.addEventListener("click", () => {
                 let adminref = firestore.collection("Account").doc("sva1ootNyElZeI6XTHcS");
                 adminref.get().then(doc => {
                     if(doc.data().username == logusername){
-                        if(doc.data().password == logpassword){
+                        if(doc.data().password == CryptoJS.SHA3(logpassword).toString()){
                             $(".error").text("");                        
                             $(location).attr('href', '/admin');
                             const data = {
@@ -535,7 +535,7 @@ account.addEventListener("click", () => {
                                             if(type == "admin"){
                                                 firestore.collection("Account").doc(docid).update({
                                                     forgotcode: 0,
-                                                    password: inputpassword,
+                                                    password: CryptoJS.SHA3(inputpassword).toString(),
                                                     username: inputusername
                                                 });
                                             }
@@ -544,7 +544,7 @@ account.addEventListener("click", () => {
                                                 firestore.collection("Account").doc(inputusername).set({
                                                     email: email,
                                                     forgotcode: 0,
-                                                    password: inputpassword,
+                                                    password: CryptoJS.SHA3(inputpassword).toString(),
                                                     type: type,
                                                     username: inputusername,
                                                     verifycode: 0

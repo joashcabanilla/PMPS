@@ -8,14 +8,15 @@
       content="width=device-width,user-scalable=no,initial-scale=1.0"
     />
     <link rel="shortcut icon" href="/image/favicon.ico" />
-    <link rel="stylesheet" href="/style/navbar.css" />
-    <link rel="stylesheet" href="/style/product.css" />
-    <link rel="stylesheet" href="/style/login.css" />
+    <link rel="stylesheet" href="/style/index/navbar.css" />
+    <link rel="stylesheet" href="/style/index/product.css" />
+    <link rel="stylesheet" href="/style/index/login.css" />
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
     <title>PMPS</title>
   </head>
   <body>
@@ -86,6 +87,6 @@
       const firestore = firebase.firestore();
       firestore.settings({ timestampsInSnapshots: true });
     </script>
-    <script src="/javascript/app.js"></script>
+    <script src="/javascript/index/app.js"></script>
   </body>
 </html>

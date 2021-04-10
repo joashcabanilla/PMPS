@@ -1,9 +1,125 @@
-<h1>ADMIN</h1>
-<button onclick="logout()">LOGOUT</button>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    function logout(){
-                    $.post('/api/logout');
-                    $(location).attr('href', '/');
-    }
-</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Pharmacy Management Process System" />
+    <meta
+      name="viewport"
+      content="width=device-width,user-scalable=no,initial-scale=1.0"
+    />
+    <link rel="shortcut icon" href="/image/favicon.ico" />
+    <link rel="stylesheet" href="/style/admin/admin-navbar.css" />
+    <link rel="stylesheet" href="/style/admin/sidemenu.css" />
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js"></script>
+    <title>PMPS</title>
+  </head>
+  <body>
+    <div class="navbar">
+        <div class="nav-div1">
+            <button class="sidemenu">
+                <img width="25rem" height="25rem" src="/image/menu.png" />
+            </button>
+            <p class="title">PMPS Admin</p>
+        </div>
+        <div class="nav-div2">
+            <p class="category-active">PRODUCT INVENTORY</p>
+        </div>
+        <div class="nav-div3">
+            <div>
+            </div>
+            <div class="date-time">
+                <div class="date">
+                    <span class="month">4 /</span>
+                    <span class="day">9 /</span>
+                    <span class="year"> 2021</span>
+                </div>
+                <div class="time">
+                    <span class="hour">08:</span>
+                    <span class="minutes">58:</span>
+                    <span class="seconds">54</span>
+                    <span class="period"> AM</span>
+                </div>
+            </div>
+        </div>    
+    </div>
+    <div class="div-sidemenu">
+      <div class="div1-sidemenu">
+        <img width="100rem" heigth="100rem" src="/image/biglogo.png"/>
+      </div>
+      <div class="div2-sidemenu">
+        <nav>
+          <ul>
+            <li>
+              <a class="link-product">Product Inventory
+                <span class="fas fa-caret-down first"></span>
+              </a>
+              <ul class="show-product">
+                <li><a class="product_list">Product List</a></li>
+                <li><a  class="stock_in_entry">Stock In Entry</a></li>
+                <li><a class="stock_in_history">Stock In History</a></li>
+                <li><a class="product_stock_status">Product Stock Status</a></li>
+                <li><a class="pull_out_product">Pull Out Product History</a></li>
+                <li><a class="discount">Discount</a></li>
+                <li><a class="vat">Vat</a></li>
+              </ul>
+            </li>
+            <li>
+              <a class="link-account">Manage Account
+                <span class="fas fa-caret-down second"></span>
+              </a>
+              <ul class="show-account">
+                <li><a class="staff_account">Staff Account</a></li>
+                <li><a class="admin_account">Admin Account</a></li>
+              </ul>
+            </li>
+            <li>
+              <a class="link-sales">Sales
+                <span class="fas fa-caret-down third"></span>
+              </a>
+              <ul class="show-sales">
+                <li><a class="sales_dashboard">Sales Dashboard</a></li>
+                <li><a class="product_sold">Product Sold</a></li>
+              </ul>
+            </li>
+            <li>
+              <a class="online_order">Online Order</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+      <div class="div3-sidemenu">
+        <button class="logout">
+          <img width="50rem" heigth="50rem" src="/image/logout.png" class="logoutpic" />
+          <p class="logouttext">LOGOUT</p>
+        </button>
+      </div>
+    </div>
+    <div class="div-function">  
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyBC2Gsc1PoLx_gz2xJYrLfl_JIDJZQH_yg",
+        authDomain: "pmps-257ba.firebaseapp.com",
+        projectId: "pmps-257ba",
+        storageBucket: "pmps-257ba.appspot.com",
+        messagingSenderId: "508613797048",
+        appId: "1:508613797048:web:94b732f1deadac1fd2c04d",
+        measurementId: "G-9818L4J8FV",
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      const firestore = firebase.firestore();
+      firestore.settings({ timestampsInSnapshots: true });
+    </script>
+    <script src="/javascript/admin/datetime.js"></script>
+    <script src="/javascript/admin/sidemenu.js"></script>
+  </body>
+</html>
+  
