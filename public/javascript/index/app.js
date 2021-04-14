@@ -90,7 +90,7 @@ searchbox.addEventListener("keyup",(event) => {
     }
     if(searchdata.length == 0)
     {
-        firestore.collection("Product").orderBy('category').get().then((snapshot) => {
+        firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
             snapshot.docs.forEach(doc => {
                 renderProduct(doc);
             })
@@ -115,7 +115,7 @@ searchbox.addEventListener("focus",() => {
     while(product.firstChild){
         product.removeChild(product.firstChild);
     }
-    firestore.collection("Product").orderBy('category').get().then((snapshot) => {
+    firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
         snapshot.docs.forEach(doc => {
             renderProduct(doc);
         })

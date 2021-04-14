@@ -9,11 +9,13 @@ const checkmenu = () => {
     scrollLeft = window.pageXOffset || document.documentElement.scrollLeft,
     window.onscroll = function() {window.scrollTo(scrollLeft, scrollTop);};
     body.style.overflow = "hidden";
+    $(".controlbox").removeAttr("style");
     }
     else{
     const body = document.body;
     body.style.overflow = "auto";
     window.onscroll = function() {};
+    $(".controlbox").css({"position" : "sticky"});
     }
 };
 $(".sidemenu").click(() => {
@@ -61,12 +63,13 @@ $(".online_order").click(() => {
     addclass_active(online_order);
 });
 const classname = ["product_list","stock_in_entry","stock_in_history","product_stock_status","pull_out_product","discount","vat","staff_account","admin_account","sales_dashboard","product_sold"];
+const categorytext = ["Product List","Stock In Entry","Stock In History","Product Stock Status","Pull Out Product","Discount","Vat","Staff Account","Admin Account","Sales Dashboard","Product Sold"];
 for(let i = 0; i < classname.length; i++){
     $(`.${classname[i]}`).click(() => {
         let online_order = $(`.${classname[i]}`);
         removeclass_active();
         addclass_active(online_order);
-        
+        $(".categorytext").text(`${categorytext[i]}`);
     if(classname[i] == classname[0] || classname[i] == classname[1] || classname[i] == classname[2] || classname[i] == classname[3] || classname[i] == classname[4] || classname[i] == classname[5] || classname[i] == classname[6]){
         $(".category-active").text("PRODUCT INVENTORY");
     }

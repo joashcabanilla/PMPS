@@ -25,5 +25,7 @@ const initclock = () => {
 
 $(window).on('load',() => {
 $(".product_list").addClass("activelink");
+$(".controlbox").css({"position" : "sticky"});
+$(".categorytext").text("Product List");
 initclock();
 });

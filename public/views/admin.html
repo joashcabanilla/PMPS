@@ -10,6 +10,8 @@
     <link rel="shortcut icon" href="/image/favicon.ico" />
     <link rel="stylesheet" href="/style/admin/admin-navbar.css" />
     <link rel="stylesheet" href="/style/admin/sidemenu.css" />
+    <link rel="stylesheet" href="/style/admin/product-nav.css" />
+    <link rel="stylesheet" href="/style/admin/productinfo.css" />
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
@@ -100,7 +102,46 @@
         </button>
       </div>
     </div>
-    <div class="div-function">  
+    <div class="div-function">
+        <div class="controlbox">
+          <div class="category-title">
+            <p class="categorytext"></p>
+          </div>
+          <div class="category-function">
+            <div class="div-search">
+              <div class="searchicon">
+                <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-search"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                />
+              </svg>
+              </div>
+            <input type="text" placeholder="Search Product" class="productsearch" />
+            </div>
+            <div class="div-category">
+              <select class="category">
+                <option value="All">All</option>
+              </select>
+            </div>
+            <div class="div-button">
+              <button class="addbtn">ADD PRODUCT</button>
+              <button class="pullbtn">PULL OUT EXPIRED</button>
+              <button class="printbtn">PRINT PRODUCT LIST</button>
+            </div>
+          </div>
+        </div>
+        <div class="product-table"></div>
+        <div class="product-info">
+          <div class="viewinfo">
+          </div>
+        </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
@@ -120,6 +161,7 @@
     </script>
     <script src="/javascript/admin/datetime.js"></script>
     <script src="/javascript/admin/sidemenu.js"></script>
+    <script src="/javascript/admin/productlist.js"></script>
   </body>
 </html>
   
