@@ -86,3 +86,4 @@ $(".logout").click(() => {
     $.post("/api/logout");
     $(location).attr('href', '/');
 });
+//CLICK EVENT OF LINKS--------------------------------------------------------------------------

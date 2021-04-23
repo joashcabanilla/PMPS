@@ -151,6 +151,7 @@
   width: 10rem;
   height: 2rem;
   border: 2px solid rgb(255, 255, 255);
+  background: #f1f1f1;
 }
 .div-category {
   display: flex;
