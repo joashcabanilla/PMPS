@@ -137,10 +137,108 @@
             </div>
           </div>
         </div>
-        <div class="product-table"></div>
+        <div class="product-table">
+        </div>
         <div class="product-info">
           <div class="viewinfo">
+            <div class="controlbox-info">
+              <div class="productcode">
+                <p class="productcode-data"></p>
+              </div>
+              <div class="button-info">
+                <button class="editbtn-info">
+                  <img src="/image/edit.png" width="30rem" height="30rem"/>
+                </button>
+                <button class="closebtn-info">
+                  <img src="/image/close.png" width="30rem" height="30rem"/>
+                </button>
+              </div>
+            </div>
+            <div class="productdata-info">
+              <div class="image-info">
+                <img class="productdata-image" width="150rem" height="150rem" />
+              </div>
+              <div class="product-data">
+                <div class="div-productdata">
+                  <p class="productdata">ProductName:</p>
+                  <p class="productdata-name datacss"></p>
+                </div>
+                <div class="div-productdata">
+                  <p class="productdata">Category:</p>
+                  <p class="productdata-category datacss"></p>
+                </div>
+                <div class="div-productdata">
+                  <p class="productdata">BrandName:</p>
+                  <p class="productdata-brandname datacss"></p>
+                </div>
+                <div class="div-productdata">
+                  <p class="productdata">Formulation:</p>
+                  <p class="productdata-formulation datacss"></p>
+                </div>
+                <div class="div-productdata">
+                  <p class="productdata">ExpirationDate:</p>
+                  <p class="productdata-expirationdate datacss"></p>
+                </div>
+                <div class="div-productdata">
+                  <p class="productdata">Price:</p>
+                  <p class="productdata-price datacss"></p>
+                </div>
+                <div class="div-productdata">
+                  <p class="productdata">Stocks:</p>
+                  <p class="productdata-stocks datacss"></p>
+                </div>
+                <div class="div-productdata">
+                  <p class="productdata">Doctor Prescription:</p>
+                  <p class="productdata-prescription datacss"></p>
+                </div>
+              </div>
+            </div>
+            <div class="productdata-edit">
+              <div class="image-info productedit">
+                <input type="file" class="uploadimage" />
+                <img class="productdata-image productedit-image" id="editimage" width="150rem" height="150rem" />
+                <button class="changebtn">Change</button>
+              </div>
+              <div class="product-data">
+                <div class="div-productdata">
+                  <p class="productdata">ProductName:</p>
+                  <input type="text" class="productdataedit-name datacss" style="text-transform: capitalize;"></input>
+                </div>
+                <div class="div-productdata">
+                  <p class="productdata">Category:</p>
+                  <select class="productdataedit-category datacss">
+                  </select>
+                </div>
+                <div class="div-productdata">
+                  <p class="productdata">BrandName:</p>
+                  <select class="productdataedit-brandname datacss">
+                  </select>
+                </div>
+                <div class="div-productdata">
+                  <p class="productdata">Formulation:</p>
+                  <input class="productdataedit-formulation datacss"></input>
+                </div>
+                <div class="div-productdata">
+                  <p class="productdata">Price:</p>
+                  <input type="number" pattern="^\d*(\.\d{0,2})?$" class="productdataedit-price datacss"></input>
+                </div>
+                <div class="div-productdata">
+                  <p class="productdata">Doctor Prescription:</p>
+                  <select class="productdataedit-prescription datacss">
+                    <option value="Required">Required</option>
+                    <option value="Not Required">Not Required</option>
+                  </select>
+                </div>
+                <div class="div-productdata savebtn">
+                  <button class="productedit-save">SAVE</button>
+                  </select>
+                </div>
+              </div>
+            </div>
           </div>
+        </div>
+        <div class="div-addproduct">
+
         </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>

@@ -66,7 +66,7 @@ category.addEventListener("change", () => {
     }
     let categoryText = category.options[category.selectedIndex].value;
     if(categoryText == "All"){
-        firestore.collection("Product").orderBy('category').get().then((snapshot) => {
+        firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
             snapshot.docs.forEach(doc => {
                 renderProduct(doc);
             })
@@ -90,6 +90,7 @@ searchbox.addEventListener("keyup",(event) => {
     }
     if(searchdata.length == 0)
     {
+        $("#product").empty();
         firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
             snapshot.docs.forEach(doc => {
                 renderProduct(doc);
@@ -100,13 +101,13 @@ searchbox.addEventListener("keyup",(event) => {
         const capSearch = (str) => str[0].toUpperCase() + str.slice(1).toLowerCase();
         let words = searchdata.split(' ').map(capSearch);
         let fsearchdata = words.join(' ');
-        firestore.collection("Product").where('productname',">=",`${fsearchdata}`).limit(1).get().then((snapshot) => {
+        firestore.collection("Product").where('productname',">=",`${fsearchdata}`).orderBy("productname","asc").limit(1).get().then((snapshot) => {
             snapshot.docs.forEach(doc => {
+                $("#product").empty();
                 renderProduct(doc);
             })
         })
     }
-
 })
 
 //EVENTLISTENER FOR SEARCHBOX FOCUS------------------------------------------------------------------------------------------------
