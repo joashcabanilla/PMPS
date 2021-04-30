@@ -28,4 +28,20 @@ $(".product_list").addClass("activelink");
 $(".controlbox").css({"position" : "sticky"});
 $(".categorytext").text("Product List");
 initclock();
+
+let now = new Date();
+let month = now.getMonth() + 1;
+let year = now.getFullYear();
+let month_year = `${month}/${year}`;
+
+firestore.collection("Product").get().then(snapshot => {
+    snapshot.docs.forEach(doc => {
+        if(doc.data().expirationdate == month_year){
+            firestore.collection("Product").doc(doc.id).update({
+                expirationdate: "expired"
+            });
+        }
+    });
+});
+
 });

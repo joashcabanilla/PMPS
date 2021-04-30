@@ -115,6 +115,7 @@ searchbox.focus(() => {
 //EVENTLISTENER FOR PRODUCT VIEW ALL INFO------------------------------------------------------------------------------------------------
 product.click( (e) => {
 $(".productdata-edit").css("display","none");
+$(".productdata-info").css("display","flex");
 let product_id = e.target.id;
 let product_data = {};
 try{
@@ -304,6 +305,9 @@ const updateproduct = (imagebase64) => {
     let words = productname.split(' ').map(capSearch);
     productname = words.join(' ');
 
+    let w_formulation = formulation.split(' ').map(capSearch);
+    formulation = w_formulation.join(' ');
+
     const updateproduct = () => {
         firestore.collection("Product").doc(code).update({
             image: imagebase64,
@@ -326,7 +330,7 @@ const updateproduct = (imagebase64) => {
         });
     }
     const ProductExist = () => {
-       let productref =  firestore.collection("Product").where("code","!=",`${code}`).where("productname","==",`${productname}`).where("category","==",`${category}`).where("brandname","==",`${brandname}`).where("formulation","==",`${formulation}`).where("price","==",price).where("expirationdate","==",`${expiration}`);
+       let productref =  firestore.collection("Product").where("code","!=",`${code}`).where("productname","==",`${productname}`).where("category","==",`${category}`).where("brandname","==",`${brandname}`).where("formulation","==",`${formulation}`).where("price","==",price).where("expirationdate","==",`${expiration}`).where("prescription","==",`${prescription}`).where("status","==","active");
        
        productref.get().then(doc => {
         if(!doc.empty){

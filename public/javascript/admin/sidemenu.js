@@ -20,6 +20,7 @@ const checkmenu = () => {
 };
 $(".sidemenu").click(() => {
     $(".product-info").css("display","none");
+    $(".div-addproduct").css("display","none");
     $(".div-sidemenu").toggleClass("show");
     checkmenu();
 });

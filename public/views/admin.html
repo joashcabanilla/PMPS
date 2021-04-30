@@ -12,6 +12,11 @@
     <link rel="stylesheet" href="/style/admin/sidemenu.css" />
     <link rel="stylesheet" href="/style/admin/product-nav.css" />
     <link rel="stylesheet" href="/style/admin/productinfo.css" />
+    <link rel="stylesheet" href="/style/admin/addproduct.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
@@ -216,7 +221,7 @@
                 </div>
                 <div class="div-productdata">
                   <p class="productdata">Formulation:</p>
-                  <input class="productdataedit-formulation datacss"></input>
+                  <input class="productdataedit-formulation datacss" style="text-transform: capitalize;"></input>
                 </div>
                 <div class="div-productdata">
                   <p class="productdata">Price:</p>
@@ -231,17 +236,83 @@
                 </div>
                 <div class="div-productdata savebtn">
                   <button class="productedit-save">SAVE</button>
-                  </select>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="div-addproduct">
-
+          <div class="addproduct-box">
+            <div class="AP-controlbox-info">
+              <div class="AP-productcode">
+                <p class="AP-productcode-data"></p>
+              </div>
+              <div class="AP-button-info">
+                <button class="AP-closebtn-info">
+                  <img src="/image/close.png" width="30rem" height="30rem"/>
+                </button>
+              </div>
+            </div>
+            <div class="AP-productdata-add">
+              <div class="AP-image-info AP-productedit">
+                <input type="file" class="AP-uploadimage" />
+                <img class="AP-productdata-image" id="AP-editimage" width="150rem" height="150rem" src="/image/upload.png" />
+                <button class="uploadbtn">Upload</button>
+              </div>
+              <div class="AP-product-data">
+                <form class="AP-form">
+                <div class="AP-div-productdata">
+                  <p class="AP-productdata">ProductName:</p>
+                  <input type="text" class="AP-productname AP-datacss" required style="text-transform: capitalize;"></input>
+                </div>
+                <div class="AP-div-productdata">
+                  <p class="AP-productdata">Category:</p>
+                  <input type="text" class="AP-category AP-datacss" required style="text-transform: capitalize;"></input>
+                </div>
+                <div class="AP-div-productdata">
+                  <p class="AP-productdata">BrandName:</p>
+                  <input type="text" class="AP-brandname AP-datacss" required style="text-transform: capitalize;"></input>
+                </div>
+                <div class="AP-div-productdata">
+                  <p class="AP-productdata">Formulation:</p>
+                  <input type="text" class="AP-formulation AP-datacss" required style="text-transform: capitalize;"></input>
+                </div>
+                <div class="AP-div-productdata">
+                  <p class="AP-productdata">Doctor Prescription:</p>
+                  <select class="AP-prescription AP-datacss" required>
+                    <option value="Not Required" selected>Not Required</option>
+                    <option value="Required">Required</option>
+                  </select>
+                </div> 
+                <div class="AP-expirationdate_price">
+                  <div class="AP-div-productdata">
+                    <p class="AP-productdata">ExpirationDate:</p>
+                    <input type="text" required class="AP-expirationdate AP-datacss"></input>
+                  </div>
+                  <div class="AP-div-productdata">
+                    <p class="AP-productdata">Price:</p>
+                    <input type="number" required pattern="^\d*(\.\d{0,2})?$" class="AP-price AP-datacss"></input>
+                  </div>
+                </div>
+                <div class="AP-stocks_unit">
+                  <div class="AP-div-productdata">
+                    <p class="AP-productdata">Initial Stocks:</p>
+                    <input type="number" required class="AP-stocks AP-datacss"></input>
+                  </div>
+                  <div class="AP-div-productdata">
+                    <p class="AP-productdata">Unit:</p>
+                    <input type="text" required class="AP-unit AP-datacss" style="text-transform: lowercase;" />
+                  </div>
+                </div>
+                <div class="AP-div-productdata AP-div-savebtn">
+                  <button class="AP-savebtn">ADD PRODUCT</button>
+                </div> 
+              </form>
+              </div>
+            </div>
+          </div>
         </div>
     </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
       var firebaseConfig = {
         apiKey: "AIzaSyBC2Gsc1PoLx_gz2xJYrLfl_JIDJZQH_yg",
@@ -260,6 +331,7 @@
     <script src="/javascript/admin/datetime.js"></script>
     <script src="/javascript/admin/sidemenu.js"></script>
     <script src="/javascript/admin/productlist.js"></script>
+    <script src="/javascript/admin/addproduct.js"></script>
   </body>
 </html>
   
