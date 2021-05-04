@@ -1,0 +1,63 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+.Productlist-div-print {
+  width: 100%;
+  height: 100%;
+  top: 3.5rem;
+  z-index: 1;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  background: rgba(196, 196, 196, 0.6);
+  display: none;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.Productlist-print-box {
+  display: flex;
+  background: #f1f1f1;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);
+  border-radius: 1rem;
+  width: 35rem;
+  height: auto;
+  padding: 1rem;
+  flex-direction: column;
+}
+.Productlist-print-category-text {
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.Productlist-print-category {
+  background: #f1f1f1;
+  font-size: 1.2rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);
+  border: 1px solid #000000;
+  text-indent: 5px;
+  border-radius: 3px;
+  width: 100%;
+}
+.Productlist-print-button {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 1.2rem;
+}
+.Productlist-printbtn,
+.Productlist-cancelbtn {
+  width: 40%;
+  height: 2rem;
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+  border-radius: 5px;
+  background: #b7dbed;
+  border-color: #b7dbed;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);
+  outline: none;
+}
+.Productlist-print {
+  display: none;
+}

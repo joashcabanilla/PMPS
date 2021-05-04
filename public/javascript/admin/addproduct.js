@@ -153,7 +153,7 @@ const addproduct = (image) => {
     let prescription = $(".AP-prescription").val();
     let expirationdate = $(".AP-expirationdate").val();
     let price =  parseFloat($(".AP-price").val());
-    let stocks = $(".AP-stocks").val();
+    let stocks = parseInt($(".AP-stocks").val());
     let unit = $(".AP-unit").val();
 
     const capSearch = (str) => str[0].toUpperCase() + str.slice(1).toLowerCase();
@@ -186,11 +186,28 @@ const addproduct = (image) => {
                 prescription: prescription,
                 price: price,
                 productname: productname,
-                status: status,
+                status: "active",
                 stocks: stocks,
                 unit: unit
             });
-            swal("PRODUCT ADDED",`${productname} successfully saved`,"success");
+            firestore.collection("Category").doc(category).set({
+                category: category
+            });
+            
+            firestore.collection("Brandname").doc(brandname).set({
+                brandname: brandname
+            });
+
+            swal({
+                title: "PRODUCT ADDED",
+                text: `${productname} successfully saved`,
+                icon: "success"
+            }).then(() => {
+                setTimeout(() => {
+                    $(".AP-productname").focus();
+                }, 500);
+            });
+
             $(".AP-productdata-image").attr("src","/image/upload.png");
             $(".AP-uploadimage").val("");
             $(".AP-productname").val("");
@@ -219,6 +236,58 @@ const addproduct = (image) => {
                     renderProduct(doc);
                 })
             });
+
+            let category_arry = [];
+            firestore.collection("Category").get().then(snapshot => {
+                snapshot.docs.forEach(doc => {
+                    category_arry.push(doc.data().category);
+                    $(".AP-category").autocomplete({
+                        source: category_arry,
+                        autoFocus: true,
+                        classes: {
+                            "ui-autocomplete": "highlight"}
+                    });
+                });
+            });
+        
+            let brandname_arry = [];
+            firestore.collection("Brandname").get().then(snapshot => {
+                snapshot.docs.forEach(doc => {
+                    brandname_arry.push(doc.data().brandname);
+                    $(".AP-brandname").autocomplete({
+                        source: brandname_arry,
+                        autoFocus: true,
+                        classes: {
+                            "ui-autocomplete": "highlight"}
+                    });
+                });
+            });
+            
+            let unit_arry = [];
+            firestore.collection("Product").get().then(snapshot => {
+                snapshot.docs.forEach(doc => {
+                    unit_arry.push(doc.data().unit);
+                    $(".AP-unit").autocomplete({
+                        source: unit_arry,
+                        autoFocus: true,
+                        classes: {
+                            "ui-autocomplete": "highlight"}
+                    });
+                });
+            });
+            
+            let formulation_arry = [];
+            firestore.collection("Product").get().then(snapshot => {
+                snapshot.docs.forEach(doc => {
+                    formulation_arry.push(doc.data().formulation);
+                    $(".AP-formulation").autocomplete({
+                        source: formulation_arry,
+                        autoFocus: true,
+                        classes: {
+                            "ui-autocomplete": "highlight"}
+                    });
+                });
+            });
         }
     })
 }
@@ -240,4 +309,32 @@ $(".AP-savebtn").click(() => {
 $(".AP-price").focusout(() => {
     let price = $(".AP-price").val();
     $(".AP-price").val(parseFloat(price).toFixed(2));
+});
+//CLICK EVENT FOR PRINTING PRODUCTLIST----------------------------------------------------------------------------
+$(".printbtn").click(() => {
+    disableScroll();
+    $(".Productlist-div-print").css("display","flex");
+});
+//CATEGORY FOR PRINT PRODUCTLIST----------------------------------------------------------------------------------
+function productlist_print_renderCategory(doc){
+    let option = document.createElement('option');
+    option.textContent = doc.data().category;
+    option.value = doc.data().category;
+    $(".Productlist-print-category").append(option);
+}
+
+firestore.collection("Category").get().then((snapshot) => {
+    snapshot.docs.forEach(doc => {
+        productlist_print_renderCategory(doc);
+    })
+})
+//CLICK EVENT FOR CANCEL PRINT PRODUCTLIST-------------------------------------------------------------------------
+$(".Productlist-cancelbtn").click(() => {
+    enablescroll();
+    $(".Productlist-div-print").css("display","none");
+    $(".Productlist-print-category").val("All");
+});
+//CLICK EVENT FOR PRINT PRODUCTLIST----------------------------------------------------------------------------
+$(".Productlist-printbtn").click(() => {
+    let print_category = $(".Productlist-print-category").val();
 });

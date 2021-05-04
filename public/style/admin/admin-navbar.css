@@ -113,3 +113,15 @@ body {
     font-size: 0.5rem;
   }
 }
+.div-StockInEntry,
+.div-StockInHistory,
+.div-ProductStockStatus,
+.div-PullOutProductHistory,
+.div-DiscountVat,
+.div-StaffAccount,
+.div-AdminAccount,
+.div-SalesDashboard,
+.div-ProductSold,
+.div-OnlineOrder {
+  display: none;
+}

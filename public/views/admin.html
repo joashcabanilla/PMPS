@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/style/admin/product-nav.css" />
     <link rel="stylesheet" href="/style/admin/productinfo.css" />
     <link rel="stylesheet" href="/style/admin/addproduct.css" />
+    <link rel="stylesheet" href="/style/admin/productlistprint.css" />
+    <link href="/toastnotification/toastr.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -72,8 +74,7 @@
                 <li><a class="stock_in_history">Stock In History</a></li>
                 <li><a class="product_stock_status">Product Stock Status</a></li>
                 <li><a class="pull_out_product">Pull Out Product History</a></li>
-                <li><a class="discount">Discount</a></li>
-                <li><a class="vat">Vat</a></li>
+                <li><a class="discountvat">Discount and Vat</a></li>
               </ul>
             </li>
             <li>
@@ -107,7 +108,7 @@
         </button>
       </div>
     </div>
-    <div class="div-function">
+    <div class="div-function div-ProductList">
         <div class="controlbox">
           <div class="category-title">
             <p class="categorytext"></p>
@@ -312,6 +313,52 @@
             </div>
           </div>
         </div>
+        <div class="Productlist-div-print">
+          <div class="Productlist-print-box">
+            <p class="Productlist-print-category-text">Select Category:</p>
+            <select class="Productlist-print-category">
+              <option value="All">All</option>
+            </select>
+            <div class="Productlist-print-button">
+              <button class="Productlist-printbtn">PRINT</button>
+              <button class="Productlist-cancelbtn">CANCEL</button>
+          </div>
+          </div>
+        </div>
+        <div class="Productlist-print">
+          <p>Joash cabanilla</p>
+          <p>Joash cabanilla1</p>
+        </div>
+    </div>
+    <div class="div-function div-StockInEntry">
+      StockInEntry
+    </div>
+    <div class="div-function div-StockInHistory">
+      StockInHistory
+    </div>
+    <div class="div-function div-ProductStockStatus">
+      ProductStockStatus
+    </div>
+    <div class="div-function div-PullOutProductHistory">
+      PullOutProductHistory
+    </div>
+    <div class="div-function div-DiscountVat">
+      DiscountVat
+    </div>
+    <div class="div-function div-StaffAccount">
+      StaffAccount
+    </div>
+    <div class="div-function div-AdminAccount">
+      AdminAccount
+    </div>
+    <div class="div-function div-SalesDashboard">
+      SalesDashboard
+    </div>
+    <div class="div-function div-ProductSold">
+      ProductSold
+    </div>
+    <div class="div-function div-OnlineOrder">
+      OnlineOrder
     </div>
     <script>
       var firebaseConfig = {
@@ -328,10 +375,12 @@
       const firestore = firebase.firestore();
       firestore.settings({ timestampsInSnapshots: true });
     </script>
+    <script src="/toastnotification/toastr.min.js"></script>
     <script src="/javascript/admin/datetime.js"></script>
     <script src="/javascript/admin/sidemenu.js"></script>
     <script src="/javascript/admin/productlist.js"></script>
     <script src="/javascript/admin/addproduct.js"></script>
+    <script src="/javascript/admin/pull_out.js"></script>
   </body>
 </html>
   
