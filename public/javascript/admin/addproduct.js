@@ -406,7 +406,7 @@ $(".Productlist-printbtn").click(() => {
         debug: false,
         importCSS: true,
         importStyle: true,
-        loadCSS: null,
+        loadCSS: "/style/admin/productlist.css",
         printDelay: 300,
         header: null,               
         footer: null, 
