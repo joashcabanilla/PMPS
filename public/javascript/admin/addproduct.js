@@ -403,9 +403,9 @@ $(".Productlist-cancelbtn").click(() => {
 $(".Productlist-printbtn").click(() => {
     $(".Productlist-print").css("display","flex");
         $(".Productlist-print").printThis({
-        debug: false,
+        debug: true,
         importCSS: true,
-        importStyle: false,
+        importStyle: true,
         loadCSS: "/style/admin/productlist.css",
         printDelay: 300,
         header: null,               
@@ -414,7 +414,7 @@ $(".Productlist-printbtn").click(() => {
         beforePrint:null,
         afterPrint: null     
     });
-});
+}); 
 
 //CHANGE EVENT FOR PRINT PRODUCTLIST CATEGORY----------------------------------------------------------------------
 $(".Productlist-print-category").change(() => {
