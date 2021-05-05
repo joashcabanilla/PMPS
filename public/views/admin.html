@@ -326,8 +326,23 @@
           </div>
         </div>
         <div class="Productlist-print">
-          <p>Joash cabanilla</p>
-          <p>Joash cabanilla1</p>
+          <div class="Productlist-header">
+            <div class="Productlist-header0">
+              <img class="PLP-logo" src="/image/logo_report.jpg" width="100px" height="100px"/>
+            </div>
+            <div class="Productlist-header1">
+                <p class="PLP-title">PHARMACY MANAGEMENT</p>
+                <p class="PLP-title">PROCESS SYSTEM</p>
+                <p class="Productlist-date_time"></p>
+            </div>
+          </div>
+          <div class="Productlist-title">
+            <p class="Productlist-title-p">MEDICINE REPORT</p>
+          </div>
+          <div class="PL-table-div">
+            <table class="PL-table">
+            </table>
+          </div>
         </div>
     </div>
     <div class="div-function div-StockInEntry">
@@ -375,6 +390,7 @@
       const firestore = firebase.firestore();
       firestore.settings({ timestampsInSnapshots: true });
     </script>
+    <script src="/javascript/printThis/printThis.js"></script>
     <script src="/toastnotification/toastr.min.js"></script>
     <script src="/javascript/admin/datetime.js"></script>
     <script src="/javascript/admin/sidemenu.js"></script>

@@ -65,14 +65,6 @@ toastr.options = {
     "hideMethod": "fadeOut"
   }
 
-    let product_lowstocks = 0;
-    firestore.collection("Product").where("stocks","<=",5).get().then(snapshot => {
-        snapshot.docs.forEach(doc => {
-            product_lowstocks++;
-        });
-        (product_lowstocks != 0) ? toastr["warning"](`${product_lowstocks} Products are Low In Stocks`) : null;
-    });
-
     let product_expired = 0;
     firestore.collection("Product").where("expirationdate","==","expired").get().then(snapshot => {
         snapshot.docs.forEach(doc => {
@@ -87,5 +79,13 @@ toastr.options = {
             product_outofstocks++;
         });
         (product_outofstocks != 0) ? toastr["warning"](`${product_outofstocks} Products are Out Of Stocks`) : null;
+    });
+
+    let product_lowstocks = 0;
+    firestore.collection("Product").where("stocks","<=",5).get().then(snapshot => {
+        snapshot.docs.forEach(doc => {
+            product_lowstocks++;
+        });
+        (product_lowstocks != 0) ? toastr["warning"](`${product_lowstocks} Products are Low In Stocks`) : null;
     });
 });

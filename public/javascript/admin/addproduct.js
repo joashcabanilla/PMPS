@@ -310,10 +310,73 @@ $(".AP-price").focusout(() => {
     let price = $(".AP-price").val();
     $(".AP-price").val(parseFloat(price).toFixed(2));
 });
+
+const all_product = () => {
+    let number_row = 0;
+    firestore.collection("Product").get().then(snapshot => {
+        snapshot.docs.forEach(doc => {
+           let tr =  $("<tr>")
+           .append($("<td>").text(doc.data().code))
+           .append($("<td>").text(doc.data().productname))
+           .append($("<td>").text(doc.data().category))
+           .append($("<td>").text(doc.data().brandname))
+           .append($("<td>").text(doc.data().formulation))
+           .append($("<td>").text(parseFloat(doc.data().price).toFixed(2)));
+           $(".PL-table > tbody:last-child").append(tr);
+        });
+    });
+}
+
+const print_product = (category) => {
+    let number_row = 0;
+    firestore.collection("Product").where("category","==",`${category}`).get().then(snapshot => {
+        snapshot.docs.forEach(doc => {
+           let tr =  $("<tr>")
+           .append($("<td>").text(doc.data().code))
+           .append($("<td>").text(doc.data().productname))
+           .append($("<td>").text(doc.data().category))
+           .append($("<td>").text(doc.data().brandname))
+           .append($("<td>").text(doc.data().formulation))
+           .append($("<td>").text(parseFloat(doc.data().price).toFixed(2)));
+           number_row++;
+           (number_row <= 25) ? $(".PL-table > tbody:last-child").append(tr) : null;
+        });
+    });
+}
+
+const table_th = () => {
+    let th = $("<tr>").attr("class","table-head")
+    .append($("<th>").text("Code"))
+    .append($("<th>").text("ProductName"))
+    .append($("<th>").text("Category"))
+    .append($("<th>").text("BrandName"))
+    .append($("<th>").text("Formulation"))
+    .append($("<th>").text("Price"));
+    $(".PL-table").append(th);
+}
+
 //CLICK EVENT FOR PRINTING PRODUCTLIST----------------------------------------------------------------------------
 $(".printbtn").click(() => {
     disableScroll();
     $(".Productlist-div-print").css("display","flex");
+    $(".Productlist-print").css("display","flex");
+    const addzero = (num) => {
+            return num < 10 ? `0${num}`:num;
+        }
+        let now = new Date();
+        let month = now.getMonth() + 1;
+        let date = now.getDate();
+        let year = now.getFullYear();
+        let hours = addzero(now.getHours());
+        let mins = addzero(now.getMinutes());
+        let period = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        
+        let date_time = `${month}/${date}/${year} ${hours}:${mins} ${period}`;
+        $(".Productlist-date_time").text(date_time);
+        table_th();
+        all_product();
 });
 //CATEGORY FOR PRINT PRODUCTLIST----------------------------------------------------------------------------------
 function productlist_print_renderCategory(doc){
@@ -332,9 +395,32 @@ firestore.collection("Category").get().then((snapshot) => {
 $(".Productlist-cancelbtn").click(() => {
     enablescroll();
     $(".Productlist-div-print").css("display","none");
+    $(".Productlist-print").css("display","none");
     $(".Productlist-print-category").val("All");
+    $(".PL-table").empty();
 });
-//CLICK EVENT FOR PRINT PRODUCTLIST----------------------------------------------------------------------------
+//CLICK EVENT FOR PRINT PRODUCTLIST--------------------------------------------------------------------------------
 $(".Productlist-printbtn").click(() => {
-    let print_category = $(".Productlist-print-category").val();
+    $(".Productlist-print").css("display","flex");
+        $(".Productlist-print").printThis({
+        debug: false,
+        importCSS: true,
+        importStyle: true,
+        loadCSS: "/style/reportcss/productlist.css",
+        printDelay: 300,
+        header: null,               
+        footer: null, 
+        beforePrintEvent:null,     
+        beforePrint:null,
+        afterPrint: null     
+    });
 });
+
+//CHANGE EVENT FOR PRINT PRODUCTLIST CATEGORY----------------------------------------------------------------------
+$(".Productlist-print-category").change(() => {
+    $(".PL-table").empty();
+    let category = $(".Productlist-print-category").val();
+    table_th();
+    (category == "All") ? all_product():print_product(category);
+});
+
