@@ -405,7 +405,7 @@ $(".Productlist-printbtn").click(() => {
         $(".Productlist-print").printThis({
         debug: false,
         importCSS: true,
-        importStyle: true,
+        importStyle: false,
         loadCSS: "/style/admin/productlist.css",
         printDelay: 300,
         header: null,               
