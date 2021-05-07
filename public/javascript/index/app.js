@@ -52,11 +52,11 @@ product_div.appendChild(price);
 product.appendChild(product_div);
 }
 
-firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        renderProduct(doc);
-    })
-})
+// firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
+//     snapshot.docs.forEach(doc => {
+//         renderProduct(doc);
+//     })
+// })
 
 //EVENTLISTENER FOR CATEGORY----------------------------------------------------------------------------------
 category.addEventListener("change", () => {

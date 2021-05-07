@@ -48,11 +48,11 @@ product_div.appendChild(formulation);
 product_div.appendChild(price);
 product.append(product_div);
 }
-firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        renderProduct(doc);
-    })
-})
+// firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
+//     snapshot.docs.forEach(doc => {
+//         renderProduct(doc);
+//     })
+// })
 //EVENTLISTENER FOR CATEGORY----------------------------------------------------------------------------------
 category.change(() => {
     searchbox.val("");
