@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/style/admin/productinfo.css" />
     <link rel="stylesheet" href="/style/admin/addproduct.css" />
     <link rel="stylesheet" href="/style/admin/productlistprint.css" />
+    <link rel="stylesheet" href="/style/stock_in_entry/stock_in_entry.css" />
+    <link rel="stylesheet" href="/style/stock_in_entry/stock_product.css" />
     <link href="/toastnotification/toastr.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -290,7 +292,7 @@
                 <div class="AP-expirationdate_price">
                   <div class="AP-div-productdata">
                     <p class="AP-productdata">ExpirationDate:</p>
-                    <input type="text" required class="AP-expirationdate AP-datacss"></input>
+                    <input type="text" required class="AP-expirationdate AP-datacss" placeholder="MM/YYYY"></input>
                   </div>
                   <div class="AP-div-productdata">
                     <p class="AP-productdata">Price:</p>
@@ -329,7 +331,68 @@
         </div>
     </div>
     <div class="div-function div-StockInEntry">
-      StockInEntry
+      <div class="SIE-enterproduct">
+        <div class="SIE-title">
+            <p>STOCK IN ENTRY</p>
+        </div>
+        <div class="SIE-controlbox">
+          <div class="SIE-p">
+            <p>Total Stock Received:</p>
+            <p>Date Received:</p>
+          </div>
+          <div class="SIE-input">
+            <p class="SIE-total_stock">0</p>
+              <input type="date" required class="SIE-date_received"></input>
+          </div>
+        </div>
+        <div class="SIE-searchbox">
+          <div class="searchicon">
+            <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="16"
+            height="16"
+            fill="currentColor"
+            class="bi bi-search"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+            />
+          </svg>
+          </div>
+        <input type="text" placeholder="Search Product" class="SIE-search" />
+        </div>
+        <div class="SIE-productinformation">
+          <p class="SIE-product_information_p">PRODUCT INFORMATION</p>
+          <div class="SIE-product">
+          </div>
+        </div>
+        <button class="SIE-viewtablebtn">VIEW STOCK IN TABLE</button>
+      </div>
+      <div class="SIE-producttable">
+        <div class="SIE-table_title">
+          <p>STOCK IN PRODUCT LIST</p>
+          <button class="SIE-backbtn" >
+            <img src="/image/close.png" width="20rem" height="20rem" />
+          </button>
+        </div>
+        <div class="SIE-productlist_table">
+          <table class="SIE-product_table">
+            <tr>
+              <th>Code</th>
+              <th>Product Name</th>
+              <th>Category</th>
+              <th>Brand Name</th>
+              <th>Stock</th>
+              <th>Button</th>
+            </tr>
+          </table>
+        </div>
+        <div class="SIE-button">
+          <button class="SIE-savebtn">SAVE STOCK IN ENTRY</button>
+          <button class="SIE-cancelbtn">CANCEL STOCK IN ENTRY</button>
+        </div>
+      </div>
     </div>
     <div class="div-function div-StockInHistory">
       StockInHistory
@@ -379,6 +442,7 @@
     <script src="/javascript/admin/productlist.js"></script>
     <script src="/javascript/admin/addproduct.js"></script>
     <script src="/javascript/admin/pull_out.js"></script>
+    <script src="/javascript/stock_in_entry/stock.js"></script>
   </body>
 </html>
   

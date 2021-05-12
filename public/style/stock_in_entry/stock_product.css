@@ -1,0 +1,197 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+.SIE-product-item {
+  display: flex;
+  width: auto;
+  height: auto;
+  padding: 0.3rem;
+  margin-top: 0.1rem;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  background: #f1f1f1;
+  border-radius: 40px;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);
+}
+.SIE-product {
+  padding: 0.5rem;
+}
+.SIE-product-name {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 0;
+  background-color: #f1f1f1;
+}
+.SIE-product-brandname,
+.SIE-product-formulation {
+  font-family: "Poppins", sans-serif;
+  font-weight: normal;
+  font-size: 1em;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5px;
+  padding: 0;
+  background-color: #f1f1f1;
+}
+.SIE-product-price {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #00a0dd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  padding: 0;
+  background-color: #f1f1f1;
+}
+.SIE-product-stocks {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.3em;
+  color: #000000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0;
+  background-color: #f1f1f1;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+@media only screen and (max-width: 600px) {
+  .SIE-product-img {
+    width: 60px;
+    height: 60px;
+  }
+  .SIE-product-name {
+    font-size: 0.8rem;
+  }
+  .SIE-product-brandname,
+  .SIE-product-formulation {
+    font-size: 0.7rem;
+  }
+  .SIE-product-price,
+  .SIE-product-stocks {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (max-width: 768px) {
+  .SIE-product-img {
+    width: 60px;
+    height: 60px;
+  }
+  .SIE-product-name {
+    font-size: 0.8rem;
+  }
+  .SIE-product-brandname,
+  .SIE-product-formulation {
+    font-size: 0.7rem;
+  }
+  .SIE-product-price,
+  .SIE-product-stocks {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .SIE-product-img {
+    width: 60px;
+    height: 60px;
+  }
+  .SIE-product-name {
+    font-size: 1rem;
+  }
+  .SIE-product-brandname,
+  .SIE-product-formulation {
+    font-size: 0.9rem;
+  }
+  .SIE-product-price,
+  .SIE-product-stocks {
+    font-size: 1rem;
+  }
+}
+@media only screen and (min-width: 1366px) {
+  .SIE-product-item {
+    display: flex;
+    width: auto;
+    height: auto;
+    padding: 0.3rem;
+    margin-top: 0.1rem;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #f1f1f1;
+    border-radius: 40px;
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.25);
+  }
+  .SIE-product {
+    padding: 0.5rem;
+  }
+  .SIE-product-name {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 1.1em;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 0;
+    background-color: #f1f1f1;
+  }
+  .SIE-product-brandname,
+  .SIE-product-formulation {
+    font-family: "Poppins", sans-serif;
+    font-weight: normal;
+    font-size: 1em;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 5px;
+    padding: 0;
+    background-color: #f1f1f1;
+  }
+  .SIE-product-price {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #00a0dd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    padding: 0;
+    background-color: #f1f1f1;
+  }
+  .SIE-product-stocks {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 1.3em;
+    color: #000000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 0;
+    background-color: #f1f1f1;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}

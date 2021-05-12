@@ -388,7 +388,7 @@ const generate_report = (array_data,filename) => {
         doc.text("PROCESS SYSTEM",textcenter("PROCESS SYSTEM"),23);
         doc.text(report_date,textcenter(report_date),33);
         doc.setFontSize(20);
-        doc.text("MEDICINE REPORT",textcenter("MEDICINE REPORT"),53);
+        doc.text("PRODUCTLIST REPORT",textcenter("PRODUCTLIST REPORT"),53);
     }
     doc.autoPrint();
     doc.output('dataurlnewwindow',filename);

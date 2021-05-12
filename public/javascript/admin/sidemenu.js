@@ -1,3 +1,33 @@
+//CLEAR TEXTBOX EACH LINKS--------------------------------------------------------------------------------------
+const clear_productlist = () => {
+    const product = $(".product-table");
+    $(".productsearch").val("");
+    $(".category").val("All");
+    product.empty();
+    // firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
+    //         snapshot.docs.forEach(doc => {
+    //             renderProduct(doc);
+    //         })
+    //     });
+}
+const clear_stock_in_entry = () => {
+    $(".SIE-search").val("");
+    $(".SIE-date_received").val("");
+    $(".total_stock").text("0");
+    $(".SIE-product_table").empty();
+    let tr = "<tr><th>Code</th><th>Product Name</th><th>Category</th><th>Brand Name</th><th>Stock</th><th>Button</th></tr>";
+    $(".SIE-product_table").append(tr);
+}
+const clear_all = (link) => {
+    switch(link){
+        case "product_list":
+            clear_stock_in_entry();
+            break;
+        case "stock_in_entry":
+            clear_productlist();
+            break;
+    }
+}
 //CLICK EVENT OF LINKS-------------------------------------------------------------------------------------------
 const deactivelink = () => {
     $(".div-ProductList").css("display","none");
@@ -19,46 +49,80 @@ const deactivelink = () => {
     $(".product_list").click(() => {
         deactivelink();
         $(".div-ProductList").css("display","flex");
+        // let product_expired = 0;
+        // firestore.collection("Product").where("expirationdate","==","expired").get().then(snapshot => {
+        //     snapshot.docs.forEach(doc => {
+        //         product_expired++;
+        //     });
+        //     (product_expired != 0) ? toastr["warning"](`${product_expired} Products have been Expired`) : null;
+        // });
+
+        // let product_outofstocks = 0;
+        // firestore.collection("Product").where("stocks","==",0).get().then(snapshot => {
+        //     snapshot.docs.forEach(doc => {
+        //         product_outofstocks++;
+        //     });
+        //     (product_outofstocks != 0) ? toastr["warning"](`${product_outofstocks} Products are Out Of Stocks`) : null;
+        // });
+
+        // let product_lowstocks = 0;
+        // firestore.collection("Product").where("stocks","<=",5).get().then(snapshot => {
+        //     snapshot.docs.forEach(doc => {
+        //         product_lowstocks++;
+        //     });
+        //     (product_lowstocks != 0) ? toastr["warning"](`${product_lowstocks} Products are Low In Stocks`) : null;
+        // });
+        clear_all("product_list");
     });
     $(".stock_in_entry").click(() => {
         deactivelink();
         $(".div-StockInEntry").css("display","flex");
+        clear_all("stock_in_entry");
     });
     $(".stock_in_history").click(() => {
         deactivelink();
         $(".div-StockInHistory").css("display","flex");
+        clear_all("stock_in_history");
     });
     $(".product_stock_status").click(() => {
         deactivelink();
         $(".div-ProductStockStatus").css("display","flex");
+        clear_all("product_stock_status");
     });
     $(".pull_out_product").click(() => {
         deactivelink();
         $(".div-PullOutProductHistory").css("display","flex");
+        clear_all("pull_out_product");
     });
     $(".discountvat").click(() => {
         deactivelink();
         $(".div-DiscountVat").css("display","flex");
+        clear_all("discountvat");
     });
     $(".staff_account").click(() => {
         deactivelink();
         $(".div-StaffAccount").css("display","flex");
+        clear_all("staff_account");
     });
     $(".admin_account").click(() => {
         deactivelink();
         $(".div-AdminAccount").css("display","flex");
+        clear_all("admin_account");
     });
     $(".sales_dashboard").click(() => {
         deactivelink();
         $(".div-SalesDashboard").css("display","flex");
+        clear_all("sales_dashboard");
     });
     $(".product_sold").click(() => {
         deactivelink();
         $(".div-ProductSold").css("display","flex");
+        clear_all("product_sold");
     });
     $(".online_order").click(() => {
         deactivelink();
         $(".div-OnlineOrder").css("display","flex");
+        clear_all("online_order");
     });
 
 const checkmenu = () => {
