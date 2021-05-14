@@ -50,6 +50,7 @@ const savebtn = $(".SIE-savebtn");
 const cancelbtn = $(".SIE-cancelbtn");
 const total_stocks = $(".SIE-total_stock");
 const product_table = $(".SIE-product_table");
+const SIE_date_received = $(".SIE-date_received");
 let product_array = [];
 let productitem_array = [];
 
@@ -134,6 +135,7 @@ search.keypress((e) => {
           obj.brandname = doc.data().brandname;
           obj.expirationdate = doc.data().expirationdate;
           obj.formulation = doc.data().formulation;
+          obj.unit = doc.data().unit;
           obj.datereceived = date_received;
           swal({
             content: {
@@ -171,7 +173,7 @@ search.keypress((e) => {
                         <td>${obj.productname}</td>
                         <td>${obj.category}</td>
                         <td>${obj.brandname}</td>
-                        <td>${obj.stock}</td>
+                        <td>${obj.stock} ${obj.unit}</td>
                         <td><button style="color: maroon; width: 2.5rem; height: 2.5rem;padding: 5px;
                         border-radius: 8px;
                         box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
@@ -263,10 +265,31 @@ const SIE_reset_components = () => {
 savebtn.click(() => {
   const save_stockin = () => {
     for (let i = 0; i < productitem_array.length; i++) {
+      let productname = productitem_array[i].productname;
+      let category = productitem_array[i].category;
+      let brandname = productitem_array[i].brandname;
+      let expirationdate = productitem_array[i].expirationdate;
+      let formulation = productitem_array[i].formulation;
+      let datereceived = productitem_array[i].datereceived;
       let code = productitem_array[i].code;
-      let stock = productitem_array[i].new_stocks;
+      let new_stock = productitem_array[i].new_stocks;
+      let stock = productitem_array[i].stock;
+      let unit = productitem_array[i].unit;
+
       firestore.collection("Product").doc(code).update({
+        stocks: new_stock,
+      });
+
+      firestore.collection("Stockin").add({
+        code: code,
+        productname: productname,
+        category: category,
+        brandname: brandname,
+        expirationdate: expirationdate,
+        formulation: formulation,
+        datereceived: datereceived,
         stocks: stock,
+        unit: unit,
       });
     }
     SIE_reset_components();
@@ -294,4 +317,23 @@ cancelbtn.click(() => {
           swal("", "Stock In Entry was successfully canceled", "success");
         }
       });
+});
+
+//CHANGE EVENT FOR DATE RECEIVED---------------------------------------------------------------------------------
+SIE_date_received.change(() => {
+  productitem_array.length = 0;
+  total_stocks.text("0");
+  search.val("");
+  search.focus();
+  product_info.empty();
+  product_table.empty();
+  let tr = `<tr>
+  <th>Code</th>
+  <th>Product Name</th>
+  <th>Category</th>
+  <th>Brand Name</th>
+  <th>Stock</th>
+  <th>Button</th>
+</tr>`;
+  product_table.append(tr);
 });

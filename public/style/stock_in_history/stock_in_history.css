@@ -1,0 +1,347 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+.SIH-category-function {
+  display: flex;
+  flex-direction: row;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.SIH-div-stock_received,
+.SIH-div-date_received,
+.SIH-div-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.SIH-p-stock_received,
+.SIH-stock_received,
+.SIH-p-date_received,
+.SIH-date_received,
+.SIH-generatebtn {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+.SIH-stock_received {
+  margin-left: 0.5rem;
+  width: 15rem;
+  text-align: center;
+  background-color: #ffffff;
+}
+.SIH-date_received {
+  margin-left: 0.5rem;
+  text-indent: 0.5rem;
+  width: 15rem;
+}
+.SIH-generatebtn {
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+  background: #b7dbed;
+  outline: none;
+  border-color: #b7dbed;
+  font-size: 1.1rem;
+}
+.SIH-div-table {
+  display: flex;
+  width: 95%;
+  margin-top: 1.5rem;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  transition: 0.4s ease;
+  background: #d0e3ec;
+  height: 30rem;
+  padding: 1rem;
+}
+.SIH-div-table_content {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+.SIH-div-table:hover {
+  box-shadow: 0 12px 24px 0 rgb(0 0 0 / 20%);
+}
+.SIH-div-table_content::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+.SIH-div-table_content::-webkit-scrollbar-track {
+  background: #298dbf23;
+}
+.SIH-div-table_content::-webkit-scrollbar-thumb {
+  background: #298dbfad;
+}
+.SIH-div-table_content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.SIH-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 3px solid #ffffff;
+  height: auto;
+}
+.SIH-table tr th {
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  border: 2px solid #ffffff;
+  background-color: #78bee1;
+  color: #ffffff;
+  text-align: center;
+  padding: 0.5rem;
+  top: 0;
+}
+.SIH-table tr td {
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  border: 2px solid #ffffff;
+  background-color: #bbeaff;
+  text-align: left;
+  padding: 0.5rem;
+}
+.SIH-table tr th:nth-child(1),
+.SIH-table tr td:nth-child(1) {
+  width: 5rem;
+}
+.SIH-table tr th:nth-child(2),
+.SIH-table tr td:nth-child(2) {
+  width: 15rem;
+}
+.SIH-table tr th:nth-child(3),
+.SIH-table tr th:nth-child(4),
+.SIH-table tr th:nth-child(5),
+.SIH-table tr th:nth-child(7),
+.SIH-table tr td:nth-child(3),
+.SIH-table tr td:nth-child(4),
+.SIH-table tr td:nth-child(5),
+.SIH-table tr td:nth-child(7) {
+  width: 10rem;
+}
+.SIH-table tr th:nth-child(6),
+.SIH-table tr td:nth-child(6) {
+  width: 5rem;
+}
+.SIH-table tr td:nth-child(6),
+.SIH-table tr td:nth-child(7) {
+  text-align: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .SIH-category-function {
+    flex-direction: column;
+  }
+  .SIH-p-stock_received,
+  .SIH-stock_received,
+  .SIH-p-date_received,
+  .SIH-date_received,
+  .SIH-generatebtn {
+    font-size: 0.8rem;
+  }
+  .SIH-stock_received {
+    width: 5rem;
+  }
+  .SIH-date_received {
+    width: 8rem;
+  }
+  .SIH-div-stock_received,
+  .SIH-div-date_received,
+  .SIH-div-button {
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  .SIH-date_received {
+    text-indent: 3px;
+    font-size: 0.6rem;
+  }
+  .SIH-div-table {
+    height: 23rem;
+    margin-top: 0.5rem;
+  }
+  .SIH-table tr th {
+    font-size: 0.8rem;
+  }
+  .SIH-table tr td {
+    font-size: 0.8rem;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .SIH-p-stock_received,
+  .SIH-stock_received,
+  .SIH-p-date_received,
+  .SIH-date_received,
+  .SIH-generatebtn {
+    font-size: 0.7rem;
+  }
+  .SIH-stock_received {
+    width: 5rem;
+  }
+  .SIH-date_received {
+    width: 9rem;
+  }
+  .SIH-div-table {
+    height: 25rem;
+    margin-top: 0.5rem;
+  }
+  .SIH-table tr th {
+    font-size: 0.8rem;
+  }
+  .SIH-table tr td {
+    font-size: 0.8rem;
+  }
+}
+@media only screen and (min-width: 1024px) {
+  .SIH-p-stock_received,
+  .SIH-stock_received,
+  .SIH-p-date_received,
+  .SIH-date_received,
+  .SIH-generatebtn {
+    font-size: 1rem;
+  }
+  .SIH-stock_received {
+    width: 9rem;
+  }
+  .SIH-date_received {
+    width: 12rem;
+  }
+  .SIH-div-table {
+    height: 35rem;
+    margin-top: 1rem;
+  }
+}
+@media only screen and (min-width: 1366px) {
+  .SIH-category-function {
+    display: flex;
+    flex-direction: row;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .SIH-div-stock_received,
+  .SIH-div-date_received,
+  .SIH-div-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .SIH-p-stock_received,
+  .SIH-stock_received,
+  .SIH-p-date_received,
+  .SIH-date_received,
+  .SIH-generatebtn {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .SIH-stock_received {
+    margin-left: 0.5rem;
+    width: 15rem;
+    text-align: center;
+    background-color: #ffffff;
+  }
+  .SIH-date_received {
+    margin-left: 0.5rem;
+    text-indent: 0.5rem;
+    width: 15rem;
+  }
+  .SIH-generatebtn {
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+    background: #b7dbed;
+    outline: none;
+    border-color: #b7dbed;
+    font-size: 1.1rem;
+  }
+  .SIH-div-table {
+    display: flex;
+    width: 95%;
+    margin-top: 1.5rem;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    transition: 0.4s ease;
+    background: #d0e3ec;
+    height: 30rem;
+    padding: 1rem;
+  }
+  .SIH-div-table_content {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+  }
+  .SIH-div-table:hover {
+    box-shadow: 0 12px 24px 0 rgb(0 0 0 / 20%);
+  }
+  .SIH-div-table_content::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  .SIH-div-table_content::-webkit-scrollbar-track {
+    background: #298dbf23;
+  }
+  .SIH-div-table_content::-webkit-scrollbar-thumb {
+    background: #298dbfad;
+  }
+  .SIH-div-table_content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .SIH-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 3px solid #ffffff;
+    height: auto;
+  }
+  .SIH-table tr th {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    border: 2px solid #ffffff;
+    background-color: #78bee1;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.5rem;
+    top: 0;
+  }
+  .SIH-table tr td {
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    border: 2px solid #ffffff;
+    background-color: #bbeaff;
+    text-align: left;
+    padding: 0.5rem;
+  }
+  .SIH-table tr th:nth-child(1),
+  .SIH-table tr td:nth-child(1) {
+    width: 5rem;
+  }
+  .SIH-table tr th:nth-child(2),
+  .SIH-table tr td:nth-child(2) {
+    width: 15rem;
+  }
+  .SIH-table tr th:nth-child(3),
+  .SIH-table tr th:nth-child(4),
+  .SIH-table tr th:nth-child(5),
+  .SIH-table tr th:nth-child(7),
+  .SIH-table tr td:nth-child(3),
+  .SIH-table tr td:nth-child(4),
+  .SIH-table tr td:nth-child(5),
+  .SIH-table tr td:nth-child(7) {
+    width: 10rem;
+  }
+  .SIH-table tr th:nth-child(6),
+  .SIH-table tr td:nth-child(6) {
+    width: 5rem;
+  }
+  .SIH-table tr td:nth-child(6),
+  .SIH-table tr td:nth-child(7) {
+    text-align: center;
+  }
+}

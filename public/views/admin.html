@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/style/admin/productlistprint.css" />
     <link rel="stylesheet" href="/style/stock_in_entry/stock_in_entry.css" />
     <link rel="stylesheet" href="/style/stock_in_entry/stock_product.css" />
+    <link rel="stylesheet" href="/style/stock_in_history/stock_in_history.css" />
     <link href="/toastnotification/toastr.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -61,6 +62,7 @@
             </div>
         </div>    
     </div>
+
     <div class="div-sidemenu">
       <div class="div1-sidemenu">
         <img width="100rem" heigth="100rem" src="/image/biglogo.png"/>
@@ -112,6 +114,7 @@
         </button>
       </div>
     </div>
+
     <div class="div-function div-ProductList">
         <div class="controlbox">
           <div class="category-title">
@@ -330,6 +333,7 @@
           </div>
         </div>
     </div>
+
     <div class="div-function div-StockInEntry">
       <div class="SIE-enterproduct">
         <div class="SIE-title">
@@ -394,30 +398,71 @@
         </div>
       </div>
     </div>
+
     <div class="div-function div-StockInHistory">
-      StockInHistory
+      <div class="controlbox">
+        <div class="category-title">
+          <p class="categorytext"></p>
+        </div>
+        <div class="SIH-category-function">
+          <div class="SIH-div-stock_received">
+            <p class="SIH-p-stock_received">Total Stocks Received:</p>
+            <p class="SIH-stock_received">0</p>
+          </div>
+          <div class="SIH-div-date_received">
+            <p class="SIH-p-date_received">Date Received:</p>
+            <input type="date" class="SIH-date_received"/>
+          </div> 
+          <div class="SIH-div-button">
+            <button class="SIH-generatebtn">GENERATE REPORT</button>
+          </div>
+        </div>
+      </div>
+      <div class="SIH-div-table">
+        <div class="SIH-div-table_content">
+          <table class="SIH-table">
+            <tr>
+              <th>Code</th>
+              <th>Productname</th>
+              <th>Category</th>
+              <th>Brandname</th>
+              <th>Formulation</th>
+              <th>Stocks</th>
+              <th>Date Received</th>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
+
     <div class="div-function div-ProductStockStatus">
       ProductStockStatus
     </div>
+
     <div class="div-function div-PullOutProductHistory">
       PullOutProductHistory
     </div>
+
     <div class="div-function div-DiscountVat">
       DiscountVat
     </div>
+
     <div class="div-function div-StaffAccount">
       StaffAccount
     </div>
+
     <div class="div-function div-AdminAccount">
       AdminAccount
     </div>
+
     <div class="div-function div-SalesDashboard">
       SalesDashboard
     </div>
+
     <div class="div-function div-ProductSold">
       ProductSold
     </div>
+
     <div class="div-function div-OnlineOrder">
       OnlineOrder
     </div>
@@ -443,6 +488,7 @@
     <script src="/javascript/admin/addproduct.js"></script>
     <script src="/javascript/admin/pull_out.js"></script>
     <script src="/javascript/stock_in_entry/stock.js"></script>
+    <script src="/javascript/stock_in_entry/stock_history.js"></script>
   </body>
 </html>
   
