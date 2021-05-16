@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="/style/stock_in_entry/stock_in_entry.css" />
     <link rel="stylesheet" href="/style/stock_in_entry/stock_product.css" />
     <link rel="stylesheet" href="/style/stock_in_history/stock_in_history.css" />
+    <link rel="stylesheet" href="/style/stock_in_history/product_stock_status.css" />
     <link href="/toastnotification/toastr.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -436,9 +437,77 @@
     </div>
 
     <div class="div-function div-ProductStockStatus">
-      ProductStockStatus
+      <div class="controlbox PSS-controlbox">
+        <div class="PSS-searchStatus">
+          <p class="categorytext PSS-categorytext"></p>
+          <div class="PSS-div-status">
+            <div class="PSS-statusSelect">
+              <p>Status:</p>
+              <select class="PSS-status">
+                <option value="Total Stocks Per Product">Total Stocks Per Product</option>
+                <option value="Low In Stocks">Low In Stocks</option>
+                <option value="Out Of Stocks">Out Of Stocks</option>
+                <option value="Expired">Expired</option>
+              </select>
+            </div>
+            <div class="PSS-statusButtons">
+              <button class="PSS-generatebtn">GENERATE REPORT</button>
+              <button class="PSS-removebtn">REMOVE ALL EXPIRED PRODUCT</button>
+            </div>
+          </div>
+          <div class="PSS-div-search">
+            <div class="searchicon PSS-searchicon">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+              />
+            </svg>
+            </div>
+          <input type="text" placeholder="Search Product" class="PSS-search" />
+          </div>
+        </div>
+        <div class="PSS-productStatus">
+          <div class="PSS-productStatus-title">
+            <p>Product Status</p>
+          </div>
+          <div class="PSS-productStatus-number">
+            <div class="PSS-status-p">
+              <p>Expired:</p>
+              <p>Low In Stocks:</p>
+              <p>Out Of Stocks:</p>
+            </div>
+            <div class="PSS-status-number">
+              <p>0</p>
+              <p>0</p>
+              <p>0</p>
+            </div>
+          </div>
+        </div>  
+      </div>
+      <div class="PSS-div-table">
+        <div class="PSS-div-table_content">
+          <table class="PSS-table">
+            <tr>
+              <th>Code</th>
+              <th>Productname</th>
+              <th>Category</th>
+              <th>Brandname</th>
+              <th>Formulation</th>
+              <th>Price</th>
+              <th>Stocks</th>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
-
+    
     <div class="div-function div-PullOutProductHistory">
       PullOutProductHistory
     </div>
@@ -489,6 +558,7 @@
     <script src="/javascript/admin/pull_out.js"></script>
     <script src="/javascript/stock_in_entry/stock.js"></script>
     <script src="/javascript/stock_in_entry/stock_history.js"></script>
+    <script src="/javascript/stock_in_entry/product_stock_status.js"></script>
   </body>
 </html>
   

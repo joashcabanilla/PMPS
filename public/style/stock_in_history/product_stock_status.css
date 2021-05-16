@@ -1,0 +1,502 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+.PSS-controlbox {
+  height: 10.5rem;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0.5rem;
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+.PSS-div-status,
+.PSS-div-search {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1rem;
+  align-items: center;
+}
+.PSS-statusSelect,
+.PSS-statusButtons {
+  display: flex;
+  flex-direction: row;
+}
+.PSS-div-status p {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-right: 0.5rem;
+}
+.PSS-status {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  outline: none;
+  border: none;
+  background-color: #ffffff;
+  width: 18rem;
+  height: 1.8rem;
+  text-indent: 5px;
+  margin-right: 1rem;
+}
+.PSS-generatebtn {
+  margin-right: 0.5rem;
+}
+.PSS-generatebtn,
+.PSS-removebtn {
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  padding: 3px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+  background: #b7dbed;
+  outline: none;
+  border-color: #b7dbed;
+  font-size: 1rem;
+}
+.PSS-search {
+  outline: none;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  height: 2rem;
+  font-size: 1.1rem;
+  border-radius: 0rem 5rem 5rem 0rem;
+  background-color: #f8fbfc;
+  text-transform: capitalize;
+  width: 100%;
+}
+.PSS-productStatus {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  background-color: #b7dbed;
+  border-radius: 10px;
+  padding: 0.3rem;
+  margin-bottom: 0.5rem;
+  height: 100%;
+}
+.PSS-productStatus-title p {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.3rem;
+  text-align: center;
+  margin-top: 0.2rem;
+}
+.PSS-productStatus-number {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-top: 0.3rem;
+}
+.PSS-status-p p {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: right;
+  padding-left: 1.5rem;
+  margin-right: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.PSS-status-number p {
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  background-color: #ffffff;
+  width: 15rem;
+  margin-bottom: 0.5rem;
+}
+.PSS-div-table {
+  display: flex;
+  width: 95%;
+  margin-top: 1rem;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  transition: 0.4s ease;
+  background: #d0e3ec;
+  height: 26rem;
+  padding: 1rem;
+}
+.PSS-div-table:hover {
+  box-shadow: 0 12px 24px 0 rgb(0 0 0 / 20%);
+}
+.PSS-div-table_content {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+.PSS-div-table_content::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+.PSS-div-table_content::-webkit-scrollbar-track {
+  background: #298dbf23;
+}
+.PSS-div-table_content::-webkit-scrollbar-thumb {
+  background: #298dbfad;
+}
+.PSS-div-table_content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.PSS-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 3px solid #ffffff;
+  height: auto;
+}
+.PSS-table tr th {
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  border: 2px solid #ffffff;
+  background-color: #78bee1;
+  color: #ffffff;
+  text-align: center;
+  padding: 0.5rem;
+  top: 0;
+}
+.PSS-table tr td {
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  border: 2px solid #ffffff;
+  background-color: #bbeaff;
+  text-align: left;
+  padding: 0.5rem;
+}
+
+@media only screen and (min-device-width: 320px) and (max-width: 600px) {
+  .PSS-categorytext {
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+  }
+  .PSS-controlbox,
+  .PSS-searchStatus,
+  .PSS-div-status {
+    flex-direction: column;
+  }
+  .PSS-div-status,
+  .PSS-div-search {
+    margin-top: 0.3rem;
+  }
+  .PSS-div-status p {
+    font-size: 0.8rem;
+    margin-right: 0.2rem;
+  }
+  .PSS-status {
+    height: auto;
+    width: 12rem;
+    font-size: 0.8rem;
+  }
+  .PSS-statusSelect {
+    margin-bottom: 0.3rem;
+  }
+  .PSS-controlbox {
+    height: 14.3rem;
+    padding: 0.5rem;
+  }
+  .PSS-generatebtn,
+  .PSS-removebtn {
+    font-size: 0.6rem;
+  }
+  .PSS-searchicon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .PSS-search {
+    font-size: 0.8rem;
+    height: 1.5rem;
+  }
+  .PSS-productStatus {
+    width: 100%;
+    margin-top: 0.3rem;
+  }
+  .PSS-productStatus-title p {
+    margin-top: 0rem;
+    font-size: 1rem;
+  }
+  .PSS-status-p p {
+    font-size: 0.8rem;
+    padding-left: 0.5rem;
+    margin-right: 0.2rem;
+    margin-bottom: 0.2rem;
+  }
+  .PSS-status-number p {
+    font-size: 0.8rem;
+    width: 100%;
+    margin-bottom: 0.2rem;
+  }
+  .PSS-status-number {
+    width: 60%;
+  }
+  .PSS-div-table {
+    height: 19rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .PSS-categorytext {
+    font-size: 1.1rem;
+  }
+  .PSS-div-status,
+  .PSS-div-search {
+    margin-top: 0.5rem;
+  }
+  .PSS-controlbox {
+    padding: 0.5rem;
+  }
+  .PSS-div-status p,
+  .PSS-status {
+    font-size: 1rem;
+    margin-right: 0.3rem;
+  }
+  .PSS-generatebtn,
+  .PSS-removebtn {
+    font-size: 0.8rem;
+    margin-right: 0.3rem;
+  }
+  .PSS-statusSelect,
+  .PSS-statusButtons {
+    justify-content: flex-start;
+    align-items: center;
+  }
+  .PSS-status {
+    width: 15rem;
+  }
+  .PSS-searchicon {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+  .PSS-search {
+    font-size: 1rem;
+    height: 1.5rem;
+  }
+  .PSS-div-status {
+    flex-direction: column;
+  }
+  .PSS-productStatus {
+    width: 50%;
+  }
+  .PSS-productStatus-title p {
+    margin-top: 0rem;
+    font-size: 1.1rem;
+  }
+  .PSS-status-p p {
+    font-size: 1rem;
+  }
+  .PSS-status-number p {
+    font-size: 1rem;
+    width: 11rem;
+  }
+  .PSS-div-table {
+    height: 22rem;
+    margin-top: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .PSS-statusButtons {
+    margin-top: 0.5rem;
+  }
+  .PSS-productStatus-number {
+    margin-top: 0.8rem;
+  }
+}
+
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+  .PSS-status {
+    width: 13rem;
+  }
+  .PSS-generatebtn,
+  .PSS-removebtn {
+    font-size: 0.9rem;
+  }
+  .PSS-controlbox {
+    padding: 0.5rem;
+  }
+  .PSS-productStatus {
+    width: 30%;
+  }
+  .PSS-status-number p {
+    width: 7rem;
+  }
+  .PSS-status-p p {
+    padding-left: 1rem;
+  }
+  .PSS-div-table {
+    height: 33rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media only screen and (min-width: 1366px) {
+  .PSS-controlbox {
+    height: 10.5rem;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0.5rem;
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .PSS-div-status,
+  .PSS-div-search {
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    align-items: center;
+  }
+  .PSS-statusSelect,
+  .PSS-statusButtons {
+    display: flex;
+    flex-direction: row;
+  }
+  .PSS-div-status p {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 1.2rem;
+    margin-right: 0.5rem;
+  }
+  .PSS-status {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    outline: none;
+    border: none;
+    background-color: #ffffff;
+    width: 18rem;
+    height: 1.8rem;
+    text-indent: 5px;
+    margin-right: 1rem;
+  }
+  .PSS-generatebtn {
+    margin-right: 0.5rem;
+  }
+  .PSS-generatebtn,
+  .PSS-removebtn {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    padding: 3px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+    background: #b7dbed;
+    outline: none;
+    border-color: #b7dbed;
+    font-size: 1rem;
+  }
+  .PSS-search {
+    outline: none;
+    border: none;
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    height: 2rem;
+    font-size: 1.1rem;
+    border-radius: 0rem 5rem 5rem 0rem;
+    background-color: #f8fbfc;
+    text-transform: capitalize;
+    width: 100%;
+  }
+  .PSS-productStatus {
+    display: flex;
+    flex-direction: column;
+    width: 35%;
+    background-color: #b7dbed;
+    border-radius: 10px;
+    padding: 0.3rem;
+    margin-bottom: 0.5rem;
+    height: 100%;
+  }
+  .PSS-productStatus-title p {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 1.3rem;
+    text-align: center;
+    margin-top: 0.2rem;
+  }
+  .PSS-productStatus-number {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    margin-top: 0.3rem;
+  }
+  .PSS-status-p p {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: right;
+    padding-left: 1.5rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .PSS-status-number p {
+    font-family: "Poppins", sans-serif;
+    font-weight: bold;
+    font-size: 1.1rem;
+    text-align: center;
+    background-color: #ffffff;
+    width: 15rem;
+    margin-bottom: 0.5rem;
+  }
+  .PSS-div-table {
+    display: flex;
+    width: 95%;
+    margin-top: 1rem;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    transition: 0.4s ease;
+    background: #d0e3ec;
+    height: 26rem;
+    padding: 1rem;
+  }
+  .PSS-div-table:hover {
+    box-shadow: 0 12px 24px 0 rgb(0 0 0 / 20%);
+  }
+  .PSS-div-table_content {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+  }
+  .PSS-div-table_content::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  .PSS-div-table_content::-webkit-scrollbar-track {
+    background: #298dbf23;
+  }
+  .PSS-div-table_content::-webkit-scrollbar-thumb {
+    background: #298dbfad;
+  }
+  .PSS-div-table_content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .PSS-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 3px solid #ffffff;
+    height: auto;
+  }
+  .PSS-table tr th {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    border: 2px solid #ffffff;
+    background-color: #78bee1;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.5rem;
+    top: 0;
+  }
+  .PSS-table tr td {
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    border: 2px solid #ffffff;
+    background-color: #bbeaff;
+    text-align: left;
+    padding: 0.5rem;
+  }
+}
