@@ -308,11 +308,11 @@
 
 @media only screen and (min-width: 1024px) and (max-width: 1365px) {
   .PSS-status {
-    width: 13rem;
+    width: 15.2rem;
   }
   .PSS-generatebtn,
   .PSS-removebtn {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
   }
   .PSS-controlbox {
     padding: 0.5rem;

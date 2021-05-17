@@ -452,7 +452,7 @@
             </div>
             <div class="PSS-statusButtons">
               <button class="PSS-generatebtn">GENERATE REPORT</button>
-              <button class="PSS-removebtn">REMOVE ALL EXPIRED PRODUCT</button>
+              <button class="PSS-removebtn" disabled="disabled">REMOVE ALL EXPIRED PRODUCT</button>
             </div>
           </div>
           <div class="PSS-div-search">
@@ -484,9 +484,9 @@
               <p>Out Of Stocks:</p>
             </div>
             <div class="PSS-status-number">
-              <p>0</p>
-              <p>0</p>
-              <p>0</p>
+              <p class="PSS-expired">0</p>
+              <p class="PSS-low_stocks">0</p>
+              <p class="PSS-out_stocks">0</p>
             </div>
           </div>
         </div>  
@@ -551,6 +551,7 @@
       firestore.settings({ timestampsInSnapshots: true });
     </script>
     <script src="/toastnotification/toastr.min.js"></script>
+    <script src="/javascript/admin/GetAllProduct.js"></script>
     <script src="/javascript/admin/datetime.js"></script>
     <script src="/javascript/admin/sidemenu.js"></script>
     <script src="/javascript/admin/productlist.js"></script>
