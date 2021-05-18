@@ -4,11 +4,16 @@ const clear_productlist = () => {
   $(".productsearch").val("");
   $(".category").val("All");
   product.empty();
-  // firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
-  //         snapshot.docs.forEach(doc => {
-  //             renderProduct(doc);
-  //         })
-  //     });
+  for(let i = 0; i < ArrayGetAllProduct.length;i++){
+    let code = ArrayGetAllProduct[i].code;
+    let productname = ArrayGetAllProduct[i].productname;
+    let category = ArrayGetAllProduct[i].category;
+    let brandname = ArrayGetAllProduct[i].brandname;
+    let formulation = ArrayGetAllProduct[i].formulation;
+    let price = ArrayGetAllProduct[i].price;
+    let image = ArrayGetAllProduct[i].image;
+    renderProductArray(code,productname,category,brandname,formulation,price,image);
+  }
 };
 
 const clear_stock_in_entry = () => {
@@ -132,29 +137,20 @@ $(window).on("load", () => {
 $(".product_list").click(() => {
   deactivelink();
   $(".div-ProductList").css("display", "flex");
-  // let product_expired = 0;
-  // firestore.collection("Product").where("expirationdate","==","expired").get().then(snapshot => {
-  //     snapshot.docs.forEach(doc => {
-  //         product_expired++;
-  //     });
-  //     (product_expired != 0) ? toastr["warning"](`${product_expired} Products have been Expired`) : null;
-  // });
+  let product_expired = 0;
+  let product_outofstocks = 0;
+  let product_lowstocks = 0;
 
-  // let product_outofstocks = 0;
-  // firestore.collection("Product").where("stocks","==",0).get().then(snapshot => {
-  //     snapshot.docs.forEach(doc => {
-  //         product_outofstocks++;
-  //     });
-  //     (product_outofstocks != 0) ? toastr["warning"](`${product_outofstocks} Products are Out Of Stocks`) : null;
-  // });
-
-  // let product_lowstocks = 0;
-  // firestore.collection("Product").where("stocks","<=",5).get().then(snapshot => {
-  //     snapshot.docs.forEach(doc => {
-  //         product_lowstocks++;
-  //     });
-  //     (product_lowstocks != 0) ? toastr["warning"](`${product_lowstocks} Products are Low In Stocks`) : null;
-  // });
+  for(let i = 0; i < ArrayGetAllProduct.length;i++){
+    let expirationdate = ArrayGetAllProduct[i].expirationdate;
+    let stocks = ArrayGetAllProduct[i].stocks;
+    expirationdate == "expired" ? product_expired++ : null;
+    parseInt(stocks) == 0 ? product_outofstocks++ : null;
+    parseInt(stocks) <= 5 && parseInt(stocks) != 0 ? product_lowstocks++ : null;
+  }
+  product_expired != 0 ? toastr["warning"](`${product_expired} Products have been Expired`) : null;
+  product_outofstocks != 0 ? toastr["warning"](`${product_outofstocks} Products are Out Of Stocks`) : null;
+  product_lowstocks != 0 ? toastr["warning"](`${product_lowstocks} Products are Low In Stocks`) : null;
   clear_all("product_list");
 });
 

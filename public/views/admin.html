@@ -32,6 +32,23 @@
     <script src="https://kit.fontawesome.com/a3220d4144.js" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.14/jspdf.plugin.autotable.min.js"></script>
+    <script src="/toastnotification/toastr.min.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyBC2Gsc1PoLx_gz2xJYrLfl_JIDJZQH_yg",
+        authDomain: "pmps-257ba.firebaseapp.com",
+        projectId: "pmps-257ba",
+        storageBucket: "pmps-257ba.appspot.com",
+        messagingSenderId: "508613797048",
+        appId: "1:508613797048:web:94b732f1deadac1fd2c04d",
+        measurementId: "G-9818L4J8FV",
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      const firestore = firebase.firestore();
+      firestore.settings({ timestampsInSnapshots: true });
+    </script>
+    <script src="/javascript/admin/GetAllProduct.js"></script>
     <title>PMPS</title>
   </head>
   <body>
@@ -535,23 +552,6 @@
     <div class="div-function div-OnlineOrder">
       OnlineOrder
     </div>
-    <script>
-      var firebaseConfig = {
-        apiKey: "AIzaSyBC2Gsc1PoLx_gz2xJYrLfl_JIDJZQH_yg",
-        authDomain: "pmps-257ba.firebaseapp.com",
-        projectId: "pmps-257ba",
-        storageBucket: "pmps-257ba.appspot.com",
-        messagingSenderId: "508613797048",
-        appId: "1:508613797048:web:94b732f1deadac1fd2c04d",
-        measurementId: "G-9818L4J8FV",
-      };
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-      const firestore = firebase.firestore();
-      firestore.settings({ timestampsInSnapshots: true });
-    </script>
-    <script src="/toastnotification/toastr.min.js"></script>
-    <script src="/javascript/admin/GetAllProduct.js"></script>
     <script src="/javascript/admin/datetime.js"></script>
     <script src="/javascript/admin/sidemenu.js"></script>
     <script src="/javascript/admin/productlist.js"></script>

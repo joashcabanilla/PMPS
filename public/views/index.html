@@ -17,6 +17,22 @@
     <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyBC2Gsc1PoLx_gz2xJYrLfl_JIDJZQH_yg",
+        authDomain: "pmps-257ba.firebaseapp.com",
+        projectId: "pmps-257ba",
+        storageBucket: "pmps-257ba.appspot.com",
+        messagingSenderId: "508613797048",
+        appId: "1:508613797048:web:94b732f1deadac1fd2c04d",
+        measurementId: "G-9818L4J8FV",
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      const firestore = firebase.firestore();
+      firestore.settings({ timestampsInSnapshots: true });
+    </script>
+    <script src="/javascript/admin/GetAllProduct.js"></script>
     <title>PMPS</title>
   </head>
   <body>
@@ -72,22 +88,7 @@
       </div>
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script>
-      var firebaseConfig = {
-        apiKey: "AIzaSyBC2Gsc1PoLx_gz2xJYrLfl_JIDJZQH_yg",
-        authDomain: "pmps-257ba.firebaseapp.com",
-        projectId: "pmps-257ba",
-        storageBucket: "pmps-257ba.appspot.com",
-        messagingSenderId: "508613797048",
-        appId: "1:508613797048:web:94b732f1deadac1fd2c04d",
-        measurementId: "G-9818L4J8FV",
-      };
-      firebase.initializeApp(firebaseConfig);
-      firebase.analytics();
-      const firestore = firebase.firestore();
-      firestore.settings({ timestampsInSnapshots: true });
-    </script>
-    <script src="/javascript/admin/GetAllProduct.js"></script>
+
     <script src="/javascript/index/app.js"></script>
   </body>
 </html>
