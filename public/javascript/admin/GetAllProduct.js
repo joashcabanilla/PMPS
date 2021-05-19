@@ -1,5 +1,5 @@
 let ArrayGetAllProduct = [];
-
+let ArrayGetAllPullOutProduct = [];
 try{
     firestore.collection("Product").get().then(snapshot => {
         snapshot.docs.forEach(doc => {
@@ -115,10 +115,16 @@ try{
                 ArrayGetAllProduct[index].expirationdate = "expired";
             }
             for(let i = 0; i < ArrayGetAllProduct.length; i++){
-                let expirationdate = ArrayGetAllProduct[i].expirationdate;
-                let stocks = ArrayGetAllProduct[i].stocks;
                 let code = ArrayGetAllProduct[i].code;
-            
+                let productname = ArrayGetAllProduct[i].productname;
+                let category = ArrayGetAllProduct[i].category;
+                let brandname = ArrayGetAllProduct[i].brandname;
+                let formulation = ArrayGetAllProduct[i].formulation;
+                let price = ArrayGetAllProduct[i].price;
+                let stocks = ArrayGetAllProduct[i].stocks;
+                let unit = ArrayGetAllProduct[i].unit;
+                let expirationdate = ArrayGetAllProduct[i].expirationdate;
+                
                 //UPDATE EXPIRATION DATE
                 expirationdate == month_year ? UpdateArrayExpirationDate(i,code) : null;
             
@@ -126,13 +132,68 @@ try{
                 expirationdate == "expired" ? product_expired++ : null;
                 parseInt(stocks) == 0 ? product_outofstocks++ : null;
                 parseInt(stocks) <= 5 && parseInt(stocks) != 0 ? product_lowstocks++ : null;
+
+                //DISPLAY PRODUCTLIST IN PRODUCT STOCK STATUS
+                let tr = `<tr>
+                            <td>${code}</td>
+                            <td>${productname}</td>
+                            <td>${category}</td>
+                            <td>${brandname}</td>
+                            <td>${formulation}</td>
+                            <td style="text-align:center;">${parseFloat(price).toFixed(2)}</td>
+                            <td style="text-align:center;">${stocks} ${unit}</td>
+                        </tr>`;
+                parseInt(stocks) != 0 ? $(".PSS-table").append(tr) : null;
             }
             
             product_expired != 0 ? toastr["warning"](`${product_expired} Products have been Expired`) : null;
             product_outofstocks != 0 ? toastr["warning"](`${product_outofstocks} Products are Out Of Stocks`) : null;
-            product_lowstocks != 0 ? toastr["warning"](`${product_lowstocks} Products are Low In Stocks`) : null;    
+            product_lowstocks != 0 ? toastr["warning"](`${product_lowstocks} Products are Low In Stocks`) : null;
+
+            $(".PSS-expired").text(product_expired);
+            $(".PSS-low_stocks").text(product_lowstocks);
+            $(".PSS-out_stocks").text(product_outofstocks);    
         }
         catch{}
+    });
+
+
+    firestore.collection("PullOutProduct").get().then(snapshot => {
+        snapshot.docs.forEach(doc => {
+            let obj = {};
+            obj.code = doc.data().code;
+            obj.productname = doc.data().productname;
+            obj.category = doc.data().category;
+            obj.brandname = doc.data().brandname;
+            obj.formulation = doc.data().formulation;
+            obj.price = parseFloat(doc.data().price).toFixed(2);
+            obj.stocks = doc.data().stocks;
+            obj.unit = doc.data().unit;
+            obj.expirationdate = doc.data().expirationdate;
+            obj.image = doc.data().image;
+            obj.prescription = doc.data().prescription;
+            obj.status = doc.data().status;
+            ArrayGetAllPullOutProduct.push(obj);
+        });
+
+        for(let i = 0; i < ArrayGetAllPullOutProduct.length; i++){
+            let code = ArrayGetAllPullOutProduct[i].code;
+            let productname = ArrayGetAllPullOutProduct[i].productname;
+            let category = ArrayGetAllPullOutProduct[i].category;
+            let brandname = ArrayGetAllPullOutProduct[i].brandname;
+            let formulation = ArrayGetAllPullOutProduct[i].formulation;
+            let price = ArrayGetAllPullOutProduct[i].price;
+
+            let td = `<tr>
+                        <td>${code}</td>
+                        <td>${productname}</td>
+                        <td>${category}</td>
+                        <td>${brandname}</td>
+                        <td>${formulation}</td>
+                        <td>${price}</td>
+                    </tr>`
+            $(".PPH-table").append(td);
+        }
     });
 }
 catch{

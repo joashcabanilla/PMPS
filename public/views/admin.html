@@ -18,6 +18,7 @@
     <link rel="stylesheet" href="/style/stock_in_entry/stock_product.css" />
     <link rel="stylesheet" href="/style/stock_in_history/stock_in_history.css" />
     <link rel="stylesheet" href="/style/stock_in_history/product_stock_status.css" />
+    <link rel="stylesheet" href="/style/stock_in_history/PullOutProductHistory.css" />
     <link href="/toastnotification/toastr.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -526,7 +527,45 @@
     </div>
     
     <div class="div-function div-PullOutProductHistory">
-      PullOutProductHistory
+      <div class="controlbox PPH-controlbox">
+        <p class="categorytext PPH-categorytext"></p>
+        <div class="PPH-function">
+          <div class="PPH-div-search">
+            <div class="searchicon PPH-searchicon">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+              />
+            </svg>
+            </div>
+          <input type="text" placeholder="Search Product" class="PPH-search" />
+          </div>
+          <div class="PPH-div-button">
+            <button class="PPH-generatebtn">GENERATE REPORT</button>
+          </div>
+        </div>
+      </div>
+      <div class="PPH-div-table">
+        <div class="PPH-div-table_content">
+          <table class="PPH-table">
+            <tr>
+              <th>Code</th>
+              <th>Productname</th>
+              <th>Category</th>
+              <th>Brandname</th>
+              <th>Formulation</th>
+              <th>Price</th>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
 
     <div class="div-function div-DiscountVat">
@@ -560,6 +599,7 @@
     <script src="/javascript/stock_in_entry/stock.js"></script>
     <script src="/javascript/stock_in_entry/stock_history.js"></script>
     <script src="/javascript/stock_in_entry/product_stock_status.js"></script>
+    <script src="/javascript/stock_in_entry/PullOutProductHistory.js"></script>
   </body>
 </html>
   

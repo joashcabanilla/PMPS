@@ -74,15 +74,48 @@ $(".PSS-table").append(tr);
                 <td style="text-align:center;">${parseFloat(price).toFixed(2)}</td>
                 <td style="text-align:center;">${stocks} ${unit}</td>
             </tr>`;
-    parseInt(stocks) == 0 ? $("PSS-table").append(tr) : null;
+    parseInt(stocks) != 0 ? $(".PSS-table").append(tr) : null;
     expirationdate == "expired" ? expired++ : null;
     parseInt(stocks) == 0 ? out_stocks++ : null;
-    parseInt(stocks) <= 5 ? low_stocks++ : null;
+    parseInt(stocks) <= 5 && parseInt(stocks) != 0 ? low_stocks++ : null;
   }
 
   $(".PSS-expired").text(expired);
   $(".PSS-low_stocks").text(low_stocks);
   $(".PSS-out_stocks").text(out_stocks);
+}
+
+const clear_pull_out_product = () => {
+  $(".PPH-search").val("");
+  let th = `<tr>
+            <th>Code</th>
+            <th>Productname</th>
+            <th>Category</th>
+            <th>Brandname</th>
+            <th>Formulation</th>
+            <th>Price</th>
+          </tr>`;
+  $(".PPH-table").empty();
+  $(".PPH-table").append(th);
+
+  for(let i = 0; i < ArrayGetAllPullOutProduct.length; i++){
+    let code = ArrayGetAllPullOutProduct[i].code;
+    let productname = ArrayGetAllPullOutProduct[i].productname;
+    let category = ArrayGetAllPullOutProduct[i].category;
+    let brandname = ArrayGetAllPullOutProduct[i].brandname;
+    let formulation = ArrayGetAllPullOutProduct[i].formulation;
+    let price = ArrayGetAllPullOutProduct[i].price;
+
+    let td = `<tr>
+                <td>${code}</td>
+                <td>${productname}</td>
+                <td>${category}</td>
+                <td>${brandname}</td>
+                <td>${formulation}</td>
+                <td>${price}</td>
+            </tr>`
+    $(".PPH-table").append(td);
+  }
 }
 
 const clear_all = (link) => {
@@ -91,24 +124,35 @@ const clear_all = (link) => {
       clear_stock_in_entry();
       clear_stock_in_history();
       clear_product_stock_status();
+      clear_pull_out_product();
       break;
 
     case "stock_in_entry":
       clear_productlist();
       clear_stock_in_history();
       clear_product_stock_status();
+      clear_pull_out_product();
       break;
 
     case "stock_in_history":
       clear_productlist();
       clear_stock_in_entry();
       clear_product_stock_status();
+      clear_pull_out_product();
       break;
     
     case "product_stock_status":
       clear_productlist();
       clear_stock_in_entry();
       clear_stock_in_history();
+      clear_pull_out_product();
+      break;
+
+    case "pull_out_product":
+      clear_productlist();
+      clear_stock_in_entry();
+      clear_stock_in_history();
+      clear_product_stock_status();
       break;
   }
 };
@@ -302,7 +346,7 @@ const categorytext = [
   "Stock In Entry",
   "Stock In History",
   "Product Stock Status",
-  "Pull Out Product",
+  "Pull Out Product History",
   "Discount",
   "Vat",
   "Staff Account",
