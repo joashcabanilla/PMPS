@@ -5,58 +5,53 @@ const account = document.querySelector('.accountbtn');
 const loginclose = document.querySelector('.loginclose');
 const loginuser = document.querySelector('.loginuser');
 
-function renderCategory(doc){
-    let option = document.createElement('option');
-    option.textContent = doc.data().category;
-    option.value = doc.data().category;
-    category.appendChild(option);
+const renderProductArray = (Acode,Aproductname,Acategory,Abrandname,Aformulation,Aprice,Aimage) => {
+    let product_div = document.createElement('div');
+    let prod_img = document.createElement('img'); 
+    let prodname = document.createElement('p');
+    let brandname = document.createElement('p');
+    let formulation = document.createElement('p');
+    let price = document.createElement('p');
+    
+    prodname.textContent = Aproductname;
+    brandname.textContent = Abrandname;
+    formulation.textContent = Aformulation;
+    price.textContent = "P " + parseFloat(Aprice).toFixed(2);
+    prod_img.src = Aimage;
+    prod_img.width = "150";
+    prod_img.height = "150";
+    
+    product_div.setAttribute('id', Acode);
+    product_div.setAttribute('data-category', Acategory);
+    product_div.setAttribute('data-productname', Aproductname);
+    prod_img.setAttribute('class',"product-img");
+    product_div.setAttribute('class', "product-item");
+    prodname.setAttribute('class',"product-name");
+    formulation.setAttribute('class',"product-formulation");
+    price.setAttribute('class',"product-price");
+    brandname.setAttribute('class',"product-brandname");
+    
+    product_div.appendChild(prod_img);
+    product_div.appendChild(prodname);
+    product_div.appendChild(brandname);
+    product_div.appendChild(formulation);
+    product_div.appendChild(price);
+    product.append(product_div);
 }
 
-firestore.collection("Category").get().then((snapshot) => {
-    snapshot.docs.forEach(doc => {
-        renderCategory(doc);
-    })
-})
-
-function renderProduct(doc){
-let product_div = document.createElement('div');
-let prod_img = document.createElement('img'); 
-let prodname = document.createElement('p');
-let brandname = document.createElement('p');
-let formulation = document.createElement('p');
-let price = document.createElement('p');
-
-prodname.textContent = doc.data().productname;
-brandname.textContent = doc.data().brandname;
-formulation.textContent = doc.data().formulation;
-price.textContent = "P " + parseFloat(doc.data().price).toFixed(2);
-prod_img.src = doc.data().image;
-prod_img.width = "150";
-prod_img.height = "150";
-
-product_div.setAttribute('data-id', doc.data().code);
-product_div.setAttribute('data-category', doc.data().category);
-product_div.setAttribute('data-productname', doc.data().productname);
-prod_img.setAttribute('class',"product-img");
-product_div.setAttribute('class', "product-item");
-prodname.setAttribute('class',"product-name");
-formulation.setAttribute('class',"product-formulation");
-price.setAttribute('class',"product-price");
-brandname.setAttribute('class',"product-brandname");
-
-product_div.appendChild(prod_img);
-product_div.appendChild(prodname);
-product_div.appendChild(brandname);
-product_div.appendChild(formulation);
-product_div.appendChild(price);
-product.appendChild(product_div);
+const renderProductLoop = () => {
+    for(let i = 0; i < ArrayGetAllProduct.length;i++){
+        let code = ArrayGetAllProduct[i].code;
+        let productname = ArrayGetAllProduct[i].productname;
+        let category = ArrayGetAllProduct[i].category;
+        let brandname = ArrayGetAllProduct[i].brandname;
+        let formulation = ArrayGetAllProduct[i].formulation;
+        let price = ArrayGetAllProduct[i].price;
+        let image = ArrayGetAllProduct[i].image;
+        renderProductArray(code,productname,category,brandname,formulation,price,image);
+    }
 }
 
-// firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
-//     snapshot.docs.forEach(doc => {
-//         renderProduct(doc);
-//     })
-// })
 
 //EVENTLISTENER FOR CATEGORY----------------------------------------------------------------------------------
 category.addEventListener("change", () => {
@@ -66,19 +61,20 @@ category.addEventListener("change", () => {
     }
     let categoryText = category.options[category.selectedIndex].value;
     if(categoryText == "All"){
-        firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
-            snapshot.docs.forEach(doc => {
-                renderProduct(doc);
-            })
-        })
+        renderProductLoop();
     }
     else
     {
-        firestore.collection("Product").where('category','==',`${categoryText}`).get().then((snapshot) => {
-            snapshot.docs.forEach(doc => {
-                renderProduct(doc);
-            })
-        })
+        for(let i = 0; i < ArrayGetAllProduct.length;i++){
+            let code = ArrayGetAllProduct[i].code;
+            let productname = ArrayGetAllProduct[i].productname;
+            let category = ArrayGetAllProduct[i].category;
+            let brandname = ArrayGetAllProduct[i].brandname;
+            let formulation = ArrayGetAllProduct[i].formulation;
+            let price = ArrayGetAllProduct[i].price;
+            let image = ArrayGetAllProduct[i].image;
+            category == categoryText ? renderProductArray(code,productname,category,brandname,formulation,price,image) : null;
+        }
     }
 })
 
@@ -91,22 +87,33 @@ searchbox.addEventListener("keyup",(event) => {
     if(searchdata.length == 0)
     {
         $("#product").empty();
-        firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
-            snapshot.docs.forEach(doc => {
-                renderProduct(doc);
-            })
-        })
+        renderProductLoop();
     }
     else{
-        const capSearch = (str) => str[0].toUpperCase() + str.slice(1).toLowerCase();
-        let words = searchdata.split(' ').map(capSearch);
-        let fsearchdata = words.join(' ');
-        firestore.collection("Product").where('productname',">=",`${fsearchdata}`).orderBy("productname","asc").limit(1).get().then((snapshot) => {
-            snapshot.docs.forEach(doc => {
+        try{
+            const capSearch = (str) => str[0].toUpperCase() + str.slice(1).toLowerCase();
+            let words = searchdata.split(' ').map(capSearch);
+            let fsearchdata = words.join(' ');
+
+            const renderSearchProduct = (code,productname,category,brandname,formulation,price,image) => {
                 $("#product").empty();
-                renderProduct(doc);
-            })
-        })
+                renderProductArray(code,productname,category,brandname,formulation,price,image);
+            }
+
+            for(let i = 0; i < ArrayGetAllProduct.length;i++){
+                let code = ArrayGetAllProduct[i].code;
+                let productname = ArrayGetAllProduct[i].productname;
+                let category = ArrayGetAllProduct[i].category;
+                let brandname = ArrayGetAllProduct[i].brandname;
+                let formulation = ArrayGetAllProduct[i].formulation;
+                let price = ArrayGetAllProduct[i].price;
+                let image = ArrayGetAllProduct[i].image;
+                let existProduct = productname.search(fsearchdata);
+                existProduct != -1 ? renderSearchProduct(code,productname,category,brandname,formulation,price,image) : null;
+            }
+        }
+        catch{
+        }
     }
 })
 
@@ -116,11 +123,7 @@ searchbox.addEventListener("focus",() => {
     while(product.firstChild){
         product.removeChild(product.firstChild);
     }
-    firestore.collection("Product").orderBy('code',"asc").get().then((snapshot) => {
-        snapshot.docs.forEach(doc => {
-            renderProduct(doc);
-        })
-    })
+    renderProductLoop();
 })
 
 //EVENTLISTENER FOR ACCOUNT ONCLICK----------------------------------------------------------------------------------------------

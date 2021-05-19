@@ -9,7 +9,7 @@ $(".SIE-backbtn").click(() => {
 
 //RENDER SEARCH PRODUCT-----------------------------------------------------------------------------------------
 const product_info = $(".SIE-product");
-const render_searchproduct = (doc) => {
+const render_searchproduct = (Acode,Aproductname,Abrandname,Aformulation,Aprice,Aimage,Astocks) => {
   let product_div = document.createElement("div");
   let prod_img = document.createElement("img");
   let prodname = document.createElement("p");
@@ -18,18 +18,18 @@ const render_searchproduct = (doc) => {
   let price = document.createElement("p");
   let stocks = document.createElement("p");
 
-  prodname.textContent = doc.data().productname;
-  brandname.textContent = doc.data().brandname;
-  formulation.textContent = doc.data().formulation;
-  price.textContent = "P " + parseFloat(doc.data().price).toFixed(2);
-  prod_img.src = doc.data().image;
+  prodname.textContent = Aproductname;
+  brandname.textContent = Abrandname;
+  formulation.textContent = Aformulation;
+  price.textContent = "P " + parseFloat(Aprice).toFixed(2);
+  prod_img.src = Aimage;
   prod_img.width = "80";
   prod_img.height = "80";
-  stocks.textContent = `Available Stocks: ${doc.data().stocks}`;
+  stocks.textContent = `Available Stocks: ${Astocks}`;
 
   prod_img.setAttribute("class", "SIE-product-img");
   product_div.setAttribute("class", "SIE-product-item");
-  product_div.setAttribute("data-code", doc.data().code);
+  product_div.setAttribute("data-code", Acode);
   prodname.setAttribute("class", "SIE-product-name");
   formulation.setAttribute("class", "SIE-product-formulation");
   price.setAttribute("class", "SIE-product-price");
@@ -51,26 +51,28 @@ const cancelbtn = $(".SIE-cancelbtn");
 const total_stocks = $(".SIE-total_stock");
 const product_table = $(".SIE-product_table");
 const SIE_date_received = $(".SIE-date_received");
-let product_array = [];
 let productitem_array = [];
 
 //AUTOCOMPLETE EVENT SEARCH PRODUCT-----------------------------------------------------------------------------
-firestore
-  .collection("Product")
-  .get()
-  .then((snapshot) => {
-    snapshot.docs.forEach((doc) => {
-      product_array.push(doc.data().productname);
-      product_array.push(doc.data().code);
-      search.autocomplete({
-        source: product_array,
-        autoFocus: true,
-        classes: {
-          "ui-autocomplete": "highlight",
-        },
-      });
-    });
+search.focus(() => {
+  let product_array = [];
+  for(let i = 0; i < ArrayGetAllProduct.length; i++){
+    let productname = ArrayGetAllProduct[i].productname;
+    let code = ArrayGetAllProduct[i].code;
+    let existProductname = product_array.includes(productname);
+    let existCode = product_array.includes(code);
+
+    !existProductname ? product_array.push(productname) : null;
+    !existCode ? product_array.push(code) : null;
+  }
+  search.autocomplete({
+    source: product_array,
+    autoFocus: true,
+    classes: {
+      "ui-autocomplete": "highlight",
+    },
   });
+});
 
 //EVENTLISTENER FOR SEARCHBOX KEYUP----------------------------------------------------------------------------------------------------------
 const searchproduct = (searchdata) => {
@@ -81,29 +83,22 @@ const searchproduct = (searchdata) => {
     searchdata = words.join(" ");
   } catch {}
 
-  firestore
-    .collection("Product")
-    .where("productname", "==", `${searchdata}`)
-    .where("expirationdate", "!=", "expired")
-    .get()
-    .then((snapshot) => {
-      snapshot.docs.forEach((doc) => {
-        product_info.empty();
-        render_searchproduct(doc);
-      });
-    });
+  const SearchProductLoop = (Acode,Aproductname,Abrandname,Aformulation,Aprice,Aimage,Astocks) => {
+    product_info.empty();
+    render_searchproduct(Acode,Aproductname,Abrandname,Aformulation,Aprice,Aimage,Astocks);
+  }
+  for(let i = 0; i < ArrayGetAllProduct.length; i++){
+    let productname = ArrayGetAllProduct[i].productname;
+    let expirationdate = ArrayGetAllProduct[i].expirationdate;
+    let code = ArrayGetAllProduct[i].code;
+    let brandname = ArrayGetAllProduct[i].brandname;
+    let formulation = ArrayGetAllProduct[i].formulation;
+    let price = ArrayGetAllProduct[i].price;
+    let image = ArrayGetAllProduct[i].image;
+    let stocks = ArrayGetAllProduct[i].stocks;
 
-  firestore
-    .collection("Product")
-    .where("code", "==", `${searchdata}`)
-    .where("expirationdate", "!=", "expired")
-    .get()
-    .then((snapshot) => {
-      snapshot.docs.forEach((doc) => {
-        product_info.empty();
-        render_searchproduct(doc);
-      });
-    });
+    (productname == searchdata && expirationdate != "expired") || (code == searchdata && expirationdate != "expired")  ? SearchProductLoop(code,productname,brandname,formulation,price,image,stocks) : null;
+  }
 };
 search.keyup((e) => {
   let searchdata = e.target.value;
@@ -279,6 +274,11 @@ savebtn.click(() => {
       firestore.collection("Product").doc(code).update({
         stocks: new_stock,
       });
+
+      for(let a = 0; a < ArrayGetAllProduct.length; a++){
+        let Acode = ArrayGetAllProduct[a].code;
+        Acode == code ? ArrayGetAllProduct[a].stocks = new_stock : null;
+      }
 
       firestore.collection("Stockin").add({
         code: code,

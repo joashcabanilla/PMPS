@@ -64,6 +64,7 @@ try{
             product_div.appendChild(formulation);
             product_div.appendChild(price);
             $(".product-table").append(product_div);
+            $("#product").append(product_div);
         }
         
         function LoadrenderCategory(data_category){
