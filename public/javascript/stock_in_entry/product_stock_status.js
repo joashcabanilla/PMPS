@@ -233,10 +233,26 @@ pssRemovebtn.click(() => {
                     pssTable.append(pssThExpired);
                     firestore.collection("Product").doc(code).delete(); 
                     ArrayGetAllProduct.splice(i,1);
+                    let obj = {};
+                    obj.code = code;
+                    obj.productname = productname;
+                    obj.category = category;
+                    obj.brandname = brandname;
+                    obj.formulation = formulation;
+                    obj.price = parseFloat(price).toFixed(2);
+                    obj.stocks = stocks;
+                    obj.unit = unit;
+                    obj.expirationdate = expirationdate;
+                    obj.image = image;
+                    obj.prescription = prescription;
+                    obj.status = status;
+                    ArrayGetAllPullOutProduct.push(obj);
                 }
             }
             updateExpiredText();
             swal("PULL OUT EXPIRED PRODUCTS","All Expired Products successfully Pull Out","success");
+
+
     }
     });
 });
@@ -294,6 +310,20 @@ if(Tdcode != ""){
                         $(`.PSSproduct-${code}`).remove();
                         ArrayGetAllProduct.splice(i,1);
                         firestore.collection("Product").doc(code).delete();
+                        let obj = {};
+                        obj.code = code;
+                        obj.productname = productname;
+                        obj.category = category;
+                        obj.brandname = brandname;
+                        obj.formulation = formulation;
+                        obj.price = parseFloat(price).toFixed(2);
+                        obj.stocks = stocks;
+                        obj.unit = unit;
+                        obj.expirationdate = expirationdate;
+                        obj.image = image;
+                        obj.prescription = prescription;
+                        obj.status = status;
+                        ArrayGetAllPullOutProduct.push(obj);
                     }
                 }
                 updateExpiredText();

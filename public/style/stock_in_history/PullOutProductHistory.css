@@ -101,3 +101,152 @@
 .PPH-table tr td:nth-child(6) {
   text-align: center;
 }
+@media only screen and (min-device-width: 320px) and (max-width: 600px) {
+  .PPH-search {
+    width: 15rem;
+    font-size: 1rem;
+  }
+  .PPH-function {
+    flex-direction: column;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    justify-content: center;
+  }
+  .PPH-div-search {
+    margin-bottom: 0.5rem;
+  }
+  .PPH-categorytext {
+    text-align: center;
+    padding-left: 0;
+  }
+  .PPH-generatebtn {
+    font-size: 1rem;
+  }
+  .PPH-div-table {
+    height: 22rem;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .PPH-search {
+    width: 25rem;
+    font-size: 1rem;
+  }
+  .PPH-generatebtn {
+    font-size: 1rem;
+  }
+  .PPH-div-table {
+    height: 25rem;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+  .PPH-search {
+    width: 40rem;
+    font-size: 1rem;
+  }
+  .PPH-div-table {
+    height: 35rem;
+  }
+}
+@media only screen and (min-width: 1366px) {
+  .PPH-function {
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 2rem;
+    padding-right: 2rem;
+    flex-direction: row;
+    align-items: center;
+  }
+  .PPH-categorytext {
+    padding-left: 2rem;
+  }
+  .PPH-div-search {
+    display: flex;
+    flex-direction: row;
+  }
+  .PPH-search {
+    outline: none;
+    border: none;
+    font-family: "Lato", sans-serif;
+    font-weight: bold;
+    height: 2rem;
+    font-size: 1rem;
+    border-radius: 0rem 5rem 5rem 0rem;
+    background-color: #f8fbfc;
+    text-transform: capitalize;
+    width: 60rem;
+  }
+  .PPH-generatebtn {
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+    background: #b7dbed;
+    outline: none;
+    border-color: #b7dbed;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  .PPH-div-table {
+    display: flex;
+    width: 95%;
+    margin-top: 1rem;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    transition: 0.4s ease;
+    background: #d0e3ec;
+    height: 30rem;
+    padding: 1rem;
+  }
+  .PPH-div-table:hover {
+    box-shadow: 0 12px 24px 0 rgb(0 0 0 / 20%);
+  }
+  .PPH-div-table_content {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+  }
+  .PPH-div-table_content::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  .PPH-div-table_content::-webkit-scrollbar-track {
+    background: #298dbf23;
+  }
+  .PPH-div-table_content::-webkit-scrollbar-thumb {
+    background: #298dbfad;
+  }
+  .PPH-div-table_content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .PPH-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 3px solid #ffffff;
+    height: auto;
+  }
+  .PPH-table tr th {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    border: 2px solid #ffffff;
+    background-color: #78bee1;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.5rem;
+    top: 0;
+  }
+  .PPH-table tr td {
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    border: 2px solid #ffffff;
+    background-color: #bbeaff;
+    text-align: left;
+    padding: 0.5rem;
+  }
+  .PPH-table tr td:nth-child(6) {
+    text-align: center;
+  }
+}

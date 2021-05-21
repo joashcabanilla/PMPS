@@ -19,6 +19,7 @@
     <link rel="stylesheet" href="/style/stock_in_history/stock_in_history.css" />
     <link rel="stylesheet" href="/style/stock_in_history/product_stock_status.css" />
     <link rel="stylesheet" href="/style/stock_in_history/PullOutProductHistory.css" />
+    <link rel="stylesheet" href="/style/stock_in_history/vat.css" />
     <link href="/toastnotification/toastr.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -99,7 +100,7 @@
                 <li><a class="stock_in_history">Stock In History</a></li>
                 <li><a class="product_stock_status">Product Stock Status</a></li>
                 <li><a class="pull_out_product">Pull Out Product History</a></li>
-                <li><a class="discountvat">Discount and Vat</a></li>
+                <li><a class="discountvat">Vat</a></li>
               </ul>
             </li>
             <li>
@@ -569,7 +570,27 @@
     </div>
 
     <div class="div-function div-DiscountVat">
-      DiscountVat
+      <div class="controlbox Vat-controlbox">
+        <p class="categorytext Vat-categorytext"></p>
+        <div class="Vat-function">
+          <table class="Vat-table">
+            <tr>
+              <th>Vat Value</th>
+              <th>Button</th>
+            </tr>
+            <tr>
+              <td>
+                <p class="Vat-pvalue">0</p>
+                <input class="Vat-inputvalue" type="number" />
+              </td>
+              <td>
+                <button class="Vat-editbtn">EDIT</button>
+                <button class="Vat-savebtn">SAVE</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
 
     <div class="div-function div-StaffAccount">
@@ -600,6 +621,7 @@
     <script src="/javascript/stock_in_entry/stock_history.js"></script>
     <script src="/javascript/stock_in_entry/product_stock_status.js"></script>
     <script src="/javascript/stock_in_entry/PullOutProductHistory.js"></script>
+    <script src="/javascript/stock_in_entry/vat.js"></script>
   </body>
 </html>
   

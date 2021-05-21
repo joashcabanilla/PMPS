@@ -118,6 +118,16 @@ const clear_pull_out_product = () => {
   }
 }
 
+const clear_discountvat = () => {
+    firestore.collection("Vat").get().then(snapshot => {
+      snapshot.docs.forEach(doc => {
+        $(".Vat-pvalue").text(parseFloat(doc.data().vat).toFixed(2));
+      });
+  });
+  $(".Vat-inputvalue").css("display","none");
+  $(".Vat-savebtn").css("display","none");
+}
+
 const clear_all = (link) => {
   switch (link) {
     case "product_list":
@@ -153,6 +163,16 @@ const clear_all = (link) => {
       clear_stock_in_entry();
       clear_stock_in_history();
       clear_product_stock_status();
+      clear_pull_out_product();
+      break;
+
+    case "discountvat":
+      clear_productlist();
+      clear_stock_in_entry();
+      clear_stock_in_history();
+      clear_product_stock_status();
+      clear_pull_out_product();
+      clear_discountvat();
       break;
   }
 };
@@ -347,7 +367,7 @@ const categorytext = [
   "Stock In History",
   "Product Stock Status",
   "Pull Out Product History",
-  "Discount",
+  "Vat Percentage",
   "Vat",
   "Staff Account",
   "Admin Account",
