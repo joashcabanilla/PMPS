@@ -1,5 +1,8 @@
 let ArrayGetAllProduct = [];
 let ArrayGetAllPullOutProduct = [];
+let ArrayGetAllStaffAccount = [];
+let ArrayGetAllCustomerAccount = [];
+
 try{
     firestore.collection("Product").get().then(snapshot => {
         snapshot.docs.forEach(doc => {
@@ -193,6 +196,103 @@ try{
                         <td>${price}</td>
                     </tr>`
             $(".PPH-table").append(td);
+        }
+    });
+
+    firestore.collection("Account").get().then(snapshot => {
+        snapshot.docs.forEach(doc => {
+            let obj = {};
+            if(doc.data().type == "staff"){
+                obj.email = doc.data().email;
+                obj.firstname = doc.data().firstname;
+                obj.lastname = doc.data().lastname;
+                obj.password = doc.data().password;
+                obj.sex = doc.data().sex;
+                obj.status = doc.data().status;
+                obj.username = doc.data().username;
+                ArrayGetAllStaffAccount.push(obj);
+            }
+        });
+        
+        for(let i = 0; i < ArrayGetAllStaffAccount.length; i++){
+            let username = ArrayGetAllStaffAccount[i].username;
+            let email = ArrayGetAllStaffAccount[i].email;
+            let firstname = ArrayGetAllStaffAccount[i].firstname;
+            let lastname = ArrayGetAllStaffAccount[i].lastname;
+            let sex = ArrayGetAllStaffAccount[i].sex;
+            let status = ArrayGetAllStaffAccount[i].status;
+            let td = `<tr class="${username}">
+                        <td>${firstname}</td>
+                        <td>${lastname}</td>
+                        <td>${sex}</td>
+                        <td>${email}</td>
+                        <td style="text-align:center;">
+                            <div style="display:flex; justify-content: space-around; align-items: center;">
+                            <button style="width: 2.5rem; height: 2.5rem;padding: 5px;
+                            border-radius: 8px;
+                            box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+                            background: #b7dbed;
+                            outline: none;
+                            border-color: #b7dbed;
+                            color: green;" class="fas fa-edit fa-lg" id="edit-${username}"></button>
+                            
+                            <button style="color: maroon; width: 2.5rem; height: 2.5rem;padding: 5px;
+                            border-radius: 8px;
+                            box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+                            background: #b7dbed;
+                            outline: none;
+                            border-color: #b7dbed;" class="fas fa-trash fa-lg" id="deact-${username}"></button>
+                            </div>
+                        </td>
+                    </tr>`;
+            status == "active" ? $(".SA-table").append(td) : null;
+        }
+    });
+
+    firestore.collection("CustomerAccount").get().then(snapshot => {
+        snapshot.docs.forEach(doc => {
+            let obj = {};
+            obj.email = doc.data().email;
+            obj.firstname = doc.data().firstname;
+            obj.lastname = doc.data().lastname;
+            obj.contactnumber = doc.data().contactnumber;
+            obj.password = doc.data().password;
+            obj.status = doc.data().status;
+            ArrayGetAllCustomerAccount.push(obj);
+        });
+
+        for(let i = 0; i < ArrayGetAllCustomerAccount.length; i++){
+            let email = ArrayGetAllCustomerAccount[i].email;
+            let firstname = ArrayGetAllCustomerAccount[i].firstname;
+            let lastname = ArrayGetAllCustomerAccount[i].lastname;
+            let contactnumber = ArrayGetAllCustomerAccount[i].contactnumber;
+            let status = ArrayGetAllCustomerAccount[i].status;
+            let password = ArrayGetAllCustomerAccount[i].password;
+            let td = `<tr class="${email}">
+                        <td>${firstname}</td>
+                        <td>${lastname}</td>
+                        <td>0${contactnumber}</td>
+                        <td>${email}</td>
+                        <td style="text-align:center;">
+                            <div style="display:flex; justify-content: space-around; align-items: center;">
+                            <button style="width: 2.5rem; height: 2.5rem;padding: 5px;
+                            border-radius: 8px;
+                            box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+                            background: #b7dbed;
+                            outline: none;
+                            border-color: #b7dbed;
+                            color: green;" class="fas fa-edit fa-lg" id="edit-${email}"></button>
+                            
+                            <button style="color: maroon; width: 2.5rem; height: 2.5rem;padding: 5px;
+                            border-radius: 8px;
+                            box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+                            background: #b7dbed;
+                            outline: none;
+                            border-color: #b7dbed;" class="fas fa-trash fa-lg" id="deact-${email}"></button>
+                            </div>
+                        </td>
+                    </tr>`;
+            status == "active" ? $(".CA-table").append(td) : null;
         }
     });
 }

@@ -126,6 +126,108 @@ const clear_discountvat = () => {
   });
   $(".Vat-inputvalue").css("display","none");
   $(".Vat-savebtn").css("display","none");
+  $(".Vat-cancelbtn").css("display","none");
+}
+
+const clear_staff_account = () => {
+$(".SA-search").val("");
+$(".SA-AccountStatus").val("ACTIVE");
+$(".SA-table").empty();
+let th = ` <tr>
+<th>First Name</th>
+<th>Last Name</th>
+<th>Sex</th>
+<th>Email</th>
+<th>Button</th>
+</tr>`;
+$(".SA-table").append(th);
+for(let i = 0; i < ArrayGetAllStaffAccount.length; i++){
+  let username = ArrayGetAllStaffAccount[i].username;
+  let email = ArrayGetAllStaffAccount[i].email;
+  let firstname = ArrayGetAllStaffAccount[i].firstname;
+  let lastname = ArrayGetAllStaffAccount[i].lastname;
+  let sex = ArrayGetAllStaffAccount[i].sex;
+  let status = ArrayGetAllStaffAccount[i].status;
+
+  let td = `<tr class="${username}">
+              <td>${firstname}</td>
+              <td>${lastname}</td>
+              <td>${sex}</td>
+              <td>${email}</td>
+              <td style="text-align:center;">
+                  <div style="display:flex; justify-content: space-around; align-items: center;">
+                  <button style="width: 2.5rem; height: 2.5rem;padding: 5px;
+                  border-radius: 8px;
+                  box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+                  background: #b7dbed;
+                  outline: none;
+                  border-color: #b7dbed;
+                  color: green;" class="fas fa-edit fa-lg" id="edit-${username}"></button>
+                  
+                  <button style="color: maroon; width: 2.5rem; height: 2.5rem;padding: 5px;
+                  border-radius: 8px;
+                  box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+                  background: #b7dbed;
+                  outline: none;
+                  border-color: #b7dbed;" class="fas fa-trash fa-lg" id="deact-${username}"></button>
+                  </div>
+              </td>
+          </tr>`;
+          status == "active" ? $(".SA-table").append(td) : null;
+}
+}
+
+const clear_admin_account = () => {
+firestore.collection("Account").doc("sva1ootNyElZeI6XTHcS").get().then(doc => {
+    $(".AA-username").val(doc.data().username);
+  });
+}
+
+const clear_customer_account = () => {
+  $(".CA-search").val("");
+  $(".CA-AccountStatus").val("ACTIVE");
+  $(".CA-table").empty();
+  let th = ` <tr>
+  <th>First Name</th>
+  <th>Last Name</th>
+  <th>Contact No</th>
+  <th>Email</th>
+  <th>Button</th>
+  </tr>`;
+  $(".CA-table").append(th);
+  for(let i = 0; i < ArrayGetAllCustomerAccount.length; i++){
+    let email = ArrayGetAllCustomerAccount[i].email;
+    let firstname = ArrayGetAllCustomerAccount[i].firstname;
+    let lastname = ArrayGetAllCustomerAccount[i].lastname;
+    let contactnumber = ArrayGetAllCustomerAccount[i].contactnumber;
+    let status = ArrayGetAllCustomerAccount[i].status;
+    let password = ArrayGetAllCustomerAccount[i].password;
+    let td = `<tr class="${email}">
+                <td>${firstname}</td>
+                <td>${lastname}</td>
+                <td>0${contactnumber}</td>
+                <td>${email}</td>
+                <td style="text-align:center;">
+                    <div style="display:flex; justify-content: space-around; align-items: center;">
+                    <button style="width: 2.5rem; height: 2.5rem;padding: 5px;
+                    border-radius: 8px;
+                    box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+                    background: #b7dbed;
+                    outline: none;
+                    border-color: #b7dbed;
+                    color: green;" class="fas fa-edit fa-lg" id="edit-${email}"></button>
+                    
+                    <button style="color: maroon; width: 2.5rem; height: 2.5rem;padding: 5px;
+                    border-radius: 8px;
+                    box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+                    background: #b7dbed;
+                    outline: none;
+                    border-color: #b7dbed;" class="fas fa-trash fa-lg" id="deact-${email}"></button>
+                    </div>
+                </td>
+            </tr>`;
+    status == "active" ? $(".CA-table").append(td) : null;
+}
 }
 
 const clear_all = (link) => {
@@ -135,6 +237,9 @@ const clear_all = (link) => {
       clear_stock_in_history();
       clear_product_stock_status();
       clear_pull_out_product();
+      clear_staff_account();
+      clear_admin_account();
+      clear_customer_account();
       break;
 
     case "stock_in_entry":
@@ -142,6 +247,9 @@ const clear_all = (link) => {
       clear_stock_in_history();
       clear_product_stock_status();
       clear_pull_out_product();
+      clear_staff_account();
+      clear_admin_account();
+      clear_customer_account();
       break;
 
     case "stock_in_history":
@@ -149,6 +257,9 @@ const clear_all = (link) => {
       clear_stock_in_entry();
       clear_product_stock_status();
       clear_pull_out_product();
+      clear_staff_account();
+      clear_admin_account();
+      clear_customer_account();
       break;
     
     case "product_stock_status":
@@ -156,6 +267,9 @@ const clear_all = (link) => {
       clear_stock_in_entry();
       clear_stock_in_history();
       clear_pull_out_product();
+      clear_staff_account();
+      clear_admin_account();
+      clear_customer_account();
       break;
 
     case "pull_out_product":
@@ -164,6 +278,9 @@ const clear_all = (link) => {
       clear_stock_in_history();
       clear_product_stock_status();
       clear_pull_out_product();
+      clear_staff_account();
+      clear_admin_account();
+      clear_customer_account();
       break;
 
     case "discountvat":
@@ -173,7 +290,45 @@ const clear_all = (link) => {
       clear_product_stock_status();
       clear_pull_out_product();
       clear_discountvat();
+      clear_staff_account();
+      clear_admin_account();
+      clear_customer_account();
       break;
+
+    case "staff_account":
+      clear_productlist();
+      clear_stock_in_entry();
+      clear_stock_in_history();
+      clear_product_stock_status();
+      clear_pull_out_product();
+      clear_discountvat();
+      clear_admin_account();
+      clear_customer_account();
+      break;
+    
+    case "admin_account":
+      clear_productlist();
+      clear_stock_in_entry();
+      clear_stock_in_history();
+      clear_product_stock_status();
+      clear_pull_out_product();
+      clear_discountvat();
+      clear_staff_account();
+      clear_admin_account();
+      clear_customer_account();
+      break;
+    
+    case "customer_account":
+      clear_productlist();
+      clear_stock_in_entry();
+      clear_stock_in_history();
+      clear_product_stock_status();
+      clear_pull_out_product();
+      clear_discountvat();
+      clear_staff_account();
+      clear_admin_account();
+      clear_customer_account();
+    break;
   }
 };
 
@@ -190,6 +345,7 @@ const deactivelink = () => {
   $(".div-SalesDashboard").css("display", "none");
   $(".div-ProductSold").css("display", "none");
   $(".div-OnlineOrder").css("display", "none");
+  $(".div-CustomerAccount").css("display", "none");
 };
 
 $(window).on("load", () => {
@@ -260,6 +416,12 @@ $(".admin_account").click(() => {
   clear_all("admin_account");
 });
 
+$(".customer_account").click(() => {
+  deactivelink();
+  $(".div-CustomerAccount").css("display", "flex");
+  clear_all("customer_account");
+});
+
 $(".sales_dashboard").click(() => {
   deactivelink();
   $(".div-SalesDashboard").css("display", "flex");
@@ -294,6 +456,8 @@ const checkmenu = () => {
     $(".controlbox").removeAttr("style");
     $(".SIH-table tr th").removeAttr("style");
     $(".PSS-table tr th").removeAttr("style");
+    $(".PPH-table tr th").removeAttr("style");
+    $(".SA-table tr th").removeAttr("style");
   } else {
     const body = document.body;
     body.style.overflow = "auto";
@@ -301,12 +465,15 @@ const checkmenu = () => {
     $(".controlbox").css({ position: "sticky" });
     $(".SIH-table tr th").css({ position: "sticky" });
     $(".PSS-table tr th").css({ position: "sticky" });
+    $(".PPH-table tr th").css({ position: "sticky" });
+    $(".SA-table tr th").css({ position: "sticky" });
   }
 };
 $(".sidemenu").click(() => {
   $(".Productlist-div-print").css("display", "none");
   $(".product-info").css("display", "none");
   $(".div-addproduct").css("display", "none");
+  $(".SA-div-CreateAccount").css("display", "none");
   $(".div-sidemenu").toggleClass("show");
   checkmenu();
 });
@@ -327,6 +494,7 @@ const removeclass_active = () => {
   $(".discountvat").removeClass("activelink");
   $(".staff_account").removeClass("activelink");
   $(".admin_account").removeClass("activelink");
+  $(".customer_account").removeClass("activelink");
   $(".sales_dashboard").removeClass("activelink");
   $(".product_sold").removeClass("activelink");
   $(".online_order").removeClass("activelink");
@@ -358,6 +526,7 @@ const classname = [
   "discountvat",
   "staff_account",
   "admin_account",
+  "customer_account",
   "sales_dashboard",
   "product_sold",
 ];
@@ -368,9 +537,9 @@ const categorytext = [
   "Product Stock Status",
   "Pull Out Product History",
   "Vat Percentage",
-  "Vat",
   "Staff Account",
   "Admin Account",
+  "Customer Account",
   "Sales Dashboard",
   "Product Sold",
 ];
@@ -389,9 +558,9 @@ for (let i = 0; i < classname.length; i++) {
       classname[i] == classname[5]
     ) {
       $(".category-active").text("PRODUCT INVENTORY");
-    } else if (classname[i] == classname[6] || classname[i] == classname[7]) {
+    } else if (classname[i] == classname[6] || classname[i] == classname[7] || classname[i] == classname[8]) {
       $(".category-active").text("MANAGE ACCOUNT");
-    } else if (classname[i] == classname[8] || classname[i] == classname[9]) {
+    } else if (classname[i] == classname[9] || classname[i] == classname[10]) {
       $(".category-active").text("SALES");
     }
   });

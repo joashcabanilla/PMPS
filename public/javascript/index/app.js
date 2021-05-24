@@ -199,17 +199,22 @@ account.addEventListener("click", () => {
         else{
             let accountref = firestore.collection("Account").doc(`${logusername}`);
             accountref.get().then(doc => {
-                if(doc.data().password == CryptoJS.SHA3(logpassword).toString())
-                {
-                    $(".error").text("");
-                    $(location).attr('href', '/staff');
-                    const data = {
-                        login: "staff"
-                    };
-                    $.post('/api/stafflogin',data);
+                if(doc.data().status != "active"){
+                    $(".error").text("Your Account Is Deactivated");
                 }
                 else{
-                    $(".error").text("Incorrect Password");
+                    if(doc.data().password == CryptoJS.SHA3(logpassword).toString())
+                    {
+                        $(".error").text("");
+                        $(location).attr('href', '/staff');
+                        const data = {
+                            login: "staff"
+                        };
+                        $.post('/api/stafflogin',data);
+                    }
+                    else{
+                        $(".error").text("Incorrect Password");
+                    }
                 }
             }).catch(err => {
                 let adminref = firestore.collection("Account").doc("sva1ootNyElZeI6XTHcS");
@@ -299,7 +304,7 @@ account.addEventListener("click", () => {
                 let clientID = admin.clientID;
                 let clientSecret = admin.clientSecret;
                 let refreshToken = admin.refreshToken;
-                if(inputemail === email){
+                if(inputemail === email && doc.data().status == "active"){
                     objemail.type = type;
                     objemail.docid = docid;
                     objemail.email = email;
@@ -324,8 +329,14 @@ account.addEventListener("click", () => {
                         inputtagemail.value = "";
                     }
                     else{
-                        forgoterror.textContent = 'Email is not registered';
-                        inputtagemail.value = "";
+                        if(doc.data().status != "active"){
+                            forgoterror.textContent = 'Your Account in this Email is Deactivated';
+                            inputtagemail.value = "";
+                        }
+                        else{
+                            forgoterror.textContent = 'Email is not registered';
+                            inputtagemail.value = "";
+                        }
                     }
                 }
             }
@@ -526,7 +537,7 @@ account.addEventListener("click", () => {
                                 }
                                 else{
                                     updateaccounterror.textContent = "";
-                                    if(inputusername.length < 6 || inputpassword.length < 6)
+                                    if(inputusername.length < 4 || inputpassword.length < 4)
                                     {                   
                                         updateaccounterror.textContent = "Username and Password must contain";
                                         updateaccounterror1.textContent = "atleast 6 characters";
@@ -544,14 +555,19 @@ account.addEventListener("click", () => {
                                                 });
                                             }
                                             else{
-                                                firestore.collection("Account").doc(docid).delete();
-                                                firestore.collection("Account").doc(inputusername).set({
-                                                    email: email,
-                                                    forgotcode: 0,
-                                                    password: CryptoJS.SHA3(inputpassword).toString(),
-                                                    type: type,
-                                                    username: inputusername,
-                                                    verifycode: 0
+                                                firestore.collection("Account").doc(docid).get().then(doc => {
+                                                    firestore.collection("Account").doc(inputusername).set({
+                                                        email: email,
+                                                        firstname: doc.data().firstname,
+                                                        forgotcode: 0,
+                                                        lastname: doc.data().lastname,
+                                                        password: CryptoJS.SHA3(inputpassword).toString(),
+                                                        sex: doc.data().sex,
+                                                        status: doc.data().status,
+                                                        type: type,
+                                                        username: inputusername,
+                                                    });
+                                                    firestore.collection("Account").doc(docid).delete();
                                                 });
                                             }
                                             

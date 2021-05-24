@@ -20,6 +20,9 @@
     <link rel="stylesheet" href="/style/stock_in_history/product_stock_status.css" />
     <link rel="stylesheet" href="/style/stock_in_history/PullOutProductHistory.css" />
     <link rel="stylesheet" href="/style/stock_in_history/vat.css" />
+    <link rel="stylesheet" href="/style/stock_in_entry/staff.css" />
+    <link rel="stylesheet" href="/style/stock_in_entry/adminAccount.css" />
+    <link rel="stylesheet" href="/style/sales/customerAccount.css" />
     <link href="/toastnotification/toastr.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -110,6 +113,7 @@
               <ul class="show-account">
                 <li><a class="staff_account">Staff Account</a></li>
                 <li><a class="admin_account">Admin Account</a></li>
+                <li><a class="customer_account">Customer Account</a></li>
               </ul>
             </li>
             <li>
@@ -121,9 +125,9 @@
                 <li><a class="product_sold">Product Sold</a></li>
               </ul>
             </li>
-            <li>
+            <!-- <li>
               <a class="online_order">Online Order</a>
-            </li>
+            </li> -->
           </ul>
         </nav>
       </div>
@@ -586,6 +590,7 @@
               <td>
                 <button class="Vat-editbtn">EDIT</button>
                 <button class="Vat-savebtn">SAVE</button>
+                <button class="Vat-cancelbtn">CANCEL</button>
               </td>
             </tr>
           </table>
@@ -594,11 +599,221 @@
     </div>
 
     <div class="div-function div-StaffAccount">
-      StaffAccount
+      <div class="controlbox SA-controlbox">
+        <p class="categorytext SA-categorytext"></p>
+        <div class="SA-functions">
+          <div class="SA-div-search">
+            <div class="searchicon SA-searchicon">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+              />
+            </svg>
+            </div>
+          <input type="text" placeholder="Search Account" class="SA-search" />
+          </div>
+          <div class="SA-div-SelectActive">
+            <p class="SA-pStatus">Account Status:</p>
+            <select class="SA-AccountStatus">
+              <option value="ACTIVE">ACTIVE</option>
+              <option value="DEACTIVATED">DEACTIVATED</option>
+            </select>
+          </div>
+          <div class="SA-div-Button">
+            <button class="SA-createbtn">CREATE NEW ACCOUNT</button>
+          </div>
+        </div>
+      </div>
+      <div class="SA-div-table">
+        <div class="SA-div-table_content">
+          <table class="SA-table">
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Sex</th>
+              <th>Email</th>
+              <th>Button</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="SA-div-CreateAccount">
+        <div class="SA-div-AccountBox">
+          <div class="SA-div-AccountTitle"> 
+            <p class="SA-ptitle">CREATE NEW STAFF ACCOUNT</p>
+            <button class="SA-closebtn">
+              <img src="/image/close.png" width="30rem" height="30rem"/>
+            </button>
+          </div>
+          <div class="SA-accountFunction">
+            <form class="SA-createForm">
+            <div class="SA-div-firstname">
+              <p class="SA-pfirstname">FIRST NAME</p>
+              <input type="text" class="SA-firstname" placeholder="FIRST NAME" style="text-transform: capitalize;" required />
+            </div>
+            <div class="SA-div-lastname">
+              <p class="SA-plastname">LAST NAME</p>
+              <input type="text" class="SA-lastname" placeholder="LAST NAME" style="text-transform: capitalize;" required />
+            </div>
+            <div class="SA-div-sex">
+              <p class="SA-psex">SEX</p>
+              <select class="SA-sex">
+                <option value="MALE">MALE</option>
+                <option value="FEMALE">FEMALE</option>
+              </select>
+            </div>
+            <div class="SA-div-email">
+              <p class="SA-pemail">EMAIL</p>
+              <input type="email" class="SA-email" placeholder="EMAIL" oninvalid="this.setCustomValidity('Please Enter valid email')"
+              oninput="setCustomValidity('')" required />
+            </div>
+            <div class="SA-div-username">
+              <p class="SA-pusername">USERNAME</p>
+              <input type="text" class="SA-username" placeholder="USERNAME" required minlength="4" oninvalid="this.setCustomValidity('Please Enter Atleast 4 Characters')"
+              oninput="setCustomValidity('')" />
+            </div>
+            <div class="SA-div-password">
+              <p class="SA-ppassword">PASSWORD</p>
+              <input type="password" class="SA-password" placeholder="PASSWORD" required minlength="4" oninvalid="this.setCustomValidity('Please Enter Atleast 4 Characters')"
+              oninput="setCustomValidity('')" />
+            </div>
+            <div class="SA-div-confirmpassword">
+              <p class="SA-pconfirmpassword">CONFIRM PASSWORD</p>
+              <input type="password" class="SA-confirmpassword" placeholder="CONFIRM PASSWORD" required minlength="4" oninvalid="this.setCustomValidity('Please Enter Atleast 4 Characters')"
+              oninput="setCustomValidity('')" />
+            </div>
+            <div class="SA-AccountButtons">
+              <button type="submit" class="SA-savebtn">SAVE</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="div-function div-AdminAccount">
-      AdminAccount
+      <div class="controlbox AA-controlbox">
+        <p class="categorytext AA-categorytext"></p>
+        <div class="AA-functions">
+          <form class="AA-updateAccount">
+            <div class="AA-div-username">
+              <p class="AA-pusername">USERNAME</p>
+              <input type="text" class="AA-username" placeholder="USERNAME" required minlength="4" oninvalid="this.setCustomValidity('Please Enter Atleast 4 Characters')"
+              oninput="setCustomValidity('')" />
+            </div>
+            <div class="AA-div-password">
+              <p class="AA-ppassword">PASSWORD</p>
+              <input type="password" class="AA-password" placeholder="PASSWORD" required minlength="4" oninvalid="this.setCustomValidity('Please Enter Atleast 4 Characters')"
+              oninput="setCustomValidity('')" />
+            </div>
+            <div class="AA-div-confirmpassword">
+              <p class="AA-pconfirmpassword">CONFIRM PASSWORD</p>
+              <input type="password" class="AA-confirmpassword" placeholder="CONFIRM PASSWORD" required minlength="4" oninvalid="this.setCustomValidity('Please Enter Atleast 4 Characters')"
+              oninput="setCustomValidity('')" />
+            </div>
+            <div class="AA-AccountButtons">
+              <button type="submit" class="AA-savebtn">UPDATE</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <div class="div-function div-CustomerAccount">
+      <div class="controlbox CA-controlbox">
+        <p class="categorytext CA-categorytext"></p>
+        <div class="CA-functions">
+          <div class="CA-div-search">
+            <div class="searchicon CA-searchicon">
+              <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              fill="currentColor"
+              class="bi bi-search"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+              />
+            </svg>
+            </div>
+          <input type="text" placeholder="Search Account" class="CA-search" />
+          </div>
+          <div class="CA-div-SelectActive">
+            <p class="CA-pStatus">Account Status:</p>
+            <select class="CA-AccountStatus">
+              <option value="ACTIVE">ACTIVE</option>
+              <option value="DEACTIVATED">DEACTIVATED</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="CA-div-table">
+        <div class="CA-div-table_content">
+          <table class="CA-table">
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Contact No</th>
+              <th>Email</th>
+              <th>Button</th>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="CA-div-CreateAccount">
+        <div class="CA-div-AccountBox">
+          <div class="CA-div-AccountTitle"> 
+            <p class="CA-ptitle">EDIT CUSTOMER ACCOUNT</p>
+            <button class="CA-closebtn">
+              <img src="/image/close.png" width="30rem" height="30rem"/>
+            </button>
+          </div>
+          <div class="CA-accountFunction">
+            <form class="CA-createForm">
+            <div class="CA-div-firstname">
+              <p class="CA-pfirstname">FIRST NAME</p>
+              <input type="text" class="CA-firstname" placeholder="FIRST NAME" style="text-transform: capitalize;" required />
+            </div>
+            <div class="CA-div-lastname">
+              <p class="CA-plastname">LAST NAME</p>
+              <input type="text" class="CA-lastname" placeholder="LAST NAME" style="text-transform: capitalize;" required />
+            </div>
+            <div class="CA-div-ContactNo">
+              <p class="CA-pContactNo">Contact No</p>
+              <input type="number" class="CA-ContactNo" placeholder="CONTACT NUMBER" minlength="11" oninvalid="this.setCustomValidity('Please Enter 11 digit Contact No')"
+              oninput="setCustomValidity('')" required />
+            </div>
+            <div class="CA-div-email">
+              <p class="CA-pemail">EMAIL</p>
+              <input type="email" class="CA-email" placeholder="EMAIL" oninvalid="this.setCustomValidity('Please Enter valid email')"
+              oninput="setCustomValidity('')" required />
+            </div>
+            <div class="CA-div-password">
+              <p class="CA-ppassword">PASSWORD</p>
+              <input type="password" class="CA-password" placeholder="PASSWORD" required minlength="4" oninvalid="this.setCustomValidity('Please Enter Atleast 4 Characters')"
+              oninput="setCustomValidity('')" />
+            </div>
+            <div class="CA-div-confirmpassword">
+              <p class="CA-pconfirmpassword">CONFIRM PASSWORD</p>
+              <input type="password" class="CA-confirmpassword" placeholder="CONFIRM PASSWORD" required minlength="4" oninvalid="this.setCustomValidity('Please Enter Atleast 4 Characters')"
+              oninput="setCustomValidity('')" />
+            </div>
+            <div class="CA-AccountButtons">
+              <button type="submit" class="CA-savebtn">SAVE</button>
+            </div>
+          </form>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="div-function div-SalesDashboard">
@@ -608,10 +823,7 @@
     <div class="div-function div-ProductSold">
       ProductSold
     </div>
-
-    <div class="div-function div-OnlineOrder">
-      OnlineOrder
-    </div>
+    
     <script src="/javascript/admin/datetime.js"></script>
     <script src="/javascript/admin/sidemenu.js"></script>
     <script src="/javascript/admin/productlist.js"></script>
@@ -622,6 +834,9 @@
     <script src="/javascript/stock_in_entry/product_stock_status.js"></script>
     <script src="/javascript/stock_in_entry/PullOutProductHistory.js"></script>
     <script src="/javascript/stock_in_entry/vat.js"></script>
+    <script src="/javascript/stock_in_entry/staff.js"></script>
+    <script src="/javascript/stock_in_entry/adminAccount.js"></script>
+    <script src="/javascript/sales/customerAccount.js"></script>
   </body>
 </html>
   
