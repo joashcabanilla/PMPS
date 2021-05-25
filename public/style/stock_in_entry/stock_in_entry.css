@@ -240,7 +240,7 @@
   width: 2rem;
   height: 2rem;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (min-device-width: 320px) and (max-width: 600px) {
   .SIE-enterproduct {
     width: 100%;
     margin-right: 0;
@@ -314,7 +314,7 @@
     width: 8rem;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   .SIE-enterproduct {
     width: 100%;
     margin-right: 0;
@@ -388,7 +388,7 @@
     width: 8rem;
   }
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
   .SIE-enterproduct {
     width: 30rem;
   }

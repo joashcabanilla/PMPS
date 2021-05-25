@@ -71,7 +71,7 @@
   margin-left: 10px;
   margin-right: 10px;
 }
-@media only screen and (max-width: 600px) {
+@media only screen and (min-device-width: 320px) and (max-width: 600px) {
   .SIE-product-img {
     width: 60px;
     height: 60px;
@@ -88,7 +88,7 @@
     font-size: 0.8rem;
   }
 }
-@media only screen and (max-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   .SIE-product-img {
     width: 60px;
     height: 60px;
@@ -105,7 +105,7 @@
     font-size: 0.8rem;
   }
 }
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
   .SIE-product-img {
     width: 60px;
     height: 60px;
