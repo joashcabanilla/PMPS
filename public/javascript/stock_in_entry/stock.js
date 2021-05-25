@@ -87,18 +87,32 @@ const searchproduct = (searchdata) => {
     product_info.empty();
     render_searchproduct(Acode,Aproductname,Abrandname,Aformulation,Aprice,Aimage,Astocks);
   }
-  for(let i = 0; i < ArrayGetAllProduct.length; i++){
-    let productname = ArrayGetAllProduct[i].productname;
-    let expirationdate = ArrayGetAllProduct[i].expirationdate;
-    let code = ArrayGetAllProduct[i].code;
-    let brandname = ArrayGetAllProduct[i].brandname;
-    let formulation = ArrayGetAllProduct[i].formulation;
-    let price = ArrayGetAllProduct[i].price;
-    let image = ArrayGetAllProduct[i].image;
-    let stocks = ArrayGetAllProduct[i].stocks;
-
+  firestore.collection("Product").get().then(snapshot => {
+    snapshot.docs.forEach(doc => {
+      let productname = doc.data().productname;
+    let expirationdate = doc.data().expirationdate;
+    let code = doc.data().code;
+    let brandname = doc.data().brandname;
+    let formulation = doc.data().formulation;
+    let price = doc.data().price;
+    let image = doc.data().image;
+    let stocks = doc.data().stocks;
+    
     (productname == searchdata && expirationdate != "expired") || (code == searchdata && expirationdate != "expired")  ? SearchProductLoop(code,productname,brandname,formulation,price,image,stocks) : null;
-  }
+    });
+  });
+  // for(let i = 0; i < ArrayGetAllProduct.length; i++){
+  //   let productname = ArrayGetAllProduct[i].productname;
+  //   let expirationdate = ArrayGetAllProduct[i].expirationdate;
+  //   let code = ArrayGetAllProduct[i].code;
+  //   let brandname = ArrayGetAllProduct[i].brandname;
+  //   let formulation = ArrayGetAllProduct[i].formulation;
+  //   let price = ArrayGetAllProduct[i].price;
+  //   let image = ArrayGetAllProduct[i].image;
+  //   let stocks = ArrayGetAllProduct[i].stocks;
+
+  //   (productname == searchdata && expirationdate != "expired") || (code == searchdata && expirationdate != "expired")  ? SearchProductLoop(code,productname,brandname,formulation,price,image,stocks) : null;
+  // }
 };
 search.keyup((e) => {
   let searchdata = e.target.value;
