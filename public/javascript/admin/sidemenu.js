@@ -230,6 +230,36 @@ const clear_customer_account = () => {
 }
 }
 
+const clear_sales = () => {
+  //Sales Dashboard
+  $(".SD-totaltransactionNo").text("0");
+  $(".SD-totalSales").text("0.00");
+  $(".SD-date").val("");
+  $(".SD-table").empty();
+  let sdTh = `<tr>
+              <th>Transaction ID</th>
+              <th>Total Amount</th>
+              <th>Cash</th>
+              <th>Change</th>
+              <th>Staff Name</th>
+            </tr>`;
+  $(".SD-table").append(sdTh);
+
+  //Product Sold
+  $(".PS-totaltransactionNo").text("0");
+  $(".PS-totalSales").text("0.00");
+  $(".PS-date").val("");
+  $(".PS-table").empty();
+  let psTh = `<tr>
+                <th>Product Name</th>
+                <th>Formulation</th>
+                <th>Quantity</th>
+                <th>Total Amount</th>
+                <th>Date</th>
+              </tr>`;
+  $(".PS-table").append(psTh);
+}
+
 const clear_all = (link) => {
   switch (link) {
     case "product_list":
@@ -329,6 +359,19 @@ const clear_all = (link) => {
       clear_admin_account();
       clear_customer_account();
     break;
+
+    case "sales":
+      clear_productlist();
+      clear_stock_in_entry();
+      clear_stock_in_history();
+      clear_product_stock_status();
+      clear_pull_out_product();
+      clear_discountvat();
+      clear_staff_account();
+      clear_admin_account();
+      clear_customer_account();
+      clear_sales();
+    break;
   }
 };
 
@@ -425,13 +468,13 @@ $(".customer_account").click(() => {
 $(".sales_dashboard").click(() => {
   deactivelink();
   $(".div-SalesDashboard").css("display", "flex");
-  clear_all("sales_dashboard");
+  clear_all("sales");
 });
 
 $(".product_sold").click(() => {
   deactivelink();
   $(".div-ProductSold").css("display", "flex");
-  clear_all("product_sold");
+  clear_all("sales");
 });
 
 $(".online_order").click(() => {

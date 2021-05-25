@@ -1,0 +1,643 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.SD-div-salesfunction,
+.PS-div-salesfunction,
+.SD-div-totalSales,
+.PS-div-totalSales,
+.SD-functions,
+.PS-functions,
+.SD-div-date,
+.PS-div-date {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.SD-div-salesfunction,
+.PS-div-salesfunction {
+  justify-content: space-between;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.SD-categorytext,
+.PS-categorytext {
+  padding-left: 0.5rem;
+}
+.SD-controlbox,
+.PS-controlbox {
+  height: 8rem;
+}
+.SD-div-totalSales,
+.PS-div-totalSales {
+  width: 31%;
+  justify-content: space-between;
+}
+.SD-functions,
+.PS-functions {
+  width: 70%;
+  justify-content: space-between;
+}
+.SD-div-ptransactionNo,
+.PS-div-ptransactionNo,
+.SD-div-ptotalSales,
+.PS-div-ptotalSales {
+  background: #f1f1f1;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  padding: 0.5rem;
+  height: 100%;
+  width: 100%;
+  margin-right: 0.5rem;
+}
+.SD-ptotaltransactionNo,
+.PS-ptotaltransactionNo,
+.SD-ptotalSales,
+.PS-ptotalSales {
+  margin-bottom: 0.5rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+.SD-totalSales,
+.PS-totalSales,
+.SD-totaltransactionNo,
+.PS-totaltransactionNo {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 1.1rem;
+  color: #458aab;
+}
+.SD-pdate,
+.PS-pdate,
+.SD-date,
+.PS-date {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+  margin-right: 0.2rem;
+}
+.SD-daily,
+.SD-weekly,
+.SD-monthly,
+.SD-annually,
+.PS-daily,
+.PS-weekly,
+.PS-monthly,
+.PS-annually {
+  background: #b7dbed;
+  padding: 3px;
+  border-radius: 5px;
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+  outline: none;
+  border-color: #b7dbed;
+}
+.SD-pdaily,
+.SD-pweekly,
+.SD-pmonthly,
+.SD-pannually,
+.PS-pdaily,
+.PS-pweekly,
+.PS-pmonthly,
+.PS-pannually {
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  font-size: 0.9rem;
+}
+.SD-generatebtn,
+.PS-generatebtn {
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+  background: #b7dbed;
+  outline: none;
+  border-color: #b7dbed;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+}
+.SD-div-table,
+.PS-div-table {
+  display: flex;
+  width: 95%;
+  margin-top: 1rem;
+  justify-content: center;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  transition: 0.4s ease;
+  background: #d0e3ec;
+  height: 28rem;
+  padding: 1rem;
+}
+.SD-div-table:hover,
+.PS-div-table:hover {
+  box-shadow: 0 12px 24px 0 rgb(0 0 0 / 20%);
+}
+.SD-div-table_content,
+.PS-div-table_content {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+.SD-div-table_content::-webkit-scrollbar,
+.PS-div-table_content::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+.SD-div-table_content::-webkit-scrollbar-track,
+.PS-div-table_content::-webkit-scrollbar-track {
+  background: #298dbf23;
+}
+.SD-div-table_content::-webkit-scrollbar-thumb,
+.PS-div-table_content::-webkit-scrollbar-thumb {
+  background: #298dbfad;
+}
+.SD-div-table_content::-webkit-scrollbar-thumb:hover,
+.PS-div-table_content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.SD-table,
+.PS-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 3px solid #ffffff;
+  height: auto;
+}
+.SD-table tr th,
+.PS-table tr th {
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  border: 2px solid #ffffff;
+  background-color: #78bee1;
+  color: #ffffff;
+  text-align: center;
+  padding: 0.5rem;
+  top: 0;
+}
+.SD-table tr td,
+.PS-table tr td {
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  font-size: 1rem;
+  border: 2px solid #ffffff;
+  background-color: #bbeaff;
+  text-align: left;
+  padding: 0.5rem;
+}
+@media only screen and (min-device-width: 320px) and (max-width: 600px) {
+  .SD-div-salesfunction,
+  .PS-div-salesfunction,
+  .SD-functions,
+  .PS-functions {
+    display: flex;
+    flex-direction: column;
+  }
+  .SD-div-totalSales,
+  .PS-div-totalSales {
+    display: flex;
+    flex-direction: row;
+  }
+  .SD-controlbox,
+  .PS-controlbox {
+    margin-top: 0.2rem;
+    height: 13rem;
+  }
+  .SD-div-salesfunction,
+  .PS-div-salesfunction {
+    justify-content: flex-start;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .SD-categorytext,
+  .PS-categorytext {
+    padding-left: 0;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+  .SD-div-totalSales,
+  .PS-div-totalSales {
+    width: 100%;
+    justify-content: center;
+  }
+  .SD-div-ptransactionNo,
+  .PS-div-ptransactionNo,
+  .SD-div-ptotalSales,
+  .PS-div-ptotalSales {
+    margin-right: 0;
+    padding: 0.3rem;
+    margin-bottom: 0.2rem;
+  }
+  .SD-div-ptransactionNo,
+  .PS-div-ptransactionNo {
+    margin-right: 0.3rem;
+  }
+  .SD-ptotaltransactionNo,
+  .PS-ptotaltransactionNo,
+  .SD-ptotalSales,
+  .PS-ptotalSales {
+    margin-bottom: 0.2rem;
+    font-size: 0.7rem;
+  }
+  .SD-totalSales,
+  .PS-totalSales,
+  .SD-totaltransactionNo,
+  .PS-totaltransactionNo {
+    font-size: 0.7rem;
+  }
+  .SD-pdate,
+  .PS-pdate,
+  .SD-date,
+  .PS-date {
+    font-size: 0.7rem;
+  }
+  .SD-div-date,
+  .PS-div-date {
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0.2rem;
+    margin-bottom: 0.3rem;
+  }
+  .SD-pdate,
+  .PS-pdate {
+    width: 5rem;
+  }
+  .SD-pdaily,
+  .SD-pweekly,
+  .SD-pmonthly,
+  .SD-pannually,
+  .PS-pdaily,
+  .PS-pweekly,
+  .PS-pmonthly,
+  .PS-pannually {
+    font-size: 0.5rem;
+  }
+  .SD-div-buttons,
+  .PS-div-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .SD-daily,
+  .SD-weekly,
+  .SD-monthly,
+  .SD-annually,
+  .PS-daily,
+  .PS-weekly,
+  .PS-monthly,
+  .PS-annually {
+    margin-right: 0.5rem;
+  }
+  .SD-generatebtn,
+  .PS-generatebtn {
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    padding: 3px;
+  }
+  .SD-div-table,
+  .PS-div-table {
+    margin-top: 0.5rem;
+    height: 22rem;
+    padding: 0.5rem;
+  }
+  .SD-table tr th,
+  .PS-table tr th {
+    font-size: 0.8rem;
+    padding: 0.2rem;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .SD-div-salesfunction,
+  .PS-div-salesfunction,
+  .SD-functions,
+  .PS-functions {
+    display: flex;
+    flex-direction: column;
+  }
+  .SD-div-totalSales,
+  .PS-div-totalSales {
+    display: flex;
+    flex-direction: row;
+  }
+  .SD-controlbox,
+  .PS-controlbox {
+    margin-top: 0.2rem;
+    height: 13rem;
+  }
+  .SD-div-salesfunction,
+  .PS-div-salesfunction {
+    justify-content: flex-start;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .SD-categorytext,
+  .PS-categorytext {
+    padding-left: 0;
+    text-align: center;
+    font-size: 0.8rem;
+  }
+  .SD-div-totalSales,
+  .PS-div-totalSales {
+    width: 100%;
+    justify-content: center;
+  }
+  .SD-div-ptransactionNo,
+  .PS-div-ptransactionNo,
+  .SD-div-ptotalSales,
+  .PS-div-ptotalSales {
+    margin-right: 0;
+    padding: 0.3rem;
+    margin-bottom: 0.2rem;
+  }
+  .SD-div-ptransactionNo,
+  .PS-div-ptransactionNo {
+    margin-right: 0.3rem;
+  }
+  .SD-ptotaltransactionNo,
+  .PS-ptotaltransactionNo,
+  .SD-ptotalSales,
+  .PS-ptotalSales {
+    margin-bottom: 0.2rem;
+    font-size: 0.7rem;
+  }
+  .SD-totalSales,
+  .PS-totalSales,
+  .SD-totaltransactionNo,
+  .PS-totaltransactionNo {
+    font-size: 0.7rem;
+  }
+  .SD-pdate,
+  .PS-pdate,
+  .SD-date,
+  .PS-date {
+    font-size: 0.7rem;
+  }
+  .SD-div-date,
+  .PS-div-date {
+    align-items: center;
+    justify-content: flex-start;
+    margin-top: 0.2rem;
+    margin-bottom: 0.3rem;
+  }
+  .SD-pdate,
+  .PS-pdate {
+    width: 5rem;
+  }
+  .SD-pdaily,
+  .SD-pweekly,
+  .SD-pmonthly,
+  .SD-pannually,
+  .PS-pdaily,
+  .PS-pweekly,
+  .PS-pmonthly,
+  .PS-pannually {
+    font-size: 0.5rem;
+  }
+  .SD-div-buttons,
+  .PS-div-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    width: 100%;
+  }
+  .SD-daily,
+  .SD-weekly,
+  .SD-monthly,
+  .SD-annually,
+  .PS-daily,
+  .PS-weekly,
+  .PS-monthly,
+  .PS-annually {
+    margin-right: 0.5rem;
+  }
+  .SD-generatebtn,
+  .PS-generatebtn {
+    margin-top: 0.3rem;
+    font-size: 0.8rem;
+    padding: 3px;
+  }
+  .SD-div-table,
+  .PS-div-table {
+    margin-top: 0.5rem;
+    height: 22rem;
+    padding: 0.5rem;
+  }
+  .SD-table tr th,
+  .PS-table tr th {
+    font-size: 0.8rem;
+    padding: 0.2rem;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+  .SD-pdaily,
+  .SD-pweekly,
+  .SD-pmonthly,
+  .SD-pannually,
+  .PS-pdaily,
+  .PS-pweekly,
+  .PS-pmonthly,
+  .PS-pannually {
+    font-size: 0.6rem;
+  }
+  .SD-totalSales,
+  .PS-totalSales,
+  .SD-totaltransactionNo,
+  .PS-totaltransactionNo,
+  .SD-pdate,
+  .PS-pdate,
+  .SD-date,
+  .PS-date,
+  .SD-generatebtn,
+  .PS-generatebtn {
+    font-size: 0.7rem;
+  }
+  .SD-ptotaltransactionNo,
+  .PS-ptotaltransactionNo,
+  .SD-ptotalSales,
+  .PS-ptotalSales {
+    font-size: 0.65rem;
+  }
+}
+@media only screen and (min-width: 1366px) {
+  .SD-div-salesfunction,
+  .PS-div-salesfunction,
+  .SD-div-totalSales,
+  .PS-div-totalSales,
+  .SD-functions,
+  .PS-functions,
+  .SD-div-date,
+  .PS-div-date {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .SD-div-salesfunction,
+  .PS-div-salesfunction {
+    justify-content: space-between;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+  .SD-categorytext,
+  .PS-categorytext {
+    padding-left: 0.5rem;
+  }
+  .SD-controlbox,
+  .PS-controlbox {
+    height: 8rem;
+  }
+  .SD-div-totalSales,
+  .PS-div-totalSales {
+    width: 31%;
+    justify-content: space-between;
+  }
+  .SD-functions,
+  .PS-functions {
+    width: 70%;
+    justify-content: space-between;
+  }
+  .SD-div-ptransactionNo,
+  .PS-div-ptransactionNo,
+  .SD-div-ptotalSales,
+  .PS-div-ptotalSales {
+    background: #f1f1f1;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    padding: 0.5rem;
+    height: 100%;
+    width: 100%;
+    margin-right: 0.5rem;
+  }
+  .SD-ptotaltransactionNo,
+  .PS-ptotaltransactionNo,
+  .SD-ptotalSales,
+  .PS-ptotalSales {
+    margin-bottom: 0.5rem;
+    font-family: "Poppins", sans-serif;
+    font-weight: 600;
+    font-size: 0.9rem;
+  }
+  .SD-totalSales,
+  .PS-totalSales,
+  .SD-totaltransactionNo,
+  .PS-totaltransactionNo {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-size: 1.1rem;
+    color: #458aab;
+  }
+  .SD-pdate,
+  .PS-pdate,
+  .SD-date,
+  .PS-date {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+    margin-right: 0.2rem;
+  }
+  .SD-daily,
+  .SD-weekly,
+  .SD-monthly,
+  .SD-annually,
+  .PS-daily,
+  .PS-weekly,
+  .PS-monthly,
+  .PS-annually {
+    background: #b7dbed;
+    padding: 3px;
+    border-radius: 5px;
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+    outline: none;
+    border-color: #b7dbed;
+  }
+  .SD-pdaily,
+  .SD-pweekly,
+  .SD-pmonthly,
+  .SD-pannually,
+  .PS-pdaily,
+  .PS-pweekly,
+  .PS-pmonthly,
+  .PS-pannually {
+    font-family: "Poppins", sans-serif;
+    font-weight: 800;
+    font-size: 0.9rem;
+  }
+  .SD-generatebtn,
+  .PS-generatebtn {
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+    background: #b7dbed;
+    outline: none;
+    border-color: #b7dbed;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+  }
+  .SD-div-table,
+  .PS-div-table {
+    display: flex;
+    width: 95%;
+    margin-top: 1rem;
+    justify-content: center;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+    transition: 0.4s ease;
+    background: #d0e3ec;
+    height: 28rem;
+    padding: 1rem;
+  }
+  .SD-div-table:hover,
+  .PS-div-table:hover {
+    box-shadow: 0 12px 24px 0 rgb(0 0 0 / 20%);
+  }
+  .SD-div-table_content,
+  .PS-div-table_content {
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+  }
+  .SD-div-table_content::-webkit-scrollbar,
+  .PS-div-table_content::-webkit-scrollbar {
+    width: 3px;
+    height: 3px;
+  }
+  .SD-div-table_content::-webkit-scrollbar-track,
+  .PS-div-table_content::-webkit-scrollbar-track {
+    background: #298dbf23;
+  }
+  .SD-div-table_content::-webkit-scrollbar-thumb,
+  .PS-div-table_content::-webkit-scrollbar-thumb {
+    background: #298dbfad;
+  }
+  .SD-div-table_content::-webkit-scrollbar-thumb:hover,
+  .PS-div-table_content::-webkit-scrollbar-thumb:hover {
+    background: #555;
+  }
+  .SD-table,
+  .PS-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 3px solid #ffffff;
+    height: auto;
+  }
+  .SD-table tr th,
+  .PS-table tr th {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    border: 2px solid #ffffff;
+    background-color: #78bee1;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.5rem;
+    top: 0;
+  }
+  .SD-table tr td,
+  .PS-table tr td {
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    font-size: 1rem;
+    border: 2px solid #ffffff;
+    background-color: #bbeaff;
+    text-align: left;
+    padding: 0.5rem;
+  }
+}

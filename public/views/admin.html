@@ -23,6 +23,7 @@
     <link rel="stylesheet" href="/style/stock_in_entry/staff.css" />
     <link rel="stylesheet" href="/style/stock_in_entry/adminAccount.css" />
     <link rel="stylesheet" href="/style/sales/customerAccount.css" />
+    <link rel="stylesheet" href="/style/sales/sales.css" />
     <link href="/toastnotification/toastr.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -817,11 +818,119 @@
     </div>
 
     <div class="div-function div-SalesDashboard">
-      SalesDashboard
+      <div class="controlbox SD-controlbox">
+        <p class="categorytext SD-categorytext"></p>
+        <div class="SD-div-salesfunction">
+          <div class="SD-div-totalSales">
+            <div class="SD-div-ptransactionNo">
+              <p class="SD-ptotaltransactionNo">Number Of Transaction</p>
+              <p class="SD-totaltransactionNo">0</p>
+            </div>
+            <div class="SD-div-ptotalSales">
+              <p class="SD-ptotalSales">Total Sales</p>
+              <p class="SD-totalSales">0.00</p>
+            </div>
+          </div>
+          <div class="SD-functions">
+            <div class="SD-div-date">
+              <p class="SD-pdate">Select Date:</p>
+              <input type="date" class="SD-date"/>
+            </div>
+            <div class="SD-div-buttons">
+                <button class="SD-daily">
+                  <img src="/image/daily.png" width="30rem" height="30rem" />
+                  <p class="SD-pdaily">DAILY SALES</p>
+                </button>
+                <button class="SD-weekly">
+                  <img src="/image/weekly.png" width="30rem" height="30rem" />
+                  <p class="SD-pweekly">WEEKLY SALES</p>
+                </button>
+                <button class="SD-monthly">
+                  <img src="/image/monthly.png" width="30rem" height="30rem" />
+                  <p class="SD-pmonthly">MONTHLY SALES</p>
+                </button>
+                <button class="SD-annually">
+                  <img src="/image/annually.png" width="30rem" height="30rem" />
+                  <p class="SD-pannually">ANNUALLY SALES</p>
+                </button>
+            </div>
+            <div class="SD-div-button">
+              <button class="SD-generatebtn">GENERATE REPORT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="SD-div-table">
+        <div class="SD-div-table_content">
+          <table class="SD-table">
+            <tr>
+              <th>Transaction ID</th>
+              <th>Total Amount</th>
+              <th>Cash</th>
+              <th>Change</th>
+              <th>Staff Name</th>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
 
     <div class="div-function div-ProductSold">
-      ProductSold
+      <div class="controlbox PS-controlbox">
+        <p class="categorytext PS-categorytext"></p>
+        <div class="PS-div-salesfunction">
+          <div class="PS-div-totalSales">
+            <div class="PS-div-ptransactionNo">
+              <p class="PS-ptotaltransactionNo">Product Sold</p>
+              <p class="PS-totaltransactionNo">0</p>
+            </div>
+            <div class="PS-div-ptotalSales">
+              <p class="PS-ptotalSales">Total Sales</p>
+              <p class="PS-totalSales">0.00</p>
+            </div>
+          </div>
+          <div class="PS-functions">
+            <div class="PS-div-date">
+              <p class="PS-pdate">Select Date:</p>
+              <input type="date" class="PS-date"/>
+            </div>
+            <div class="PS-div-buttons">
+                <button class="PS-daily">
+                  <img src="/image/daily.png" width="30rem" height="30rem" />
+                  <p class="PS-pdaily">DAILY SALES</p>
+                </button>
+                <button class="PS-weekly">
+                  <img src="/image/weekly.png" width="30rem" height="30rem" />
+                  <p class="PS-pweekly">WEEKLY SALES</p>
+                </button>
+                <button class="PS-monthly">
+                  <img src="/image/monthly.png" width="30rem" height="30rem" />
+                  <p class="PS-pmonthly">MONTHLY SALES</p>
+                </button>
+                <button class="PS-annually">
+                  <img src="/image/annually.png" width="30rem" height="30rem" />
+                  <p class="PS-pannually">ANNUALLY SALES</p>
+                </button>
+            </div>
+            <div class="PS-div-button">
+              <button class="PS-generatebtn">GENERATE REPORT</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="PS-div-table">
+        <div class="PS-div-table_content">
+          <table class="PS-table">
+            <tr>
+              <th>Product Name</th>
+              <th>Formulation</th>
+              <th>Quantity</th>
+              <th>Total Amount</th>
+              <th>Date</th>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
     
     <script src="/javascript/admin/datetime.js"></script>
@@ -837,6 +946,7 @@
     <script src="/javascript/stock_in_entry/staff.js"></script>
     <script src="/javascript/stock_in_entry/adminAccount.js"></script>
     <script src="/javascript/sales/customerAccount.js"></script>
+    <script src="/javascript/sales/sales.js"></script>
   </body>
 </html>
   
