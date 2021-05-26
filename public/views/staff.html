@@ -1,9 +1,182 @@
-<h1>STAFF</h1>
-<button onclick="logout()">LOGOUT</button>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script>
-    function logout(){
-        $.post('/api/logout');
-        $(location).attr('href', '/');
-    }
-</script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="description" content="Pharmacy Management Process System" />
+    <meta
+      name="viewport"
+      content="width=device-width,user-scalable=no,initial-scale=1.0"
+    />
+    <link rel="stylesheet" href="/style/staff/staff.css" />
+    <link rel="stylesheet" href="/style/staff/staffproduct.css" />
+    <link rel="stylesheet" href="/style/staff/staffreceipt.css" />
+    <link rel="shortcut icon" href="/image/favicon.ico" />
+    <link href="/toastnotification/toastr.css" rel="stylesheet" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css"
+    />
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-firestore.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-storage.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.3.1/firebase-analytics.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/crypto-js.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/a3220d4144.js"
+      crossorigin="anonymous"
+    ></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.14/jspdf.plugin.autotable.min.js"></script>
+    <script>
+      var firebaseConfig = {
+        apiKey: "AIzaSyBC2Gsc1PoLx_gz2xJYrLfl_JIDJZQH_yg",
+        authDomain: "pmps-257ba.firebaseapp.com",
+        projectId: "pmps-257ba",
+        storageBucket: "pmps-257ba.appspot.com",
+        messagingSenderId: "508613797048",
+        appId: "1:508613797048:web:94b732f1deadac1fd2c04d",
+        measurementId: "G-9818L4J8FV",
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+      const firestore = firebase.firestore();
+      firestore.settings({ timestampsInSnapshots: true });
+    </script>
+    <script src="/javascript/admin/GetAllProduct.js"></script>
+    <title>PMPS</title>
+  </head>
+  <body>
+    <div class="staff-navbar">
+      <div class="staff-nav1">
+        <img src="/image/logo.png" width="50rem" height="50rem" />
+        <p class="title">PHARMACY MANAGEMENT PROCESS SYSTEM</p>
+      </div>
+      <div class="staff-nav2">
+        <div class="div-staffname">
+          <p class="title-staffname">Staff Name:</p>
+          <p class="staffname"></p>
+        </div>
+        <div class="div-logout">
+          <button class="logout">LOGOUT</button>
+        </div>
+      </div>
+      <div class="staff-nav3">
+        <div class="div-datetime">
+          <div class="date">
+            <span class="month">4 /</span>
+            <span class="day">9 /</span>
+            <span class="year"> 2021</span>
+          </div>
+          <div class="time">
+            <span class="hour">08:</span>
+            <span class="minutes">58:</span>
+            <span class="seconds">54</span>
+            <span class="period"> AM</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="main-div">
+      <div class="div-product">
+        <div class="controlbox">
+          <div class="div-search">
+            <div class="searchicon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-search"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                />
+              </svg>
+            </div>
+            <input
+              type="text"
+              placeholder="Search Product"
+              class="productsearch"
+            />
+          </div>
+          <div class="div-category">
+            <p class="pcategory">Select Category:</p>
+            <select class="category">
+              <option value="All">All</option>
+            </select>
+          </div>
+        </div>
+        <div class="div-productitem">
+          <div class="product-table"></div>
+        </div>
+      </div>
+
+      <div class="div-receipt">
+        <div class="div-transactionID">
+          <p class="TransactionID"></p>
+        </div>
+        <div class="div-product-receipt">
+          <div class="div-product-receipt-content">
+            <table class="receipt-table"></table>
+          </div>
+        </div>
+        <div class="div-subtotal">
+          <p class="psubtotal">Subtotal:</p>
+          <p class="subtotal"></p>
+        </div>
+        <div class="div-cash-change">
+          <div class="div-cash">
+            <p class="pcash">Cash Received</p>
+            <input type="number" pattern="^\d*(\.\d{0,2})?$" class="cash" />
+          </div>
+          <div class="div-change">
+            <p class="pchange">Change</p>
+            <p class="change"></p>
+          </div>
+        </div>
+        <div class="div-button">
+          <button class="proceedbtn">Proceed</button>
+        </div>
+      </div>
+
+      <div class="div-print-receipt">
+        <div class="PR-div-transactionID">
+          <p class="PR-TransactionID"></p>
+        </div>
+        <div class="div-logoreceipt">
+          <img src="/image/receiptlogo.png" width="120rem" height="120rem" />
+        </div>
+        <div class="div-totalamount">
+          <div class="div-PR-totalamount">
+            <p class="ptotalAmount">Total Amount:</p>
+            <p class="totalAmount"></p>
+          </div>
+        </div>
+        <div class="PR-div-button">
+          <button class="printbtn">Print Receipt</button>
+        </div>
+        <div class="div-receiptDetails">
+          <p class="preceiptDetails">Receipt Details</p>
+        </div>
+        <div class="PR-div-table">
+          <div class="PR-div-table-content">
+            <table class="PR-table"></table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/javascript/staff/staff.js"></script>
+    <script src="/javascript/staff/staffproduct.js"></script>
+  </body>
+</html>

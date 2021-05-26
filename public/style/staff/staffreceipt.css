@@ -1,0 +1,349 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.div-receipt {
+  display: flex;
+  width: 35%;
+  margin-top: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  transition: 0.4s ease;
+  background: #f2f2f2;
+  height: 37rem;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  flex-direction: column;
+}
+.div-print-receipt {
+  display: none;
+  width: 35%;
+  margin-top: 1rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgb(0 0 0 / 20%);
+  transition: 0.4s ease;
+  background: #f2f2f2;
+  height: 37rem;
+  padding: 0.5rem;
+  margin-right: 1rem;
+  flex-direction: column;
+}
+.TransactionID,
+.PR-TransactionID {
+  color: #00a0dd;
+  font-family: "Poppins", sans-serif;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+.div-product-receipt {
+  display: flex;
+  width: 98%;
+  margin-top: 1rem;
+  justify-content: center;
+  height: 20rem;
+}
+.div-product-receipt-content {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+.div-product-receipt-content::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+.div-product-receipt-content::-webkit-scrollbar-track {
+  background: #298dbf23;
+}
+.div-product-receipt-content::-webkit-scrollbar-thumb {
+  background: #298dbfad;
+}
+.div-product-receipt-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.receipt-table {
+  border-collapse: collapse;
+  width: 100%;
+  height: auto;
+}
+.receipt-table tr td {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  padding: 5px;
+}
+.receipt-table tr td:nth-child(1) {
+  width: 10rem;
+}
+.receipt-table tr td:nth-child(2) {
+  width: 4rem;
+}
+.receipt-table tr td:nth-child(3) {
+  width: 4rem;
+}
+.receipt-table tr td:nth-child(4) {
+  width: 3rem;
+}
+.div-subtotal {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  margin-top: 1rem;
+}
+.psubtotal,
+.subtotal {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+}
+.psubtotal {
+  margin-right: 1rem;
+}
+.div-cash-change {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-top: 1rem;
+}
+.pcash,
+.pchange {
+  font-size: 1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 700;
+}
+.cash,
+.change {
+  background: #f1f1f1;
+  font-size: 1.1rem;
+  font-family: "Poppins", sans-serif;
+  font-weight: 800;
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+  border: 1px solid #000000;
+  text-indent: 5px;
+  border-radius: 3px;
+  width: 12rem;
+  height: 3rem;
+  text-align: center;
+}
+.change {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.div-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+.proceedbtn {
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+  background: #b7dbed;
+  outline: none;
+  border-color: #b7dbed;
+  width: 10rem;
+}
+.div-logoreceipt {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+.div-totalamount {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+.div-PR-totalamount {
+  display: flex;
+  flex-direction: row;
+}
+.ptotalAmount,
+.totalAmount {
+  font-size: 1.3rem;
+  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  margin-right: 1rem;
+}
+.PR-div-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1.2rem;
+}
+.printbtn {
+  font-size: 1.3rem;
+  font-weight: 700;
+  font-family: "Poppins", sans-serif;
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+  background: #b7dbed;
+  outline: none;
+  border-color: #b7dbed;
+  width: 12rem;
+}
+.div-receiptDetails {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 1rem;
+}
+.preceiptDetails {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  font-style: normal;
+  font-weight: 400;
+}
+.PR-div-table {
+  display: flex;
+  width: 98%;
+  margin-top: 1rem;
+  justify-content: center;
+  height: 13rem;
+}
+.PR-div-table-content {
+  width: 100%;
+  height: 100%;
+  overflow: scroll;
+}
+.PR-div-table-content::-webkit-scrollbar {
+  width: 3px;
+  height: 3px;
+}
+.PR-div-table-content::-webkit-scrollbar-track {
+  background: #298dbf23;
+}
+.PR-div-table-content::-webkit-scrollbar-thumb {
+  background: #298dbfad;
+}
+.PR-div-table-content::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+.PR-table {
+  border-collapse: collapse;
+  width: 100%;
+  height: auto;
+}
+.PR-table tr td {
+  font-family: "Poppins", sans-serif;
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 400;
+  text-align: left;
+  padding: 5px;
+}
+.PR-table tr td:nth-child(1) {
+  width: 8rem;
+}
+.PR-table tr td:nth-child(2) {
+  width: 4rem;
+}
+.PR-table tr td:nth-child(3) {
+  width: 4rem;
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .div-receipt,
+  .div-print-receipt {
+    height: 32rem;
+  }
+  .TransactionID,
+  .PR-TransactionID,
+  .PR-table tr td,
+  .receipt-table tr td {
+    font-size: 0.8rem;
+  }
+  .div-product-receipt {
+    height: 18rem;
+  }
+  .psubtotal,
+  .subtotal {
+    font-size: 0.9rem;
+  }
+  .pcash,
+  .pchange {
+    font-size: 0.9rem;
+  }
+  .cash,
+  .change {
+    width: 6rem;
+    height: 2rem;
+  }
+  .proceedbtn {
+    font-size: 0.9rem;
+    padding: 3px;
+    width: 10rem;
+  }
+  .ptotalAmount,
+  .totalAmount {
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+  }
+  .printbtn {
+    font-size: 0.9rem;
+    padding: 3px;
+  }
+  .preceiptDetails {
+    font-size: 0.9rem;
+  }
+  .PR-div-table {
+    height: 12rem;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+  .div-receipt,
+  .div-print-receipt {
+    height: 42rem;
+  }
+  .TransactionID,
+  .PR-TransactionID,
+  .PR-table tr td,
+  .receipt-table tr td {
+    font-size: 0.8rem;
+  }
+  .div-product-receipt {
+    height: 18rem;
+  }
+  .psubtotal,
+  .subtotal {
+    font-size: 0.9rem;
+  }
+  .pcash,
+  .pchange {
+    font-size: 0.9rem;
+  }
+  .cash,
+  .change {
+    width: 6rem;
+    height: 2rem;
+  }
+  .proceedbtn {
+    font-size: 0.9rem;
+    padding: 3px;
+    width: 10rem;
+  }
+  .ptotalAmount,
+  .totalAmount {
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+  }
+  .printbtn {
+    font-size: 0.9rem;
+    padding: 3px;
+  }
+  .preceiptDetails {
+    font-size: 0.9rem;
+  }
+  .PR-div-table {
+    height: 12rem;
+  }
+}

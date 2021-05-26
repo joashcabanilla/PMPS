@@ -205,6 +205,10 @@ account.addEventListener("click", () => {
                 else{
                     if(doc.data().password == CryptoJS.SHA3(logpassword).toString())
                     {
+                        let staff_firstname = doc.data().firstname;
+                        let staff_lastname = doc.data().lastname;
+                        let staff_name = staff_firstname + " " + staff_lastname;
+                        document.cookie = "staffname="+staff_name;
                         $(".error").text("");
                         $(location).attr('href', '/staff');
                         const data = {
