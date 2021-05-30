@@ -137,16 +137,18 @@ try{
                 parseInt(stocks) <= 5 && parseInt(stocks) != 0 ? product_lowstocks++ : null;
 
                 //DISPLAY PRODUCTLIST IN PRODUCT STOCK STATUS
+                let td_color = "";
+                parseInt(stocks) == 0 ? td_color = "#CF352E" : parseInt(stocks) <= 5 && parseInt(stocks) != 0 ? td_color = "#F8DE7E" : td_color = "#bbeaff";
                 let tr = `<tr>
-                            <td>${code}</td>
-                            <td>${productname}</td>
-                            <td>${category}</td>
-                            <td>${brandname}</td>
-                            <td>${formulation}</td>
-                            <td style="text-align:center;">${parseFloat(price).toFixed(2)}</td>
-                            <td style="text-align:center;">${stocks} ${unit}</td>
+                            <td style="background-color: ${td_color};">${code}</td>
+                            <td style="background-color: ${td_color};">${productname}</td>
+                            <td style="background-color: ${td_color};">${category}</td>
+                            <td style="background-color: ${td_color};">${brandname}</td>
+                            <td style="background-color: ${td_color};">${formulation}</td>
+                            <td style="text-align:center; background-color: ${td_color};">${parseFloat(price).toFixed(2)}</td>
+                            <td style="text-align:center; background-color: ${td_color};">${stocks} ${unit}</td>
                         </tr>`;
-                parseInt(stocks) != 0 ? $(".PSS-table").append(tr) : null;
+                $(".PSS-table").append(tr);
             }
             
             product_expired != 0 ? toastr["warning"](`${product_expired} Products have been Expired`) : null;

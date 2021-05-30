@@ -1,4 +1,4 @@
-const renderProductArray = (Acode,Aproductname,Acategory,Abrandname,Aformulation,Aprice,Aimage) => {
+const StaffrenderProductArray = (Acode,Aproductname,Acategory,Abrandname,Aformulation,Aprice,Aimage) => {
     let product_div = document.createElement('div');
     let prod_img = document.createElement('img'); 
     let prodname = document.createElement('p');
@@ -29,10 +29,10 @@ const renderProductArray = (Acode,Aproductname,Acategory,Abrandname,Aformulation
     product_div.appendChild(brandname);
     product_div.appendChild(formulation);
     product_div.appendChild(price);
-    $(".product-table").append(product_div);
+    $(".staff-product-table").append(product_div);
 }
 
-const renderProductLoop = () => {
+const StaffrenderProductLoop = () => {
     for(let i = 0; i < ArrayGetAllProduct.length;i++){
         let code = ArrayGetAllProduct[i].code;
         let productname = ArrayGetAllProduct[i].productname;
@@ -41,7 +41,7 @@ const renderProductLoop = () => {
         let formulation = ArrayGetAllProduct[i].formulation;
         let price = ArrayGetAllProduct[i].price;
         let image = ArrayGetAllProduct[i].image;
-        renderProductArray(code,productname,category,brandname,formulation,price,image);
+        StaffrenderProductArray(code,productname,category,brandname,formulation,price,image);
     }
 }
 let transactionID = 0;
@@ -49,44 +49,44 @@ firestore.collection("Sales").get().then(snapshot => {
     snapshot.docs.forEach(doc => {
         transactionID = doc.data().transactionID;
         transactionID++;
-        $(".TransactionID").text(`Transaction ID: ${transactionID}`);
-        $(".PR-TransactionID").text(`Transaction ID: ${transactionID}`);
+        $(".staff-TransactionID").text(`Transaction ID: ${transactionID}`);
+        $(".staff-PR-TransactionID").text(`Transaction ID: ${transactionID}`);
     });
 });
 
 //SEARCH FOCUS
-$(".productsearch").focus(() => {
-$(".category").val("All");
-$(".product-table").empty;
-renderProductLoop();
-let product_array = [];
-  for(let i = 0; i < ArrayGetAllProduct.length; i++){
-    let productname = ArrayGetAllProduct[i].productname;
-    let code = ArrayGetAllProduct[i].code;
-    let existProductname = product_array.includes(productname);
-    let existCode = product_array.includes(code);
-
-    !existProductname ? product_array.push(productname) : null;
-    !existCode ? product_array.push(code) : null;
-  }
-  $(".productsearch").autocomplete({
-    source: product_array,
-    autoFocus: true,
-    classes: {
-      "ui-autocomplete": "highlight",
-    },
-  });
+$(".staff-productsearch").focus(() => {
+    $(".staff-category").val("All");
+    $(".staff-product-table").empty;
+    StaffrenderProductLoop();
+    let product_array = [];
+    for(let i = 0; i < ArrayGetAllProduct.length; i++){
+        let productname = ArrayGetAllProduct[i].productname;
+        let code = ArrayGetAllProduct[i].code;
+        let existProductname = product_array.includes(productname);
+        let existCode = product_array.includes(code);
+    
+        !existProductname ? product_array.push(productname) : null;
+        !existCode ? product_array.push(code) : null;
+    }
+    $(".staff-productsearch").autocomplete({
+        source: product_array,
+        autoFocus: true,
+        classes: {
+        "ui-autocomplete": "highlight",
+        },
+    });
 });
 
 //SEARCH KEYUP
-$(".productsearch").keyup((event) => {
-    $(".category").val("All");
-    $(".product-table").empty;
+$(".staff-productsearch").keyup((event) => {
+    $(".staff-category").val("All");
+    $(".staff-product-table").empty;
     let searchdata = event.target.value;
     if(searchdata.length == 0)
     {
-        $(".product-table").empty();
-        renderProductLoop();
+        $(".staff-product-table").empty();
+        StaffrenderProductLoop();
     }
     else{
         try{
@@ -95,8 +95,8 @@ $(".productsearch").keyup((event) => {
             let fsearchdata = words.join(' ');
 
             const renderSearchProduct = (code,productname,category,brandname,formulation,price,image) => {
-                $(".product-table").empty();
-                renderProductArray(code,productname,category,brandname,formulation,price,image);
+                $(".staff-product-table").empty();
+                StaffrenderProductArray(code,productname,category,brandname,formulation,price,image);
             }
 
             for(let i = 0; i < ArrayGetAllProduct.length;i++){
@@ -117,12 +117,12 @@ $(".productsearch").keyup((event) => {
 });
 
 //EVENTLISTENER FOR CATEGORY
-$(".category").change(() => {
-    $(".productsearch").val("");
-    $(".product-table").empty();
-    let categoryText = $(".category").val();
+$(".staff-category").change(() => {
+    $(".staff-productsearch").val("");
+    $(".staff-product-table").empty();
+    let categoryText = $(".staff-category").val();
     if(categoryText == "All"){
-        renderProductLoop();
+        StaffrenderProductLoop();
     }
     else
     {
@@ -134,7 +134,7 @@ $(".category").change(() => {
             let formulation = ArrayGetAllProduct[i].formulation;
             let price = ArrayGetAllProduct[i].price;
             let image = ArrayGetAllProduct[i].image;
-            category == categoryText ? renderProductArray(code,productname,category,brandname,formulation,price,image) : null;
+            category == categoryText ? StaffrenderProductArray(code,productname,category,brandname,formulation,price,image) : null;
         }
     }
 });
@@ -145,7 +145,7 @@ let discount = 0;
 let print_cash = 0;
 let print_change = 0;
 //PRODUCT CLICK EVENT
-$(".product-table").click(e => {
+$(".staff-product-table").click(e => {
 let id = e.target.id;
 let productname = "";
 let formulation = "";
@@ -174,7 +174,7 @@ id != "" ? available_stocks == 0 ? swal("","Product Out Of Stocks","error") : sw
     let quantity = value;
     let total = quantity * price;
     const addproduct = () => {
-        let table = $(".receipt-table");
+        let table = $(".staff-receipt-table");
         if(buyed_product.length == 0){
             let td = `<tr class="${id}">
                         <td class="${id}-productname">${productname}</td>
@@ -196,10 +196,10 @@ id != "" ? available_stocks == 0 ? swal("","Product Out Of Stocks","error") : sw
                 let code = ArrayGetAllProduct[i].code;
                 id == code ? ArrayGetAllProduct[i].stocks = new_stock : null;
             }
-            $(".product-table").empty();
-            $(".productsearch").val("");
-            $(".category").val("All");
-            renderProductLoop();
+            $(".staff-product-table").empty();
+            $(".staff-productsearch").val("");
+            $(".staff-category").val("All");
+            StaffrenderProductLoop();
             let obj = {};
             obj.code = id;
             obj.productname = productname;
@@ -209,7 +209,7 @@ id != "" ? available_stocks == 0 ? swal("","Product Out Of Stocks","error") : sw
             obj.price = price;
             buyed_product.push(obj);
             subtotal = subtotal + total;
-            $(".subtotal").text(`${parseFloat(subtotal).toFixed(2)}`);
+            $(".staff-subtotal").text(`${parseFloat(subtotal).toFixed(2)}`);
         }
         else{
             let codeExist = 0;
@@ -221,7 +221,7 @@ id != "" ? available_stocks == 0 ? swal("","Product Out Of Stocks","error") : sw
             }
             if(codeExist != 0){
                 subtotal = subtotal + total;
-                $(".subtotal").text(`${parseFloat(subtotal).toFixed(2)}`);
+                $(".staff-subtotal").text(`${parseFloat(subtotal).toFixed(2)}`);
                 let new_stock = available_stocks - quantity;
                 firestore.collection("Product").doc(id).update({
                     stocks: parseInt(new_stock),
@@ -230,10 +230,10 @@ id != "" ? available_stocks == 0 ? swal("","Product Out Of Stocks","error") : sw
                     let code = ArrayGetAllProduct[i].code;
                     id == code ? ArrayGetAllProduct[i].stocks = new_stock : null;
                 }
-                $(".product-table").empty();
-                $(".productsearch").val("");
-                $(".category").val("All");
-                renderProductLoop();
+                $(".staff-product-table").empty();
+                $(".staff-productsearch").val("");
+                $(".staff-category").val("All");
+                StaffrenderProductLoop();
                 
                 let old_quantity = $(`.${id}-quantity`).text();
                 let new_quantity = parseInt(quantity) + parseInt(old_quantity.substring(1));
@@ -269,10 +269,10 @@ id != "" ? available_stocks == 0 ? swal("","Product Out Of Stocks","error") : sw
                     let code = ArrayGetAllProduct[i].code;
                     id == code ? ArrayGetAllProduct[i].stocks = new_stock : null;
                 }
-                $(".product-table").empty();
-                $(".productsearch").val("");
-                $(".category").val("All");
-                renderProductLoop();
+                $(".staff-product-table").empty();
+                $(".staff-productsearch").val("");
+                $(".staff-category").val("All");
+                StaffrenderProductLoop();
                 let obj = {};
                 obj.code = id;
                 obj.productname = productname;
@@ -282,7 +282,7 @@ id != "" ? available_stocks == 0 ? swal("","Product Out Of Stocks","error") : sw
                 obj.price = price;
                 buyed_product.push(obj);
                 subtotal = subtotal + total;
-                $(".subtotal").text(`${parseFloat(subtotal).toFixed(2)}`);
+                $(".staff-subtotal").text(`${parseFloat(subtotal).toFixed(2)}`);
             }
         }
     }
@@ -291,7 +291,7 @@ id != "" ? available_stocks == 0 ? swal("","Product Out Of Stocks","error") : sw
 });
 
 //RECEIPT TABLE DELETE PRODUCT
-$(".receipt-table").click(e => {
+$(".staff-receipt-table").click(e => {
     let id = e.target.id;
     let existCode = 0;
     let productname = "";
@@ -317,7 +317,7 @@ $(".receipt-table").click(e => {
                 if(password == doc.data().password){
                     let total = parseFloat($(`.${id}-total`).text());
                     subtotal = subtotal - total;
-                    $(".subtotal").text(`${parseFloat(subtotal).toFixed(2)}`);
+                    $(".staff-subtotal").text(`${parseFloat(subtotal).toFixed(2)}`);
                     let quantitytext = $(`.${id}-quantity`).text();
                     let quantity = parseInt(quantitytext.substring(1));
                     let available_stocks = 0;
@@ -334,10 +334,10 @@ $(".receipt-table").click(e => {
                         let code = ArrayGetAllProduct[i].code;
                         id == code ? ArrayGetAllProduct[i].stocks = stocks : null;
                     }
-                    $(".product-table").empty();
-                    $(".productsearch").val("");
-                    $(".category").val("All");
-                    renderProductLoop();
+                    $(".staff-product-table").empty();
+                    $(".staff-productsearch").val("");
+                    $(".staff-category").val("All");
+                    StaffrenderProductLoop();
                     $(`.${id}`).remove();
                     swal("",`${productname} Successlly Removed`,"success");
                 }
@@ -350,29 +350,29 @@ $(".receipt-table").click(e => {
 });
 
 //CASH RECEIVED KEYUP
-$(".cash").keyup((e) => {
-let cash = e.target.value;
-let change = 0;
-let subtotal = parseFloat($(".subtotal").text());
-
-if(subtotal == 0){
-swal("","SUBTOTAL VALUE NOT FOUND","error");
-$(".cash").val("0.00");
-$(".change").text("0.00");
-}
-else{
-    change = cash - subtotal;
-    if(change < 0){
-        $(".change").text("0.00");
+$(".staff-cash").keyup((e) => {
+    let cash = e.target.value;
+    let change = 0;
+    let subtotal = parseFloat($(".staff-subtotal").text());
+    
+    if(subtotal == 0){
+    swal("","SUBTOTAL VALUE NOT FOUND","error");
+    $(".staff-cash").val("0.00");
+    $(".staff-change").text("0.00");
     }
     else{
-        $(".change").text(parseFloat(change).toFixed(2));
+        change = cash - subtotal;
+        if(change < 0){
+            $(".staff-change").text("0.00");
+        }
+        else{
+            $(".staff-change").text(parseFloat(change).toFixed(2));
+        }
     }
-}
-});
+    });
 
 //PROCEED CLICK EVENT
-$(".proceedbtn").click(() => {
+$(".staff-proceedbtn").click(() => {
     const addzero_report = (num) => {
             return num < 10 ? `0${num}`:num;
     };
@@ -382,23 +382,23 @@ $(".proceedbtn").click(() => {
     let year = now.getFullYear();
     let new_date = `${month}/${date}/${year}`;
 
-    let subtotal = parseFloat($(".subtotal").text());
-    let cash = parseFloat($(".cash").val());
-    let change = parseFloat($(".change").text());
+    let subtotal = parseFloat($(".staff-subtotal").text());
+    let cash = parseFloat($(".staff-cash").val());
+    let change = parseFloat($(".staff-change").text());
 
     if(subtotal == 0){
             swal("","SUBTOTAL VALUE NOT FOUND","error");
-            $(".cash").val("0.00");
-            $(".change").text("0.00");
+            $(".staff-cash").val("0.00");
+            $(".staff-change").text("0.00");
     }
     else{
         if(subtotal > cash){
                     swal("","NOT ENOUGH CASH","error");
-                    $(".cash").val("0.00");
-                    $(".change").text("0.00");
+                    $(".staff-cash").val("0.00");
+                    $(".staff-change").text("0.00");
         }
         else{
-            let staffname = $(".staffname").text();
+            let staffname = "ADMIN";
             firestore.collection("Sales").doc(`${transactionID}`).set({
                 cash: cash,
                 change: change,
@@ -426,27 +426,27 @@ $(".proceedbtn").click(() => {
                         <td>@${quantity}</td>
                         <td>${parseFloat(totalAmount).toFixed(2)}</td>
                         </tr>`;
-                $(".PR-table").append(td);
+                $(".staff-PR-table").append(td);
             }
             print_cash = cash;
             print_change = change;
-            $(".totalAmount").text(`${parseFloat(subtotal).toFixed(2)}`);
-            $(".product-table").empty();
-            $(".productsearch").val("");
-            $(".category").val("All");
-            renderProductLoop();
-            $(".receipt-table").empty();
-            $(".subtotal").text("");
-            $(".cash").val("");
-            $(".change").text("");
-            $(".div-receipt").css("display","none");
-            $(".div-print-receipt").css("display","flex");
+            $(".staff-totalAmount").text(`${parseFloat(subtotal).toFixed(2)}`);
+            $(".staff-product-table").empty();
+            $(".staff-productsearch").val("");
+            $(".staff-category").val("All");
+            StaffrenderProductLoop();
+            $(".staff-receipt-table").empty();
+            $(".staff-subtotal").text("");
+            $(".staff-cash").val("");
+            $(".staff-change").text("");
+            $(".staff-div-receipt").css("display","none");
+            $(".staff-div-print-receipt").css("display","flex");
         }
     }
 });
 
 //PRINT RECEIPT
-$(".printbtn").click(() => {
+$(".staff-printbtn").click(() => {
     const addzero_report = (num) => {
         return num < 10 ? `0${num}`:num;
     };
@@ -461,7 +461,7 @@ $(".printbtn").click(() => {
     hours = hours ? hours : 12;
     let report_date = `${month}/${date}/${year}`;
     let report_time = `${hours}:${mins} ${period}`;
-    let staffname = $(".staffname").text();
+    let staffname = "ADMIN";
     let array_data = [];
     let total_no_discount = 0;
     for(let i = 0; i < buyed_product.length; i++){
@@ -514,55 +514,55 @@ $(".printbtn").click(() => {
     discount = 0;
     print_cash = 0;
     print_change = 0;
-    $(".div-receipt").css("display","flex");
-    $(".div-print-receipt").css("display","none");
+    $(".staff-div-receipt").css("display","flex");
+    $(".staff-div-print-receipt").css("display","none");
 
     transactionID = 0;
     firestore.collection("Sales").get().then(snapshot => {
         snapshot.docs.forEach(doc => {
             transactionID = doc.data().transactionID;
             transactionID++;
-            $(".TransactionID").text(`Transaction ID: ${transactionID}`);
-            $(".PR-TransactionID").text(`Transaction ID: ${transactionID}`);
+            $(".staff-TransactionID").text(`Transaction ID: ${transactionID}`);
+            $(".staff-PR-TransactionID").text(`Transaction ID: ${transactionID}`);
         });
     });
 });
 
 //DISCOUNT BUTTON
-$(".discountbtn").click(() => {
-swal("SELECT DISCOUNT",{
-    buttons:{
-        SENIOR:{
-            text: "SENIOR",
-            value: "senior",
+$(".staff-discountbtn").click(() => {
+    swal("SELECT DISCOUNT",{
+        buttons:{
+            SENIOR:{
+                text: "SENIOR",
+                value: "senior",
+            },
+            PWD:{
+                text: "PWD",
+                value: "pwd",
+            },
         },
-        PWD:{
-            text: "PWD",
-            value: "pwd",
-        },
-    },
-    }).then((value) => {
-        let discount_percentage = 0;
-        if(value != null){
-            if(discount == 0){
-                firestore.collection("Vat").get().then(snapshot => {
-                    snapshot.docs.forEach(doc =>{
-                        if(value == "senior"){
-                            discount_percentage = doc.data().senior;
-                        }
-                        else{
-                            discount_percentage = doc.data().pwd;
-                        }
+        }).then((value) => {
+            let discount_percentage = 0;
+            if(value != null){
+                if(discount == 0){
+                    firestore.collection("Vat").get().then(snapshot => {
+                        snapshot.docs.forEach(doc =>{
+                            if(value == "senior"){
+                                discount_percentage = doc.data().senior;
+                            }
+                            else{
+                                discount_percentage = doc.data().pwd;
+                            }
+                        });
+                        discount = subtotal * discount_percentage;
+                        subtotal = subtotal - discount;
+                        $(".staff-subtotal").text(`${parseFloat(subtotal).toFixed(2)}`);
+                        swal("",`${value} Discount successfully applied`,"success");
                     });
-                    discount = subtotal * discount_percentage;
-                    subtotal = subtotal - discount;
-                    $(".subtotal").text(`${parseFloat(subtotal).toFixed(2)}`);
-                    swal("",`${value} Discount successfully applied`,"success");
-                });
+                }
+                else{
+                    swal("","DISCOUNT IS ALREADY APPLIED","success");
+                }
             }
-            else{
-                swal("","DISCOUNT IS ALREADY APPLIED","success");
-            }
-        }
+        });
     });
-});

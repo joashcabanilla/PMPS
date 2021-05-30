@@ -64,17 +64,18 @@ $(".PSS-table").append(tr);
     let stocks = ArrayGetAllProduct[i].stocks;
     let unit = ArrayGetAllProduct[i].unit;
     let expirationdate = ArrayGetAllProduct[i].expirationdate;
-
+    let td_color = "";
+    parseInt(stocks) == 0 ? td_color = "#CF352E" : parseInt(stocks) <= 5 && parseInt(stocks) != 0 ? td_color = "#F8DE7E" : td_color = "#bbeaff";
     let tr = `<tr>
-                <td>${code}</td>
-                <td>${productname}</td>
-                <td>${category}</td>
-                <td>${brandname}</td>
-                <td>${formulation}</td>
-                <td style="text-align:center;">${parseFloat(price).toFixed(2)}</td>
-                <td style="text-align:center;">${stocks} ${unit}</td>
+                <td style="background-color: ${td_color};">${code}</td>
+                <td style="background-color: ${td_color};">${productname}</td>
+                <td style="background-color: ${td_color};">${category}</td>
+                <td style="background-color: ${td_color};">${brandname}</td>
+                <td style="background-color: ${td_color};">${formulation}</td>
+                <td style="text-align:center; background-color: ${td_color};">${parseFloat(price).toFixed(2)}</td>
+                <td style="text-align:center; background-color: ${td_color};">${stocks} ${unit}</td>
             </tr>`;
-    parseInt(stocks) != 0 ? $(".PSS-table").append(tr) : null;
+    $(".PSS-table").append(tr);
     expirationdate == "expired" ? expired++ : null;
     parseInt(stocks) == 0 ? out_stocks++ : null;
     parseInt(stocks) <= 5 && parseInt(stocks) != 0 ? low_stocks++ : null;
@@ -122,11 +123,19 @@ const clear_discountvat = () => {
     firestore.collection("Vat").get().then(snapshot => {
       snapshot.docs.forEach(doc => {
         $(".Vat-pvalue").text(parseFloat(doc.data().vat).toFixed(2));
+        $(".senior-pvalue").text(parseFloat(doc.data().senior).toFixed(2));
+        $(".pwd-pvalue").text(parseFloat(doc.data().pwd).toFixed(2));
       });
   });
   $(".Vat-inputvalue").css("display","none");
   $(".Vat-savebtn").css("display","none");
   $(".Vat-cancelbtn").css("display","none");
+  $(".senior-inputvalue").css("display","none");
+  $(".senior-savebtn").css("display","none");
+  $(".senior-cancelbtn").css("display","none");
+  $(".pwd-inputvalue").css("display","none");
+  $(".pwd-savebtn").css("display","none");
+  $(".pwd-cancelbtn").css("display","none");
 }
 
 const clear_staff_account = () => {
@@ -389,6 +398,7 @@ const deactivelink = () => {
   $(".div-ProductSold").css("display", "none");
   $(".div-OnlineOrder").css("display", "none");
   $(".div-CustomerAccount").css("display", "none");
+  $(".div-POS").css("display", "none");
 };
 
 $(window).on("load", () => {
@@ -482,6 +492,92 @@ $(".online_order").click(() => {
   $(".div-OnlineOrder").css("display", "flex");
   clear_all("online_order");
 });
+$(".POS").click(() => {
+  deactivelink();
+  $(".div-POS").css("display", "flex");
+  $(".category-active").text("POINT OF SALE (POS)");
+
+  let transactionID = 0;
+  firestore.collection("Sales").get().then(snapshot => {
+      snapshot.docs.forEach(doc => {
+          transactionID = doc.data().transactionID;
+          transactionID++;
+          $(".staff-TransactionID").text(`Transaction ID: ${transactionID}`);
+          $(".staff-PR-TransactionID").text(`Transaction ID: ${transactionID}`);
+      });
+  });
+
+  $(".staff-product-table").empty();
+  $(".staff-productsearch").val("");
+  $(".staff-category").val("All");
+  renderProductLoop();
+  $(".staff-receipt-table").empty();
+  $(".staff-subtotal").text("");
+  $(".staff-cash").val("");
+  $(".staff-change").text("");
+  $(".staff-div-receipt").css("display","flex");
+  $(".staff-div-print-receipt").css("display","none");
+
+  let array_category = [];
+    
+        const LoadrenderProductArray = (Acode,Aproductname,Acategory,Abrandname,Aformulation,Aprice,Aimage) => {
+            let product_div = document.createElement('div');
+            let prod_img = document.createElement('img'); 
+            let prodname = document.createElement('p');
+            let brandname = document.createElement('p');
+            let formulation = document.createElement('p');
+            let price = document.createElement('p');
+            
+            prodname.textContent = Aproductname;
+            brandname.textContent = Abrandname;
+            formulation.textContent = Aformulation;
+            price.textContent = "P " + parseFloat(Aprice).toFixed(2);
+            prod_img.src = Aimage;
+            prod_img.width = "150";
+            prod_img.height = "150";
+            
+            product_div.setAttribute('id', Acode);
+            product_div.setAttribute('data-category', Acategory);
+            product_div.setAttribute('data-productname', Aproductname);
+            prod_img.setAttribute('class',"product-img");
+            product_div.setAttribute('class', "product-item");
+            prodname.setAttribute('class',"product-name");
+            formulation.setAttribute('class',"product-formulation");
+            price.setAttribute('class',"product-price");
+            brandname.setAttribute('class',"product-brandname");
+            
+            product_div.appendChild(prod_img);
+            product_div.appendChild(prodname);
+            product_div.appendChild(brandname);
+            product_div.appendChild(formulation);
+            product_div.appendChild(price);
+            $(".staff-product-table").append(product_div);
+        }
+        
+        function LoadrenderCategory(data_category){
+            let option = document.createElement('option');
+            option.textContent = data_category;
+            option.value = data_category;
+            $(".staff-category").append(option);
+        }
+        
+        for(let i = 0; i < ArrayGetAllProduct.length; i++){
+            let code = ArrayGetAllProduct[i].code;
+            let productname = ArrayGetAllProduct[i].productname;
+            let brandname = ArrayGetAllProduct[i].brandname;
+            let formulation = ArrayGetAllProduct[i].formulation;
+            let price = ArrayGetAllProduct[i].price;
+            let image = ArrayGetAllProduct[i].image;
+            let category = ArrayGetAllProduct[i].category;
+    
+            let existCategory = array_category.includes(category);
+            !existCategory ? array_category.push(category) : null;
+            LoadrenderProductArray(code,productname,category,brandname,formulation,price,image);
+        }
+        for(let a = 0; a < array_category.length; a++){
+            LoadrenderCategory(array_category[a]);
+        }
+});
 
 const checkmenu = () => {
   let active = $(".div-sidemenu").hasClass("show");
@@ -541,6 +637,7 @@ const removeclass_active = () => {
   $(".sales_dashboard").removeClass("activelink");
   $(".product_sold").removeClass("activelink");
   $(".online_order").removeClass("activelink");
+  $(".POS").removeClass("activelink");
 };
 $(".link-product").click(() => {
   $("nav ul .show-product").toggleClass("show1");
@@ -559,6 +656,11 @@ $(".online_order").click(() => {
   let online_order = $(".online_order");
   removeclass_active();
   addclass_active(online_order);
+});
+$(".POS").click(() => {
+  removeclass_active();
+  let POS = $(".POS");
+  addclass_active(POS);
 });
 const classname = [
   "product_list",

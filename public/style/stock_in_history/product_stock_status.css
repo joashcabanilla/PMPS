@@ -103,7 +103,7 @@
   font-weight: bold;
   font-size: 1.1rem;
   text-align: center;
-  background-color: #ffffff;
+  border: 1px solid black;
   width: 15rem;
   margin-bottom: 0.5rem;
 }
@@ -166,7 +166,12 @@
   text-align: left;
   padding: 0.5rem;
 }
-
+.PSS-out_stocks {
+  background-color: #cf352e;
+}
+.PSS-low_stocks {
+  background-color: #f8de7e;
+}
 @media only screen and (min-device-width: 320px) and (max-width: 600px) {
   .PSS-categorytext {
     width: 100%;
@@ -436,7 +441,7 @@
     font-weight: bold;
     font-size: 1.1rem;
     text-align: center;
-    background-color: #ffffff;
+    border: 1px solid black;
     width: 15rem;
     margin-bottom: 0.5rem;
   }
@@ -498,5 +503,11 @@
     background-color: #bbeaff;
     text-align: left;
     padding: 0.5rem;
+  }
+  .PSS-out_stocks {
+    background-color: #cf352e;
+  }
+  .PSS-low_stocks {
+    background-color: #f8de7e;
   }
 }

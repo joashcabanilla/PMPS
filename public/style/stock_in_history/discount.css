@@ -1,0 +1,289 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+.Discount-controlbox {
+  margin-bottom: 2rem;
+}
+.Discount-categorytext {
+  text-align: center;
+  font-size: 1.2rem;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  color: #458aab;
+}
+.Discount-function {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 1rem;
+}
+.Discount-table {
+  border-collapse: collapse;
+  width: 100%;
+  border: 3px solid #ffffff;
+  height: 100%;
+}
+.Discount-table th {
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  border: 2px solid #ffffff;
+  background-color: #78bee1;
+  color: #ffffff;
+  text-align: center;
+  padding: 0.5rem;
+  top: 0;
+}
+.Discount-table tr td {
+  font-weight: 400;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  border: 2px solid #ffffff;
+  background-color: #bbeaff;
+  padding: 0.5rem;
+  text-align: center;
+}
+.Discount-table tr td:nth-child(1) {
+  font-weight: bold;
+}
+.senior-pvalue,
+.senior-inputvalue,
+.senior-editbtn,
+.senior-savebtn,
+.senior-cancelbtn {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  justify-content: center;
+  align-items: center;
+}
+.senior-editbtn,
+.senior-savebtn,
+.senior-cancelbtn {
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+  background: #b7dbed;
+  outline: none;
+  border-color: #b7dbed;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 70%;
+}
+.senior-inputvalue {
+  text-align: center;
+  width: 10rem;
+}
+.senior-savebtn {
+  margin-bottom: 0.5rem;
+}
+.pwd-pvalue,
+.pwd-inputvalue,
+.pwd-editbtn,
+.pwd-savebtn,
+.pwd-cancelbtn {
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  justify-content: center;
+  align-items: center;
+}
+.pwd-editbtn,
+.pwd-savebtn,
+.pwd-cancelbtn {
+  padding: 5px;
+  border-radius: 8px;
+  box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+  background: #b7dbed;
+  outline: none;
+  border-color: #b7dbed;
+  font-family: "Poppins", sans-serif;
+  font-size: 1.1rem;
+  font-weight: bold;
+  width: 70%;
+}
+.pwd-inputvalue {
+  text-align: center;
+  width: 10rem;
+}
+.pwd-savebtn {
+  margin-bottom: 0.5rem;
+}
+@media only screen and (min-device-width: 320px) and (max-width: 600px) {
+  .Discount-controlbox {
+    width: 95%;
+  }
+  .Discount-categorytext {
+    font-size: 1rem;
+  }
+  .Discount-table th,
+  .Discount-pvalue,
+  .Discount-inputvalue {
+    font-size: 1rem;
+  }
+  .senior-editbtn,
+  .senior-savebtn,
+  .senior-cancelbtn {
+    font-size: 0.8rem;
+    width: 95%;
+  }
+  .pwd-editbtn,
+  .pwd-savebtn,
+  .pwd-cancelbtn {
+    font-size: 0.8rem;
+    width: 95%;
+  }
+
+  .senior-inputvalue,
+  .pwd-inputvalue {
+    width: 5rem;
+  }
+}
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .Discount-controlbox {
+    width: 70%;
+  }
+  .Discount-categorytext {
+    font-size: 1rem;
+  }
+  .Discount-table th,
+  .senior-pvalue,
+  .senior-inputvalue,
+  .senior-editbtn,
+  .senior-savebtn,
+  .senior-cancelbtn,
+  .pwd-pvalue,
+  .pwd-inputvalue,
+  .pwd-editbtn,
+  .pwd-savebtn,
+  .pwd-cancelbtn {
+    font-size: 1rem;
+  }
+}
+@media only screen and (min-width: 1024px) and (max-width: 1365px) {
+  .Discount-controlbox {
+    width: 70%;
+  }
+  .Discount-categorytext {
+    font-size: 1.5rem;
+  }
+  .Discount-table th,
+  .senior-pvalue,
+  .senior-inputvalue,
+  .senior-editbtn,
+  .senior-savebtn,
+  .senior-cancelbtn,
+  .pwd-pvalue,
+  .pwd-inputvalue,
+  .pwd-editbtn,
+  .pwd-savebtn,
+  .pwd-cancelbtn {
+    font-size: 1rem;
+  }
+}
+@media only screen and (min-width: 1366px) {
+  .Discount-controlbox {
+    margin-bottom: 2rem;
+  }
+  .Discount-categorytext {
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    color: #458aab;
+  }
+  .Discount-function {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  .Discount-table {
+    border-collapse: collapse;
+    width: 100%;
+    border: 3px solid #ffffff;
+    height: 100%;
+  }
+  .Discount-table th {
+    font-weight: 600;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    border: 2px solid #ffffff;
+    background-color: #78bee1;
+    color: #ffffff;
+    text-align: center;
+    padding: 0.5rem;
+    top: 0;
+  }
+  .Discount-table tr td {
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    border: 2px solid #ffffff;
+    background-color: #bbeaff;
+    padding: 0.5rem;
+    text-align: center;
+  }
+  .Discount-table tr td:nth-child(1) {
+    font-weight: bold;
+  }
+  .senior-pvalue,
+  .senior-inputvalue,
+  .senior-editbtn,
+  .senior-savebtn,
+  .senior-cancelbtn {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .senior-editbtn,
+  .senior-savebtn,
+  .senior-cancelbtn {
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+    background: #b7dbed;
+    outline: none;
+    border-color: #b7dbed;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    width: 70%;
+  }
+  .senior-inputvalue {
+    text-align: center;
+    width: 10rem;
+  }
+  .senior-savebtn {
+    margin-bottom: 0.5rem;
+  }
+  .pwd-pvalue,
+  .pwd-inputvalue,
+  .pwd-editbtn,
+  .pwd-savebtn,
+  .pwd-cancelbtn {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    justify-content: center;
+    align-items: center;
+  }
+  .pwd-editbtn,
+  .pwd-savebtn,
+  .pwd-cancelbtn {
+    padding: 5px;
+    border-radius: 8px;
+    box-shadow: 0px 3px 6px rgb(0 0 0 / 25%);
+    background: #b7dbed;
+    outline: none;
+    border-color: #b7dbed;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    font-weight: bold;
+    width: 70%;
+  }
+  .pwd-inputvalue {
+    text-align: center;
+    width: 10rem;
+  }
+  .pwd-savebtn {
+    margin-bottom: 0.5rem;
+  }
+}

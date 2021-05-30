@@ -301,7 +301,13 @@ $(".AP-savebtn").click(() => {
         const reader = new FileReader();
         reader.readAsDataURL(file);
         reader.onload = () => {
-            addproduct(reader.result);
+            let now = new Date();
+            let month = parseInt(now.getMonth() + 1);
+            let year = parseInt(now.getFullYear());
+            let expirationdate =  $(".AP-expirationdate").val();
+            let expired_month = parseInt(expirationdate.substring(0,2));
+            let expired_year = parseInt(expirationdate.substring(3));
+            month >= expired_month && year >= expired_year ? swal("","ERROR YOU CAN'T ADD PRODUCT WITH THIS EXPIRATION DATE.","error") : addproduct(reader.result);
         }
     }
     catch(err){

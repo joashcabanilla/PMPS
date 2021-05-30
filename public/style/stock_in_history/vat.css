@@ -8,7 +8,7 @@
 }
 .Vat-categorytext {
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.2rem;
 }
 .Vat-function {
   display: flex;
@@ -25,7 +25,7 @@
 .Vat-table th {
   font-weight: 600;
   font-family: "Poppins", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   border: 2px solid #ffffff;
   background-color: #78bee1;
   color: #ffffff;
@@ -36,7 +36,7 @@
 .Vat-table tr td {
   font-weight: 400;
   font-family: "Poppins", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   border: 2px solid #ffffff;
   background-color: #bbeaff;
   padding: 0.5rem;
@@ -48,7 +48,7 @@
 .Vat-savebtn,
 .Vat-cancelbtn {
   font-family: "Poppins", sans-serif;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   justify-content: center;
   align-items: center;
 }
@@ -62,7 +62,7 @@
   outline: none;
   border-color: #b7dbed;
   font-family: "Poppins", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
   width: 70%;
 }
@@ -133,7 +133,7 @@
   }
   .Vat-categorytext {
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.2rem;
   }
   .Vat-function {
     display: flex;
@@ -150,7 +150,7 @@
   .Vat-table th {
     font-weight: 600;
     font-family: "Poppins", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     border: 2px solid #ffffff;
     background-color: #78bee1;
     color: #ffffff;
@@ -161,10 +161,9 @@
   .Vat-table tr td {
     font-weight: 400;
     font-family: "Poppins", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     border: 2px solid #ffffff;
     background-color: #bbeaff;
-    text-align: left;
     padding: 0.5rem;
     text-align: center;
   }
@@ -174,7 +173,9 @@
   .Vat-savebtn,
   .Vat-cancelbtn {
     font-family: "Poppins", sans-serif;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
+    justify-content: center;
+    align-items: center;
   }
   .Vat-editbtn,
   .Vat-savebtn,
@@ -186,11 +187,15 @@
     outline: none;
     border-color: #b7dbed;
     font-family: "Poppins", sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
     font-weight: bold;
     width: 70%;
   }
   .Vat-inputvalue {
     text-align: center;
+    width: 10rem;
+  }
+  .Vat-savebtn {
+    margin-bottom: 0.5rem;
   }
 }

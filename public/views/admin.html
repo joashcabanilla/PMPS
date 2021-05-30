@@ -24,6 +24,9 @@
     <link rel="stylesheet" href="/style/stock_in_entry/adminAccount.css" />
     <link rel="stylesheet" href="/style/sales/customerAccount.css" />
     <link rel="stylesheet" href="/style/sales/sales.css" />
+    <link rel="stylesheet" href="/style/stock_in_history/discount.css" />
+    <link rel="stylesheet" href="/style/staff/admin_staffproduct.css" />
+    <link rel="stylesheet" href="/style/staff/admin_staffreceipt.css" />
     <link href="/toastnotification/toastr.css" rel="stylesheet"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -104,7 +107,7 @@
                 <li><a class="stock_in_history">Stock In History</a></li>
                 <li><a class="product_stock_status">Product Stock Status</a></li>
                 <li><a class="pull_out_product">Pull Out Product History</a></li>
-                <li><a class="discountvat">Vat</a></li>
+                <li><a class="discountvat">Vat and Discount</a></li>
               </ul>
             </li>
             <li>
@@ -114,7 +117,6 @@
               <ul class="show-account">
                 <li><a class="staff_account">Staff Account</a></li>
                 <li><a class="admin_account">Admin Account</a></li>
-                <!-- <li><a class="customer_account">Customer Account</a></li> -->
               </ul>
             </li>
             <li>
@@ -126,9 +128,9 @@
                 <li><a class="product_sold">Product Sold</a></li>
               </ul>
             </li>
-            <!-- <li>
-              <a class="online_order">Online Order</a>
-            </li> -->
+            <li>
+              <a class="POS">(POS) Point Of Sale</a>
+            </li>
           </ul>
         </nav>
       </div>
@@ -597,6 +599,42 @@
           </table>
         </div>
       </div>
+      <div class="controlbox Vat-controlbox Discount-controlbox">
+        <p class="Discount-categorytext">Discount</p>
+        <div class="Discount-function">
+          <table class="Discount-table">
+            <tr>
+              <th>Discount</th>
+              <th>Value</th>
+              <th>Button</th>
+            </tr>
+            <tr>
+              <td>SENIOR</td>
+              <td>
+                <p class="senior-pvalue">0</p>
+                <input class="senior-inputvalue" type="number" />
+              </td>
+              <td>
+                <button class="senior-editbtn">EDIT</button>
+                <button class="senior-savebtn">SAVE</button>
+                <button class="senior-cancelbtn">CANCEL</button>
+              </td>
+            </tr>
+            <tr>
+              <td>PWD</td>
+              <td>
+                <p class="pwd-pvalue">0</p>
+                <input class="pwd-inputvalue" type="number" />
+              </td>
+              <td>
+                <button class="pwd-editbtn">EDIT</button>
+                <button class="pwd-savebtn">SAVE</button>
+                <button class="pwd-cancelbtn">CANCEL</button>
+              </td>
+            </tr>
+          </table>
+        </div>
+      </div>
     </div>
 
     <div class="div-function div-StaffAccount">
@@ -932,7 +970,101 @@
         </div>
       </div>
     </div>
-    
+
+    <div class="div-function div-POS">
+      <div class="staff-main-div">
+        <div class="staff-div-product">
+          <div class="staff-controlbox">
+            <div class="staff-div-search">
+              <div class="searchicon">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  fill="currentColor"
+                  class="bi bi-search"
+                  viewBox="0 0 16 16"
+                >
+                  <path
+                    d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"
+                  />
+                </svg>
+              </div>
+              <input
+                type="text"
+                placeholder="Search Product"
+                class="staff-productsearch"
+              />
+            </div>
+            <div class="staff-div-category">
+              <p class="staff-pcategory">Select Category:</p>
+              <select class="staff-category">
+                <option value="All">All</option>
+              </select>
+            </div>
+          </div>
+          <div class="staff-div-productitem">
+            <div class="staff-product-table"></div>
+          </div>
+        </div>
+  
+        <div class="staff-div-receipt">
+          <div class="staff-div-transactionID">
+            <p class="staff-TransactionID"></p>
+          </div>
+          <div class="staff-div-product-receipt">
+            <div class="staff-div-product-receipt-content">
+              <table class="staff-receipt-table"></table>
+            </div>
+          </div>
+          <div class="staff-div-subtotal">
+            <p class="staff-psubtotal">Subtotal:</p>
+            <p class="staff-subtotal"></p>
+          </div>
+          <div class="staff-div-cash-change">
+            <div class="staff-div-cash">
+              <p class="staff-pcash">Cash Received</p>
+              <input type="number" pattern="^\d*(\.\d{0,2})?$" class="staff-cash" />
+            </div>
+            <div class="staff-div-change">
+              <p class="staff-pchange">Change</p>
+              <p class="staff-change"></p>
+            </div>
+          </div>
+          <div class="staff-div-button">
+            <button class="staff-proceedbtn">Proceed</button>
+            <button class="staff-discountbtn">Discount</button>
+          </div>
+        </div>
+  
+        <div class="staff-div-print-receipt">
+          <div class="staff-PR-div-transactionID">
+            <p class="staff-PR-TransactionID"></p>
+          </div>
+          <div class="staff-div-logoreceipt">
+            <img src="/image/receiptlogo.png" width="120rem" height="120rem" />
+          </div>
+          <div class="staff-div-totalamount">
+            <div class="staff-div-PR-totalamount">
+              <p class="staff-ptotalAmount">Total Amount:</p>
+              <p class="staff-totalAmount"></p>
+            </div>
+          </div>
+          <div class="staff-PR-div-button">
+            <button class="staff-printbtn">Print Receipt</button>
+          </div>
+          <div class="staff-div-receiptDetails">
+            <p class="staff-preceiptDetails">Receipt Details</p>
+          </div>
+          <div class="staff-PR-div-table">
+            <div class="staff-PR-div-table-content">
+              <table class="staff-PR-table"></table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script src="/javascript/admin/datetime.js"></script>
     <script src="/javascript/admin/sidemenu.js"></script>
     <script src="/javascript/admin/productlist.js"></script>
@@ -947,6 +1079,8 @@
     <script src="/javascript/stock_in_entry/adminAccount.js"></script>
     <script src="/javascript/sales/customerAccount.js"></script>
     <script src="/javascript/sales/sales.js"></script>
+    <script src="/javascript/stock_in_entry/discount.js"></script>
+    <script src="/javascript/staff/admin_staffproduct.js"></script>
   </body>
 </html>
   

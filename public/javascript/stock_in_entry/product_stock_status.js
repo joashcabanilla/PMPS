@@ -39,16 +39,17 @@ const pssGetProduct = (event) => {
         let stocks = ArrayGetAllProduct[i].stocks;
         let unit = ArrayGetAllProduct[i].unit;
         let expirationdate = ArrayGetAllProduct[i].expirationdate;
-
-        let tdTotal = pssTdTotalStocks(code,productname,category,brandname,formulation,price,stocks,unit);
+        let color = "";
+        parseInt(stocks) == 0 ? color = "#CF352E" : parseInt(stocks) <= 5 && parseInt(stocks) != 0 ? color = "#F8DE7E" : color = "#bbeaff";
+        let tdTotal = pssTdTotalStocks(code,productname,category,brandname,formulation,price,stocks,unit,color);
         let tdOutStocks = `<tr>
-                            <td>${code}</td>
-                            <td>${productname}</td>
-                            <td>${category}</td>
-                            <td>${brandname}</td>
-                            <td>${formulation}</td>
-                            <td style="text-align:center;">${parseFloat(price).toFixed(2)}</td>
-                            <td style="text-align:center;">Out Of Stocks</td>
+                            <td style="background-color: #CF352E;">${code}</td>
+                            <td style="background-color: #CF352E;">${productname}</td>
+                            <td style="background-color: #CF352E;">${category}</td>
+                            <td style="background-color: #CF352E;">${brandname}</td>
+                            <td style="background-color: #CF352E;">${formulation}</td>
+                            <td style="text-align:center; background-color: #CF352E;">${parseFloat(price).toFixed(2)}</td>
+                            <td style="text-align:center; background-color: #CF352E;">Out Of Stocks</td>
                         </tr>`;
         let tdExpired = `<tr class = "PSSproduct-${code}">
                             <td>${code}</td>
@@ -68,15 +69,15 @@ const pssGetProduct = (event) => {
         switch(event){
             case "SearchFocus":
                 pssAutoCompleteSearch(code,productname);
-                parseInt(stocks) != 0 ? pssTable.append(tdTotal) : null;
+                pssTable.append(tdTotal);
             break;
 
             case "SearchKeyup":
-                parseInt(stocks) != 0 ? pssTable.append(tdTotal) : null;
+                pssTable.append(tdTotal);
             break;
 
             case pssArrayStatus[0]:
-                parseInt(stocks) != 0 ? pssTable.append(tdTotal) : null;
+                pssTable.append(tdTotal);
             break;
 
             case pssArrayStatus[1]:
@@ -117,15 +118,15 @@ const pssResetfunc = (status,header,removebtn,clearSearch) => {
 }
 
 //TABLE DATA FUNCTION FOR TOTAL STOCKS-------------------------------------------------------------------------
-const pssTdTotalStocks = (code,productname,category,brandname,formulation,price,stocks,unit) => {
+const pssTdTotalStocks = (code,productname,category,brandname,formulation,price,stocks,unit,color) => {
    return `<tr>
-        <td>${code}</td>
-        <td>${productname}</td>
-        <td>${category}</td>
-        <td>${brandname}</td>
-        <td>${formulation}</td>
-        <td style="text-align:center;">${parseFloat(price).toFixed(2)}</td>
-        <td style="text-align:center;">${stocks} ${unit}</td>
+        <td style="background-color: ${color};">${code}</td>
+        <td style="background-color: ${color};">${productname}</td>
+        <td style="background-color: ${color};">${category}</td>
+        <td style="background-color: ${color};">${brandname}</td>
+        <td style="background-color: ${color};">${formulation}</td>
+        <td style="text-align:center; background-color: ${color};">${parseFloat(price).toFixed(2)}</td>
+        <td style="text-align:center; background-color: ${color};">${stocks} ${unit}</td>
         </tr>`;
 }
 
@@ -160,7 +161,9 @@ pssSearch.keyup((e) => {
                 let unit = ArrayGetAllProduct[i].unit;
                 let existProduct = productname.search(fsearchdata);
                 let existCode = code.search(fsearchdata);
-                let td = pssTdTotalStocks(code,productname,category,brandname,formulation,price,stocks,unit);
+                let color = "";
+                parseInt(stocks) == 0 ? color = "#CF352E" : parseInt(stocks) <= 5 && parseInt(stocks) != 0 ? color = "#F8DE7E" : color = "#bbeaff";
+                let td = pssTdTotalStocks(code,productname,category,brandname,formulation,price,stocks,unit,color);
                 existProduct != -1 || existCode != -1 ? pssTable.append(td) : null;
             }
         }
@@ -190,7 +193,8 @@ const updateExpiredText = () => {
 
 //REMOVE ALL PRODCUT EXPIRED BUTTON CLICK EVENT-------------------------------------------------------------------
 pssRemovebtn.click(() => {
-    let expiredProduct = pssExpired.text();
+    let expiredProduct = parseInt(pssExpired.text());
+    expiredProduct == 0 ? swal("","No Expired Prodcut","info") :  
     swal({
         title: "",
         text: `${expiredProduct} Products have been expired, Do you want to Pull Out all expired products?`,
@@ -251,8 +255,6 @@ pssRemovebtn.click(() => {
             }
             updateExpiredText();
             swal("PULL OUT EXPIRED PRODUCTS","All Expired Products successfully Pull Out","success");
-
-
     }
     });
 });
@@ -347,8 +349,10 @@ const resetTableTotalStock = () => {
         let price = ArrayGetAllProduct[i].price;
         let stocks = ArrayGetAllProduct[i].stocks;
         let unit = ArrayGetAllProduct[i].unit;
-        let td = pssTdTotalStocks(code,productname,category,brandname,formulation,price,stocks,unit);
-        parseInt(stocks) != 0 ? pssTable.append(td) : null;
+        let color = "";
+        parseInt(stocks) == 0 ? color = "#CF352E" : parseInt(stocks) <= 5 && parseInt(stocks) != 0 ? color = "#F8DE7E" : color = "#bbeaff";
+        let td = pssTdTotalStocks(code,productname,category,brandname,formulation,price,stocks,unit,color);
+        pssTable.append(td);
     }
 }
 
